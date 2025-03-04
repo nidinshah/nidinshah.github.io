@@ -23,7 +23,6 @@ Python, SQL, AWS, Snowflake, MATLAB
 - Appointed as a VIP partner to provide priority support to high-profile clients, including banks and government entities.  
 - Provided one-on-one phone support (inbound and outbound) for client issues, integration concerns, and remote troubleshooting.  
 - Utilized Freshdesk, Jira, GitLab, and AWS databases for efficient issue resolution and process automation.  
-- **IT Support Administrative, Malaysia Association of Energy Service Companies (MAESCO) — October**  
 
 *IT Support Administrative, Malaysia Association of Energy Service Companies (MAESCO) — October 2022 -
 December 2023*
