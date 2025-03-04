@@ -65,15 +65,6 @@ body.dark-mode #theme-toggle:hover {
 body.dark-mode .theme-icon i {
     color: #ffffff;
 }
-body.dark-mode .link-btn {
-    background-color: #34495e;
-    color: #ffffff;
-    border-color: #34495e;
-}
-body.dark-mode .link-btn:hover {
-    background-color: #2c3e50;
-    border-color: #2c3e50;
-}
 .content {
     margin-top: 15px;
     text-align: left;
@@ -92,16 +83,29 @@ body.dark-mode .link-btn:hover {
     background-color: #ffffff;
     border: 2px solid #2c3e50;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    border-radius: 8px; /* Nicer, rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for nice look */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .link-btn:hover {
     background-color: #2c3e50;
     color: #ffffff;
     border-color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 .link-btn i {
     margin-right: 8px;
+}
+body.dark-mode .link-btn {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border-color: #ffffff;
+}
+body.dark-mode .link-btn:hover {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
 /* Responsive Design */
 @media screen and (max-width: 768px) {
