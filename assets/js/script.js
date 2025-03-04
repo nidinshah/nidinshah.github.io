@@ -25,11 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Fix: Ensure "Projects" button does NOT reload infinitely
+    // Fix: Prevent Extra "Projects" Button
     const projectButton = document.getElementById('project-button');
 
     if (projectButton) {
-        projectButton.addEventListener('click', (event) => {
+        projectButton.replaceWith(projectButton.cloneNode(true)); // Removes previous event listeners
+
+        document.getElementById('project-button').addEventListener('click', (event) => {
             event.preventDefault(); // Prevents unnecessary reload
 
             const currentPath = window.location.pathname.replace(/\/$/, ""); 
