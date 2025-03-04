@@ -15,6 +15,29 @@ integrations, cloud computing, and fintech operations to enhance customer suppor
 ## Technical Skills
 Python, SQL, AWS, Snowflake, MATLAB
 
+## Working Experience 
+*Technical Support Specialist, Razer Merchant Services (Fintech) — January 2024 - November 2024*
+• Provided comprehensive technical support to over 100+ SMEs across Southeast Asia, resolving backend integration
+challenges and reducing downtime by 30%.
+• Led API backend integration, troubleshooting payment issues, and optimizing transaction monitoring systems.
+• Managed settlement processes and fraud detection tickets, ensuring a 95% SLA compliance rate.
+• Appointed as a VIP partner to provide priority support to high-profile clients, including banks and government entities.
+• Provided one-on-one phone support (inbound and outbound) for client issues, integration concerns, and remote
+troubleshooting.
+• Utilized Freshdesk, Jira, GitLab, and AWS databases for efficient issue resolution and process automation.
+
+*IT Support Administrative, Malaysia Association of Energy Service Companies (MAESCO) — October 2022 -
+December 2023*
+• Prepared and distributed agendas, minutes, and other relevant documents for board meetings and executive.
+• Managed incoming requests, including emails and phone calls, and directed inquiries to the appropriate personnel.
+• Eﬀectively transitioned physical documents to a cloud-based system (SaaS) for enhanced private access to all
+committee members.
+• Responsible for publishing the MAESCO-ESCO Energy newsletter for all active organization members.
+
+
+
+
+
 ## Education
 BSc., Science | Taylors University (Aug 2018)
 
