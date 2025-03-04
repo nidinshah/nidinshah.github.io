@@ -185,7 +185,9 @@ body.dark-mode .project-content p, body.dark-mode .project-content ul {
     .links {
         flex-direction: column;
         gap: 10px;
-        align-items: center; /* Center buttons vertically in mobile view */
+        align-items: center; /* Center buttons vertically */
+        justify-content: center; /* Center buttons horizontally */
+        text-align: center; /* Ensure text alignment within buttons */
     }
     .project-content h1 { font-size: 1.5em; }
     .project-content h2 { font-size: 1.1em; }
