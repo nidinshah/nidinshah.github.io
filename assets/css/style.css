@@ -75,37 +75,50 @@ body.dark-mode .theme-icon i {
     justify-content: center;
     gap: 20px;
 }
-.link-btn {
+.fancy-btn {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 14px;
-    color: #2c3e50;
-    background-color: #ffffff;
-    border: 2px solid #2c3e50;
-    text-decoration: none;
-    border-radius: 8px; /* Nicer, rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for nice look */
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-.link-btn:hover {
-    background-color: #2c3e50;
+    padding: 12px 24px;
+    font-size: 16px;
     color: #ffffff;
-    border-color: #2c3e50;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    background: linear-gradient(45deg, #4caf50, #2196f3); /* Fancy gradient */
+    border: none;
+    border-radius: 25px; /* Rounded for creativity */
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Fancy shadow */
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
 }
-.link-btn i {
+.fancy-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.fancy-btn:hover {
+    transform: translateY(-2px); /* Lift on hover */
+    background: linear-gradient(45deg, #45a049, #1976d2); /* Darker gradient on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+.fancy-btn:hover::before {
+    opacity: 1; /* Show subtle overlay on hover */
+}
+.fancy-btn i {
     margin-right: 8px;
 }
-body.dark-mode .link-btn {
-    background-color: #ffffff;
-    color: #2c3e50;
-    border-color: #ffffff;
+body.dark-mode .fancy-btn {
+    background: linear-gradient(45deg, #388e3c, #1565c0); /* Darker gradient for dark mode */
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
-body.dark-mode .link-btn:hover {
-    background-color: #ffffff;
-    color: #2c3e50;
-    border-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+body.dark-mode .fancy-btn:hover {
+    background: linear-gradient(45deg, #2e7d32, #0d47a1); /* Even darker gradient on hover in dark mode */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -114,7 +127,7 @@ body.dark-mode .link-btn:hover {
     h1 { font-size: 1.3em; }
     p { font-size: 0.9em; }
     #theme-toggle { top: 10px; right: 10px; font-size: 16px; }
-    .link-btn { padding: 8px 16px; font-size: 12px; }
+    .fancy-btn { padding: 10px 20px; font-size: 14px; border-radius: 20px; }
     .links { gap: 15px; }
 }
 @media screen and (max-width: 480px) {
@@ -123,6 +136,6 @@ body.dark-mode .link-btn:hover {
     h1 { font-size: 1.1em; }
     p { font-size: 0.8em; }
     #theme-toggle { top: 8px; right: 8px; font-size: 14px; }
-    .link-btn { padding: 6px 12px; font-size: 10px; width: 100%; }
+    .fancy-btn { padding: 8px 16px; font-size: 12px; border-radius: 18px; width: 100%; }
     .links { flex-direction: column; gap: 10px; }
 }
