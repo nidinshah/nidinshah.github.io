@@ -21,3 +21,7 @@ BSc., Science | Taylors University (Aug 2018)
 ## Projects
 - [Data-Driven EEG Band Discovery with Decision Trees](https://www.mdpi.com/1424-8220/22/8/3048)
 - [Decoding Physical and Cognitive Impacts of Particulate Matter Concentrations](https://www.mdpi.com/1424-8220/22/11/4240)
+
+## Contact(s)
+<p><a href="mailto:nidinshah@outlook.com">Send email</a></p>
+Mobile Number: 011 1409 6495
