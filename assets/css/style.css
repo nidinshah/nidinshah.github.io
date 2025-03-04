@@ -168,10 +168,47 @@ body.dark-mode .project:hover {
     .project-content h2 { font-size: 1.3em; }
 }
 @media screen and (max-width: 480px) {
-    .container { max-width: 85%; padding: 10px; }
-    .logo { width: 110px; height: 110px; }
-    h1 { font-size: 1.5em; }
-    p { font-size: 0.8em; }
-    #theme-toggle { top: 8px; right: 8px; font-size: 14px; }
-    .fancy-btn { padding: 8px 16px; font-size: 12px; border-radius: 18px; width: 100%; margin: 0 auto; display: block; }
+    .container {
+        max-width: 90%;
+        padding: 10px;
+    }
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    p {
+        font-size: 0.9em;
+    }
+    #theme-toggle {
+        top: 8px;
+        right: 8px;
+        font-size: 14px;
+    }
+    
+    /* Fix Button Alignment */
+    .links {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+        text-align: center;
+        gap: 12px; /* Add space between buttons */
+        width: 100%;
+    }
+    
+    .fancy-btn {
+        padding: 12px 18px;
+        font-size: 14px;
+        border-radius: 20px;
+        width: 80%; /* Make buttons wider but not full width */
+        max-width: 250px; /* Prevent buttons from being too wide */
+    }
+
+    .project-content h1 {
+        font-size: 1.5em;
+    }
+    .project-content h2 {
+        font-size: 1.2em;
+    }
 }
