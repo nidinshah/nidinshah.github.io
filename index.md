@@ -11,7 +11,6 @@ systems. Strong analytical, communication, and problem-solving skills with a tra
 technical operations and client satisfaction. Seeking a technical support role where I can apply my expertise in backend
 integrations, cloud computing, and fintech operations to enhance customer support and optimize system performance
 
-
 ## Technical Skills
 Python, SQL, AWS, Snowflake, MATLAB
 
@@ -32,13 +31,9 @@ Python, SQL, AWS, Snowflake, MATLAB
 December 2023*
 - Prepared and distributed agendas, minutes, and other relevant documents for board meetings and executive.
 - Managed incoming requests, including emails and phone calls, and directed inquiries to the appropriate personnel.
-- Eﬀectively transitioned physical documents to a cloud-based system (SaaS) for enhanced private access to all
+- Effectively transitioned physical documents to a cloud-based system (SaaS) for enhanced private access to all
 committee members.
 - Responsible for publishing the MAESCO-ESCO Energy newsletter for all active organization members.
-
-
-
-
 
 ## Education
 BSc., Science | Taylors University (Aug 2018)
@@ -46,6 +41,14 @@ BSc., Science | Taylors University (Aug 2018)
 ## Projects
 - [Data-Driven EEG Band Discovery with Decision Trees](https://www.mdpi.com/1424-8220/22/8/3048)
 - [Decoding Physical and Cognitive Impacts of Particulate Matter Concentrations](https://www.mdpi.com/1424-8220/22/11/4240)
+
+### View More Projects
+<div style="text-align: center; margin-top: 20px;">
+  <button id="project-button" class="fancy-btn" 
+     style="font-size: 16px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    View All Projects
+  </button>
+</div>
 
 #### Contact(s)
  <div style="text-align: center; margin-top: 20px;">
