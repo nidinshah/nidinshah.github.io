@@ -186,7 +186,7 @@ body.dark-mode .project:hover {
         width: 85%;
         max-width: 300px;
         text-align: center;
-        margin: 5px auto; /* Add spacing between buttons */
+        margin: 3px auto; /* Add spacing between buttons */
     }
 
     .project-content h1 {
