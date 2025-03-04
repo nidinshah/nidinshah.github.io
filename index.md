@@ -17,14 +17,13 @@ Python, SQL, AWS, Snowflake, MATLAB
 
 ## Working Experience 
 *Technical Support Specialist, Razer Merchant Services (Fintech) — January 2024 - November 2024*
-- Provided comprehensive technical support to over 100+ SMEs across Southeast Asia, resolving backend integration
-challenges and reducing downtime by 30%.
-- Led API backend integration, troubleshooting payment issues, and optimizing transaction monitoring systems.
-- Managed settlement processes and fraud detection tickets, ensuring a 95% SLA compliance rate.
-- Appointed as a VIP partner to provide priority support to high-profile clients, including banks and government entities.
-- Provided one-on-one phone support (inbound and outbound) for client issues, integration concerns, and remote
-troubleshooting.
-- Utilized Freshdesk, Jira, GitLab, and AWS databases for efficient issue resolution and process automation.
+- Provided comprehensive technical support to over 100+ SMEs across Southeast Asia, resolving backend integration challenges and reducing downtime by 30%.  
+- Led API backend integration, troubleshooting payment issues, and optimizing transaction monitoring systems.  
+- Managed settlement processes and fraud detection tickets, ensuring a 95% SLA compliance rate.  
+- Appointed as a VIP partner to provide priority support to high-profile clients, including banks and government entities.  
+- Provided one-on-one phone support (inbound and outbound) for client issues, integration concerns, and remote troubleshooting.  
+- Utilized Freshdesk, Jira, GitLab, and AWS databases for efficient issue resolution and process automation.  
+- **IT Support Administrative, Malaysia Association of Energy Service Companies (MAESCO) — October**  
 
 *IT Support Administrative, Malaysia Association of Energy Service Companies (MAESCO) — October 2022 -
 December 2023*
