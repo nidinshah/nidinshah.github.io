@@ -175,7 +175,7 @@ body.dark-mode .project:hover {
         text-align: center;
         display: flex;
         justify-content: center;
-        gap: 15px; /* Increase space between buttons */
+        gap: 10px; /* Increase space between buttons */
         width: 100%;
     }
     
