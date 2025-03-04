@@ -38,7 +38,7 @@ The goal was to create a user-friendly dashboard to analyze sales data for a fic
 - The dashboard reduced report generation time by 30% for the business team.
 
 ## Screenshots
-![Data Analytics Dashboard](/assets/img/bike_study.jpeg) <!-- Use an existing image or add a new one -->
+![Data Analytics Dashboard](/assets/img/bike_study.jpeg)
 
 ## Future Improvements
 - Integrate real-time data updates using APIs.
