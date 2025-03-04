@@ -4,6 +4,7 @@ title: IT Project - Data Analytics Dashboard
 permalink: /projects/
 ---
 
+<div class="project-content">
 # Data Analytics Dashboard Project
 
 ## Overview
@@ -50,3 +51,4 @@ This project demonstrates my ability to leverage IT tools for data-driven decisi
 
 ---
 *Published on March 03, 2025*
+</div>
