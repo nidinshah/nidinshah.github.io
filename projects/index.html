@@ -1,27 +1,134 @@
 ---
 layout: default
-title: IT Blog
-permalink: /projects/
+title: Nidin Shah Ryidhzuan
+show_downloads: false
 ---
 
-<h1>IT & Tech Blog</h1>
+<h1>Welcome to My Portfolio</h1>
+<p>Explore my projects, experience, and tech insights.</p>
 
+<!-- Blog Section -->
+<h2>Latest Blog Articles</h2>
 <div class="blog-container">
     <!-- Article 1 -->
     <div class="blog-post">
         <img src="/assets/img/cloud_computing.jpg" alt="Cloud Computing" class="blog-image">
-        <h2>The Future of Cloud Computing</h2>
-        <p><strong>Published on:</strong> March 10, 2025</p>
-        <p>Cloud computing is rapidly evolving, enabling businesses to scale operations without the need for expensive infrastructure...</p>
-        <a href="/projects/article1.html" class="fancy-btn">Read More</a>
+        <div class="blog-content">
+            <h3>The Future of Cloud Computing</h3>
+            <p><strong>Published on:</strong> March 10, 2025</p>
+            <p>Cloud computing is rapidly evolving, enabling businesses to scale without expensive infrastructure...</p>
+            <a href="/projects/article1.html" class="fancy-btn">Read More</a>
+        </div>
     </div>
 
     <!-- Article 2 -->
     <div class="blog-post">
         <img src="/assets/img/cybersecurity.jpg" alt="Cybersecurity Trends" class="blog-image">
-        <h2>Top Cybersecurity Trends in 2025</h2>
-        <p><strong>Published on:</strong> March 5, 2025</p>
-        <p>Cybersecurity is more important than ever as cyber threats become more sophisticated. Businesses need to stay ahead...</p>
-        <a href="/projects/article2.html" class="fancy-btn">Read More</a>
+        <div class="blog-content">
+            <h3>Top Cybersecurity Trends in 2025</h3>
+            <p><strong>Published on:</strong> March 5, 2025</p>
+            <p>Cybersecurity is more important than ever as cyber threats become more sophisticated...</p>
+            <a href="/projects/article2.html" class="fancy-btn">Read More</a>
+        </div>
     </div>
 </div>
+
+<style>
+    /* Blog Section Layout */
+    .blog-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .blog-post {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    
+    .blog-post:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .blog-image {
+        max-width: 180px;
+        height: auto;
+        border-radius: 8px;
+        margin-right: 20px;
+    }
+    
+    .blog-content {
+        flex: 1;
+    }
+    
+    .blog-post h3 {
+        color: #2c3e50;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    
+    .blog-post p {
+        font-size: 1em;
+        color: #555;
+        line-height: 1.6;
+    }
+    
+    .blog-post .fancy-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    .blog-post .fancy-btn:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Dark Mode Support */
+    body.dark-mode .blog-post {
+        background: #2c3e50;
+        color: #f1f1f1;
+        box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+    }
+    
+    body.dark-mode .blog-post h3 {
+        color: #ffffff;
+    }
+    
+    body.dark-mode .blog-post p {
+        color: #ccc;
+    }
+    
+    body.dark-mode .blog-post .fancy-btn {
+        background-color: #4caf50;
+    }
+    
+    body.dark-mode .blog-post .fancy-btn:hover {
+        background-color: #388e3c;
+    }
+    
+    /* Responsive Blog Layout */
+    @media screen and (max-width: 768px) {
+        .blog-post {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .blog-image {
+            margin: 0 auto 15px;
+            max-width: 100%;
+        }
+    }
+</style>
