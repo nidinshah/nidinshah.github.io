@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeIcon = document.querySelector('.theme-icon');
 
     if (toggleButton && themeIcon) {
-        // Check for saved theme preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             body.classList.add('dark-mode');
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
             themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
         }
 
-        // Toggle Dark Mode
         toggleButton.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             const isDark = body.classList.contains('dark-mode');
@@ -27,19 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Project Button Navigation - Fix Infinite Loop
-    const projectButton = document.getElementById('project-button');
+    // Fix: Ensure Project Button Works Without Reloading
+    document.querySelectorAll('.project-button').forEach((button) => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevents unwanted reloads
 
-    if (projectButton) {
-        projectButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Stops the default behavior
-
-            const currentPath = window.location.pathname.replace(/\/$/, ""); // Remove trailing slashes
+            const currentPath = window.location.pathname.replace(/\/$/, ""); 
             const targetPath = "/projects";
 
             console.log("Current Path:", currentPath);
 
-            // If already on /projects or any subpage, do nothing
+            // If already on /projects or a subpage, do nothing
             if (currentPath === targetPath || currentPath.startsWith(targetPath)) {
                 console.log("Already on Projects page, navigation stopped.");
                 return;
@@ -48,8 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Navigate to /projects/
             console.log("Navigating to Projects page...");
             window.location.href = "/projects/";
-        }, { once: true }); // Ensures the event is attached **only once**
-    } else {
-        console.log('Project button not found!');
-    }
+        });
+    });
 });
