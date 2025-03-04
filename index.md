@@ -23,11 +23,6 @@ BSc., Science | Taylors University (Aug 2018)
 - [Decoding Physical and Cognitive Impacts of Particulate Matter Concentrations](https://www.mdpi.com/1424-8220/22/11/4240)
 
 ## Contact(s)
-<main>
-            <section class="links">
-
-   <a href="mailto:nidinshah@outlook.com" class="fancy-btn" aria-label="Send Email">
-                    <i class="fas fa-envelope"></i> Send Email
-                </a>
-</main>
-
+  <a href="mailto:nidinshah@outlook.com" class="fancy-btn" aria-label="Send Email" style="font-size: 14px; padding: 6px 10px;">
+  <i class="fas fa-envelope" style="font-size: 12px;"></i> Send Email
+</a>
