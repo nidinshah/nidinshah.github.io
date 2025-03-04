@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // Theme Toggle
     const toggleButton = document.getElementById('theme-toggle');
@@ -29,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fix: Prevent Project Button from Reloading the Same Page
     const projectButton = document.getElementById('project-button');
 
-    if (projectButton) {
+    if (projectButton && !projectButton.hasAttribute('data-event-attached')) {
+        projectButton.setAttribute('data-event-attached', 'true');
         projectButton.addEventListener('click', (event) => {
             event.preventDefault(); // Stops unintended reloading
 
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Current Path:", currentPath); // Debugging log
 
             // Target projects path
-            let targetPath = "/projects"; 
+            let targetPath = "/projects";
 
             // If already on "/projects" or any subpage, do nothing
             if (currentPath === targetPath || currentPath.startsWith(targetPath + "/")) {
@@ -52,6 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = targetPath + "/";
         });
     } else {
-        console.log('Project button not found!');
+        console.log('Project button not found or event already attached!');
     }
 });
