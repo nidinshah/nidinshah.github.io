@@ -26,4 +26,3 @@ BSc., Science | Taylors University (Aug 2018)
    <a href="mailto:nidinshah@outlook.com" class="fancy-btn" aria-label="Send Email">
                     <i class="fas fa-envelope"></i> Send Email
                 </a>
-Mobile Number: 011 1409 6495
