@@ -1,6 +1,7 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme Toggle
     const toggleButton = document.getElementById('theme-toggle');
     const body = document.body;
     const themeIcon = document.querySelector('.theme-icon');
@@ -23,5 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else {
         console.log('Theme toggle elements not found!');
+    }
+
+    // Project Button Navigation
+    const projectButton = document.getElementById('project-button');
+
+    if (projectButton) {
+        projectButton.addEventListener('click', () => {
+            window.location.href = '_projects/index.md';
+        });
+    } else {
+        console.log('Project button not found!');
     }
 });
