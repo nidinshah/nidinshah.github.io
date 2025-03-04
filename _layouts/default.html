@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | default: site.title }}</title>
     {% seo %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body class="{% if site.data.theme == 'dark' %}dark-mode{% endif %}">
     <div class="container">
         <header>
             <button id="theme-toggle" aria-label="Toggle dark mode">
-                <span class="theme-icon">🌙</span>
+                <span class="theme-icon"><i class="fas fa-moon"></i></span>
             </button>
             <img src="{{ site.logo | relative_url }}" alt="Profile Picture" class="logo">
             <h1>{{ site.title }}</h1>
@@ -37,22 +38,24 @@
         const body = document.body;
         const themeIcon = document.querySelector('.theme-icon');
 
-        // Check for saved theme preference or default to light mode
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-            themeIcon.textContent = '☀️'; // Sun for dark mode
-        } else {
-            themeIcon.textContent = '🌙'; // Moon for light mode
-        }
+        if (toggleButton && themeIcon) {
+            // Check for saved theme preference or default to light mode
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+                themeIcon.innerHTML = '<i class="fas fa-sun"></i>'; // Sun for dark mode
+            } else {
+                themeIcon.innerHTML = '<i class="fas fa-moon"></i>'; // Moon for light mode
+            }
 
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            
-            // Update icon based on mode
-            themeIcon.textContent = isDark ? '☀️' : '🌙';
-        });
+            toggleButton.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeIcon.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+        } else {
+            console.log('Theme toggle elements not found!');
+        }
     </script>
 </body>
 </html>
