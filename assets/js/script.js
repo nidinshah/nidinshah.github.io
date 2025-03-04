@@ -25,29 +25,29 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Fix: Prevent Extra "Projects" Button
+    // Ensure "Projects" button navigates correctly from article pages
     const projectButton = document.getElementById('project-button');
 
     if (projectButton) {
-        projectButton.replaceWith(projectButton.cloneNode(true)); // Removes previous event listeners
+        projectButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default behavior
 
-        document.getElementById('project-button').addEventListener('click', (event) => {
-            event.preventDefault(); // Prevents unnecessary reload
-
-            const currentPath = window.location.pathname.replace(/\/$/, ""); 
+            const currentPath = window.location.pathname.replace(/\/$/, ""); // Remove trailing slash if exists
             const targetPath = "/projects";
 
             console.log("Current Path:", currentPath);
 
-            // If already on /projects or a subpage, do nothing
-            if (currentPath === targetPath || currentPath.startsWith(targetPath)) {
+            // If already on /projects, do nothing
+            if (currentPath === targetPath) {
                 console.log("Already on Projects page, navigation stopped.");
                 return;
             }
 
-            // Navigate to /projects/
-            console.log("Navigating to Projects page...");
-            window.location.href = targetPath + "/";
+            // Navigate to /projects/ from article pages
+            if (currentPath.includes("/projects/article")) {
+                console.log("Navigating from article to Projects page...");
+                window.location.href = targetPath + "/";
+            }
         });
     } else {
         console.log('Project button not found!');
