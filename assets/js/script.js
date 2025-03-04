@@ -25,13 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Fix: Ensure "Projects" button works correctly
+    // Fix: Ensure "Projects" button works correctly from all pages
     const projectButton = document.getElementById('project-button');
 
     if (projectButton) {
         projectButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default link behavior
+
             const currentPath = window.location.pathname.replace(/\/$/, ""); // Normalize path
-            const targetPath = "/projects/";
+            const targetPath = "/projects";
 
             console.log("Current Path:", currentPath);
 
@@ -43,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Ensure navigation works from article pages and homepage
             console.log("Navigating to Projects page...");
-            window.location.href = targetPath;
+            window.location.href = targetPath + "/";
         });
     } else {
-        console.log('Project button not found!');
+        console.log('Project button not found! Ensure it has the correct ID.');
     }
 });
