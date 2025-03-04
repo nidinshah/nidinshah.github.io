@@ -8,9 +8,7 @@ show_downloads: false
 Python, SQL, AWS, Snowflake, MATLAB
 
 ## Education
-- Ph.D., Physics | The University of Texas at Dallas (May 2022)
-- M.S., Physics | The University of Texas at Dallas (December 2019)
-- B.S., Physics | The University of Texas at Dallas (May 2017)
+- BSc., Science | Taylors University (Aug 2018)
 
 ## Projects
 - [Data-Driven EEG Band Discovery with Decision Trees](https://www.mdpi.com/1424-8220/22/8/3048)
