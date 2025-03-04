@@ -181,13 +181,14 @@ body.dark-mode .project-content p, body.dark-mode .project-content ul {
     h1 { font-size: 1.5em; }
     p { font-size: 0.8em; }
     #theme-toggle { top: 8px; right: 8px; font-size: 14px; }
-    .fancy-btn { padding: 8px 16px; font-size: 12px; border-radius: 18px; width: 100%; }
+    .fancy-btn { padding: 8px 16px; font-size: 12px; border-radius: 18px; width: 100%; margin: 0 auto; display: block; }
     .links {
         flex-direction: column;
         gap: 10px;
         align-items: center; /* Center buttons vertically */
         justify-content: center; /* Center buttons horizontally */
         text-align: center; /* Ensure text alignment within buttons */
+        width: 100%; /* Ensure full width to center */
     }
     .project-content h1 { font-size: 1.5em; }
     .project-content h2 { font-size: 1.1em; }
