@@ -19,12 +19,17 @@
             <p>{{ site.description }}</p>
         </header>
         <main>
-            {% if page.show_downloads %}
-            <section class="downloads">
-                <a href="{{ site.github.zip_url }}" class="btn">Download ZIP</a>
-                <a href="{{ site.github.tar_url }}" class="btn">Download TAR</a>
+            <section class="links">
+                <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="link-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="{{ site.baseurl }}/projects" target="_blank" class="link-icon" aria-label="Projects">
+                    <i class="fas fa-project-diagram"></i>
+                </a>
+                <a href="{{ site.baseurl }}/assets/resume.pdf" target="_blank" class="link-icon" aria-label="Resume">
+                    <i class="fas fa-file-alt"></i>
+                </a>
             </section>
-            {% endif %}
             <section class="content">
                 {{ content }}
             </section>
