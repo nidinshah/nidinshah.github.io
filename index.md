@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Nidin Shah Ryidhzuan
-show_downloads: true
+show_downloads: false
 ---
 
 ## Technical Skills
