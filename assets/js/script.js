@@ -26,12 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Project Button Navigation (Prevents reloading same page)
+    // Fix: Prevent Project Button from Duplicating the Page
     const projectButton = document.getElementById('project-button');
 
     if (projectButton) {
-        projectButton.addEventListener('click', () => {
-            if (window.location.pathname !== "/projects/") {
+        projectButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevents any unintended default behavior
+
+            const currentPath = window.location.pathname;
+            if (currentPath !== "/projects/" && !currentPath.startsWith("/projects/")) {
                 window.location.href = "/projects/";
             }
         });
