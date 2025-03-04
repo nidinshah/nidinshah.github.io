@@ -31,17 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (projectButton) {
         projectButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevents unnecessary reloading
+            event.preventDefault(); // Stops any default action
 
             const currentPath = window.location.pathname;
 
-            // Check if user is already on /projects/ or any /projects/ subpage
-            if (currentPath === "/projects/" || currentPath.startsWith("/projects/")) {
+            // Normalize paths to avoid accidental trailing slashes causing issues
+            const normalizedPath = currentPath.replace(/\/$/, ""); 
+
+            // Check if the user is already on /projects/ or any /projects/ subpage
+            if (normalizedPath === "/projects" || normalizedPath.startsWith("/projects/")) {
                 console.log("Already on the Projects page. No navigation needed.");
-                return; // Do nothing if already on the projects page
+                return; // Do nothing if already on projects page
             }
 
             // Redirect only if user is NOT on the projects page
+            console.log("Navigating to Projects page...");
             window.location.href = "/projects/";
         });
     } else {
