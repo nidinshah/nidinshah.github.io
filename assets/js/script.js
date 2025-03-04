@@ -26,26 +26,30 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Final Fix: Prevent Project Button from Reloading the Same Page
+    // Fix: Prevent Project Button from Reloading the Same Page
     const projectButton = document.getElementById('project-button');
 
     if (projectButton) {
         projectButton.addEventListener('click', (event) => {
             event.preventDefault(); // Stops any unintended default behavior
 
-            const currentPath = window.location.pathname.replace(/\/$/, ""); // Normalize path (removes trailing slash)
-            
+            // Normalize path (removes trailing slash, if any)
+            const currentPath = window.location.pathname.replace(/\/$/, ""); 
+
             console.log("Current Path:", currentPath); // Debugging log
 
-            // If the current page is already /projects or inside /projects/, do nothing
-            if (currentPath === "/projects" || currentPath.startsWith("/projects/")) {
+            // Get absolute URL for "/projects/"
+            const targetPath = "/projects";
+
+            // If already on "/projects" or any subpage, do nothing
+            if (currentPath === targetPath || currentPath.startsWith(targetPath + "/")) {
                 console.log("Already on the Projects page. No navigation needed.");
                 return;
             }
 
-            // Otherwise, navigate to /projects/
+            // Otherwise, navigate to "/projects/"
             console.log("Navigating to Projects page...");
-            window.location.href = "/projects/";
+            window.location.href = targetPath + "/";
         });
     } else {
         console.log('Project button not found!');
