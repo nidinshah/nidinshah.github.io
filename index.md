@@ -4,9 +4,6 @@ title: Nidin Shah Ryidhzuan
 show_downloads: false
 ---
 
-## Technical Skills
-Python, SQL, AWS, Snowflake, MATLAB
-
 ## Professional Summary
 A highly adaptable and results-driven Technical Support Specialist with experience in fintech, IT administration, and
 customer support. Proven expertise in backend integrations, cloud infrastructure, and troubleshooting payment
@@ -15,9 +12,11 @@ technical operations and client satisfaction. Seeking a technical support role w
 integrations, cloud computing, and fintech operations to enhance customer support and optimize system performance
 
 
+## Technical Skills
+Python, SQL, AWS, Snowflake, MATLAB
 
 ## Education
-- BSc., Science | Taylors University (Aug 2018)
+BSc., Science | Taylors University (Aug 2018)
 
 ## Projects
 - [Data-Driven EEG Band Discovery with Decision Trees](https://www.mdpi.com/1424-8220/22/8/3048)
