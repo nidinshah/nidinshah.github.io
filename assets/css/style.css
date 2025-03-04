@@ -83,7 +83,7 @@ body.dark-mode .theme-icon i {
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background: linear-gradient(45deg, #4caf50, #2196f3); /* Keep the same colors */
+    background: linear-gradient(45deg, #4caf50, #2196f3);
     border: none;
     border-radius: 30px;
     text-decoration: none;
@@ -159,6 +159,8 @@ body.dark-mode .project:hover {
     .project-content h1 { font-size: 1.8em; }
     .project-content h2 { font-size: 1.3em; }
 }
+
+/* ---- Mobile View (Fix Button Spacing) ---- */
 @media screen and (max-width: 480px) {
     .container { max-width: 90%; padding: 10px; }
     .logo { width: 100px; height: 100px; }
@@ -168,19 +170,23 @@ body.dark-mode .project:hover {
     
     /* Fix Button Alignment */
     .links {
-        flex-direction: column;
+        flex-direction: column; /* Stack buttons vertically */
         align-items: center;
         text-align: center;
-        gap: 12px;
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* Increase space between buttons */
         width: 100%;
     }
     
     .fancy-btn {
-        padding: 12px 18px;
+        padding: 12px 20px;
         font-size: 14px;
-        border-radius: 20px;
-        width: 80%;
-        max-width: 250px;
+        border-radius: 25px;
+        width: 85%;
+        max-width: 300px;
+        text-align: center;
+        margin: 5px auto; /* Add spacing between buttons */
     }
 
     .project-content h1 {
