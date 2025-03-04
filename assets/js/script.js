@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (projectButton) {
         projectButton.addEventListener('click', () => {
-            window.location.href = '_projects/index.md';
+            window.location.href = '/projects/';
         });
     } else {
         console.log('Project button not found!');
