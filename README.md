@@ -1,6 +1,6 @@
 # IT Support, Cloud, and Data Analytics enthusiasts
 
-
+© 2025 GitHub, Inc.
 
 #### Technical Skills: Python, SQL, AWS, Snowflake, MATLAB
 
