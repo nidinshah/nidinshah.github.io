@@ -1,4 +1,4 @@
-/* Default Light Mode */
+/* Default Light Mode (Desktop) */
 body {
     background-color: #ffffff;
     color: #333333;
@@ -53,6 +53,10 @@ p {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+.theme-icon i {
+    transition: color 0.3s;
+}
+
 /* Dark Mode */
 body.dark-mode {
     background-color: #1a1a1a;
@@ -73,6 +77,10 @@ body.dark-mode #theme-toggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+body.dark-mode .theme-icon i {
+    color: #ffffff;
+}
+
 /* Additional Styling for Clean Look */
 .content {
     margin-top: 20px;
@@ -91,4 +99,79 @@ body.dark-mode #theme-toggle:hover {
 
 .btn:hover {
     background-color: #34495e;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) { /* Tablets and smaller screens */
+    .container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .logo {
+        width: 120px;
+        height: 120px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    #theme-toggle {
+        top: 15px;
+        right: 15px;
+        font-size: 18px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
+
+@media screen and (max-width: 480px) { /* Mobile devices */
+    .container {
+        max-width: 85%;
+        padding: 10px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+
+    #theme-toggle {
+        top: 10px;
+        right: 10px;
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
+        margin: 0 5px 5px 0;
+    }
+
+    .downloads {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .downloads .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
 }
