@@ -21,11 +21,10 @@ body {
     display: block;
     margin: 20px auto;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 .logo:hover {
     transform: scale(1.1);
-    box-shadow: 0px 8px 20px rgba(0, 123, 255, 0.3);
 }
 h1, h2, h3 {
     color: #2c3e50;
@@ -77,40 +76,33 @@ body.dark-mode .theme-icon i {
     color: #ffffff;
 }
 
-/* ---- Modern Button Styling (Original Color + Strong Glow) ---- */
+/* ---- Modern Button Styling (No Glow, Same Colors) ---- */
 .fancy-btn {
     display: inline-block;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background: linear-gradient(45deg, #4caf50, #2196f3);
+    background: linear-gradient(45deg, #4caf50, #2196f3); /* Keep the same colors */
     border: none;
     border-radius: 30px;
     text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.4);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
 .fancy-btn:hover {
     transform: translateY(-3px);
     background: linear-gradient(45deg, #45a049, #1976d2);
-    box-shadow: 0px 0px 25px rgba(0, 123, 255, 0.8),
-                0px 0px 35px rgba(0, 123, 255, 0.6);
 }
 
-/* ---- Dark Mode Button Glow ---- */
+/* ---- Dark Mode Button (No Glow, Same Colors) ---- */
 body.dark-mode .fancy-btn {
     background: linear-gradient(45deg, #388e3c, #1565c0);
     color: white;
-    box-shadow: 0px 4px 15px rgba(76, 175, 80, 0.4);
 }
+
 body.dark-mode .fancy-btn:hover {
     background: linear-gradient(45deg, #2e7d32, #0d47a1);
-    box-shadow: 0px 0px 30px rgba(76, 175, 80, 0.8),
-                0px 0px 40px rgba(76, 175, 80, 0.6);
 }
 
 /* ---- Project Section Styling ---- */
@@ -168,32 +160,18 @@ body.dark-mode .project:hover {
     .project-content h2 { font-size: 1.3em; }
 }
 @media screen and (max-width: 480px) {
-    .container {
-        max-width: 90%;
-        padding: 10px;
-    }
-    .logo {
-        width: 100px;
-        height: 100px;
-    }
-    h1 {
-        font-size: 1.5em;
-    }
-    p {
-        font-size: 0.9em;
-    }
-    #theme-toggle {
-        top: 8px;
-        right: 8px;
-        font-size: 14px;
-    }
+    .container { max-width: 90%; padding: 10px; }
+    .logo { width: 100px; height: 100px; }
+    h1 { font-size: 1.5em; }
+    p { font-size: 0.9em; }
+    #theme-toggle { top: 8px; right: 8px; font-size: 14px; }
     
     /* Fix Button Alignment */
     .links {
-        flex-direction: column; /* Stack buttons vertically */
+        flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 12px; /* Add space between buttons */
+        gap: 12px;
         width: 100%;
     }
     
@@ -201,8 +179,8 @@ body.dark-mode .project:hover {
         padding: 12px 18px;
         font-size: 14px;
         border-radius: 20px;
-        width: 80%; /* Make buttons wider but not full width */
-        max-width: 250px; /* Prevent buttons from being too wide */
+        width: 80%;
+        max-width: 250px;
     }
 
     .project-content h1 {
