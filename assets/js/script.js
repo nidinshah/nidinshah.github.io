@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Project Button Navigation
+    // Project Button Navigation (Prevents reloading same page)
     const projectButton = document.getElementById('project-button');
 
     if (projectButton) {
         projectButton.addEventListener('click', () => {
-            window.location.href = '/projects/';
+            if (window.location.pathname !== "/projects/") {
+                window.location.href = "/projects/";
+            }
         });
     } else {
         console.log('Project button not found!');
