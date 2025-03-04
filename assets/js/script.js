@@ -31,15 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (projectButton) {
         projectButton.addEventListener('click', (event) => {
-            event.preventDefault(); // Stops any unintended default behavior
+            event.preventDefault(); // Stops unintended reloading
 
-            // Normalize path (removes trailing slash, if any)
-            const currentPath = window.location.pathname.replace(/\/$/, ""); 
+            // Get the current URL path and normalize it
+            let currentPath = window.location.pathname.replace(/\/$/, ""); // Remove trailing slash if exists
 
             console.log("Current Path:", currentPath); // Debugging log
 
-            // Get absolute URL for "/projects/"
-            const targetPath = "/projects";
+            // Target projects path
+            let targetPath = "/projects"; 
 
             // If already on "/projects" or any subpage, do nothing
             if (currentPath === targetPath || currentPath.startsWith(targetPath + "/")) {
