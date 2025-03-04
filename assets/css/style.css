@@ -80,11 +80,11 @@ body.dark-mode .theme-icon i {
     padding: 12px 24px;
     font-size: 16px;
     color: #ffffff;
-    background: linear-gradient(45deg, #4caf50, #2196f3); /* Fancy gradient */
+    background: linear-gradient(45deg, #4caf50, #2196f3);
     border: none;
-    border-radius: 25px; /* Rounded for creativity */
+    border-radius: 25px;
     text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Fancy shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
@@ -101,23 +101,23 @@ body.dark-mode .theme-icon i {
     transition: opacity 0.3s;
 }
 .fancy-btn:hover {
-    transform: translateY(-2px); /* Lift on hover */
-    background: linear-gradient(45deg, #45a049, #1976d2); /* Darker gradient on hover */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    transform: translateY(-2px);
+    background: linear-gradient(45deg, #45a049, #1976d2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 .fancy-btn:hover::before {
-    opacity: 1; /* Show subtle overlay on hover */
+    opacity: 1;
 }
 .fancy-btn i {
     margin-right: 8px;
 }
 body.dark-mode .fancy-btn {
-    background: linear-gradient(45deg, #388e3c, #1565c0); /* Darker gradient for dark mode */
+    background: linear-gradient(45deg, #388e3c, #1565c0);
     color: #ffffff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 body.dark-mode .fancy-btn:hover {
-    background: linear-gradient(45deg, #2e7d32, #0d47a1); /* Even darker gradient on hover in dark mode */
+    background: linear-gradient(45deg, #2e7d32, #0d47a1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 /* Responsive Design */
