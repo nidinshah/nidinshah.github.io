@@ -7,6 +7,11 @@
     {% seo %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" href="{{ '/assets/img/favicon.png' | relative_url }}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{{ '/assets/img/favicon.png' | relative_url }}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ '/assets/img/favicon.png' | relative_url }}" sizes="180x180">
 </head>
 <body class="{% if site.data.theme == 'dark' %}dark-mode{% endif %}">
     <div class="container">
@@ -28,6 +33,9 @@
                 </a>
                 <a href="/assets/resume.pdf" target="_blank" class="fancy-btn" aria-label="Resume">
                     Resume
+                </a>
+                <a href="mailto:nidinshah@outlook.com" class="fancy-btn" aria-label="Send Email">
+                    <i class="fas fa-envelope"></i> Send Email
                 </a>
             </section>
             <section class="content">
