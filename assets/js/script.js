@@ -25,10 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Theme toggle elements not found!');
     }
 
-    // Fix: Ensure Project Button Works Without Reloading
-    document.querySelectorAll('.project-button').forEach((button) => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevents unwanted reloads
+    // Fix: Ensure "Projects" button does NOT reload infinitely
+    const projectButton = document.getElementById('project-button');
+
+    if (projectButton) {
+        projectButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevents unnecessary reload
 
             const currentPath = window.location.pathname.replace(/\/$/, ""); 
             const targetPath = "/projects";
@@ -43,7 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Navigate to /projects/
             console.log("Navigating to Projects page...");
-            window.location.href = "/projects/";
+            window.location.href = targetPath + "/";
         });
-    });
+    } else {
+        console.log('Project button not found!');
+    }
 });
