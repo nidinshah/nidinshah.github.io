@@ -1,7 +1,7 @@
 title: Nidin Shah Ryidhzuan
 logo: /assets/img/headshot_circle.png
 description: IT Support, Cloud, and Data Analytics Enthusiast
-show_downloads: true
+show_downloads: false
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-seo-tag
