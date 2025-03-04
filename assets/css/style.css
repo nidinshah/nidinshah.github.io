@@ -1,3 +1,4 @@
+/* ---- General Styling ---- */
 body {
     background-color: #ffffff;
     color: #333333;
@@ -19,6 +20,12 @@ body {
     border-radius: 50%;
     display: block;
     margin: 20px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(0, 123, 255, 0.3);
 }
 h1, h2, h3 {
     color: #2c3e50;
@@ -30,6 +37,8 @@ p {
     color: #666;
     font-size: 1em;
 }
+
+/* ---- Theme Toggle ---- */
 #theme-toggle {
     position: fixed;
     top: 15px;
@@ -49,6 +58,8 @@ p {
 .theme-icon i {
     transition: color 0.3s;
 }
+
+/* ---- Dark Mode Styling ---- */
 body.dark-mode {
     background-color: #1a1a1a;
     color: #ffffff;
@@ -65,62 +76,44 @@ body.dark-mode #theme-toggle:hover {
 body.dark-mode .theme-icon i {
     color: #ffffff;
 }
-.content {
-    margin-top: 15px;
-    text-align: center;
-}
-.links {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+
+/* ---- Modern Button Styling (Original Color + Strong Glow) ---- */
 .fancy-btn {
     display: inline-block;
     padding: 12px 24px;
     font-size: 16px;
-    color: #ffffff;
+    font-weight: bold;
+    color: white;
     background: linear-gradient(45deg, #4caf50, #2196f3);
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
     text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.4);
 }
-.fancy-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+
 .fancy-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     background: linear-gradient(45deg, #45a049, #1976d2);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 25px rgba(0, 123, 255, 0.8),
+                0px 0px 35px rgba(0, 123, 255, 0.6);
 }
-.fancy-btn:hover::before {
-    opacity: 1;
-}
-.fancy-btn i {
-    margin-right: 8px;
-}
+
+/* ---- Dark Mode Button Glow ---- */
 body.dark-mode .fancy-btn {
     background: linear-gradient(45deg, #388e3c, #1565c0);
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    color: white;
+    box-shadow: 0px 4px 15px rgba(76, 175, 80, 0.4);
 }
 body.dark-mode .fancy-btn:hover {
     background: linear-gradient(45deg, #2e7d32, #0d47a1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 30px rgba(76, 175, 80, 0.8),
+                0px 0px 40px rgba(76, 175, 80, 0.6);
 }
+
+/* ---- Project Section Styling ---- */
 .project-content {
     max-width: 700px;
     margin: 0 auto;
@@ -142,28 +135,28 @@ body.dark-mode .fancy-btn:hover {
     line-height: 1.8;
     margin-bottom: 15px;
 }
-.project-content ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 15px;
+
+/* ---- Improved Project Card Styling ---- */
+.project {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-.project-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 20px auto;
-    display: block;
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
-body.dark-mode .project-content h1 {
-    color: #ecf0f1;
+body.dark-mode .project {
+    background: #2c3e50;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
 }
-body.dark-mode .project-content h2 {
-    color: #ffffff;
+body.dark-mode .project:hover {
+    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
 }
-body.dark-mode .project-content p, body.dark-mode .project-content ul {
-    color: #ccc;
-}
-/* Responsive Design */
+
+/* ---- Responsive Design ---- */
 @media screen and (max-width: 768px) {
     .container { max-width: 90%; padding: 15px; }
     .logo { width: 130px; height: 130px; }
@@ -171,7 +164,6 @@ body.dark-mode .project-content p, body.dark-mode .project-content ul {
     p { font-size: 0.9em; }
     #theme-toggle { top: 10px; right: 10px; font-size: 16px; }
     .fancy-btn { padding: 10px 20px; font-size: 14px; border-radius: 20px; }
-    .links { gap: 15px; }
     .project-content h1 { font-size: 1.8em; }
     .project-content h2 { font-size: 1.3em; }
 }
@@ -182,84 +174,4 @@ body.dark-mode .project-content p, body.dark-mode .project-content ul {
     p { font-size: 0.8em; }
     #theme-toggle { top: 8px; right: 8px; font-size: 14px; }
     .fancy-btn { padding: 8px 16px; font-size: 12px; border-radius: 18px; width: 100%; margin: 0 auto; display: block; }
-    .links {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        width: 100%;
-    }
-    .project-content h1 { font-size: 1.5em; }
-    .project-content h2 { font-size: 1.1em; }
 }
-/* ---- Modern Button Styling ---- */
-.fancy-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #007bff, #00d4ff);
-    border: none;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.4);
-    position: relative;
-    overflow: hidden;
-}
-
-.fancy-btn:hover {
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, #0056b3, #00aaff);
-    box-shadow: 0px 6px 15px rgba(0, 123, 255, 0.6);
-}
-
-/* ---- Dark Mode Button Styling ---- */
-body.dark-mode .fancy-btn {
-    background: linear-gradient(135deg, #4caf50, #2e7d32);
-    box-shadow: 0px 4px 10px rgba(76, 175, 80, 0.4);
-}
-
-body.dark-mode .fancy-btn:hover {
-    background: linear-gradient(135deg, #388e3c, #1b5e20);
-    box-shadow: 0px 6px 15px rgba(76, 175, 80, 0.6);
-}
-
-/* ---- Improved Project Card Styling ---- */
-.project {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.project:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .project {
-    background: #2c3e50;
-    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .project:hover {
-    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
-}
-
-/* ---- Clickable Profile Picture Styling ---- */
-.profile-link img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.profile-link img:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 8px 20px rgba(0, 123, 255, 0.3);
-}
-
