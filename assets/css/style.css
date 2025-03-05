@@ -6,10 +6,11 @@ body {
     transition: background-color 0.3s, color 0.3s;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.8;
+    text-align: center;
 }
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
@@ -34,7 +35,14 @@ h1, h2, h3 {
 p {
     margin-bottom: 15px;
     color: #666;
-    font-size: 1em;
+    font-size: 1.1em;
+    max-width: 750px;
+    margin: 10px auto;
+    text-align: justify;
+    padding: 5px 15px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* ---- Theme Toggle ---- */
@@ -67,6 +75,7 @@ body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
     color: #ecf0f1;
 }
 body.dark-mode p {
+    background: #2c3e50;
     color: #ccc;
 }
 body.dark-mode #theme-toggle:hover {
@@ -76,7 +85,7 @@ body.dark-mode .theme-icon i {
     color: #ffffff;
 }
 
-/* ---- Modern Button Styling (No Glow, Same Colors) ---- */
+/* ---- Modern Button Styling ---- */
 .fancy-btn {
     display: inline-block;
     padding: 12px 24px;
@@ -87,112 +96,37 @@ body.dark-mode .theme-icon i {
     border: none;
     border-radius: 30px;
     text-decoration: none;
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
-
 .fancy-btn:hover {
     transform: translateY(-3px);
     background: linear-gradient(45deg, #45a049, #1976d2);
 }
 
-/* ---- Dark Mode Button (No Glow, Same Colors) ---- */
-body.dark-mode .fancy-btn {
-    background: linear-gradient(45deg, #388e3c, #1565c0);
-    color: white;
-}
-
-body.dark-mode .fancy-btn:hover {
-    background: linear-gradient(45deg, #2e7d32, #0d47a1);
-}
-
-/* ---- Project Section Styling ---- */
-.project-content {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-.project-content h1 {
-    font-size: 2em;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-.project-content h2 {
-    font-size: 1.5em;
-    color: #34495e;
-    margin-top: 30px;
-    margin-bottom: 15px;
-}
-.project-content p {
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-/* ---- Improved Project Card Styling ---- */
-.project {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-.project:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-}
-body.dark-mode .project {
-    background: #2c3e50;
-    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
-}
-body.dark-mode .project:hover {
-    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
+/* ---- Links Section (Aligned Properly) ---- */
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 /* ---- Responsive Design ---- */
 @media screen and (max-width: 768px) {
-    .container { max-width: 90%; padding: 15px; }
-    .logo { width: 130px; height: 130px; }
-    h1 { font-size: 1.8em; }
-    p { font-size: 0.9em; }
-    #theme-toggle { top: 10px; right: 10px; font-size: 16px; }
-    .fancy-btn { padding: 10px 20px; font-size: 14px; border-radius: 20px; }
-    .project-content h1 { font-size: 1.8em; }
-    .project-content h2 { font-size: 1.3em; }
-}
-
-/* ---- Mobile View (Fix Button Spacing) ---- */
-@media screen and (max-width: 480px) {
-    .container { max-width: 90%; padding: 10px; }
-    .logo { width: 100px; height: 100px; }
-    h1 { font-size: 1.5em; }
-    p { font-size: 0.9em; }
-    #theme-toggle { top: 8px; right: 8px; font-size: 14px; }
-    
-    /* Fix Button Alignment */
-    .links {
-        flex-direction: column; /* Stack buttons vertically */
-        align-items: center;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        gap: 10px; /* Increase space between buttons */
-        width: 100%;
+    .container {
+        max-width: 95%;
+        padding: 15px;
     }
-    
-    .fancy-btn {
-        padding: 12px 20px;
-        font-size: 14px;
-        border-radius: 25px;
-        width: 85%;
-        max-width: 300px;
-        text-align: center;
-        margin: 3px auto; /* Add spacing between buttons */
+    .logo {
+        width: 130px;
+        height: 130px;
     }
-
-    .project-content h1 {
-        font-size: 1.5em;
+    h1 {
+        font-size: 1.8em;
     }
-    .project-content h2 {
-        font-size: 1.2em;
+    p {
+        font-size: 1em;
+        padding: 10px;
     }
 }
