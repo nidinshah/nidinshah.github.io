@@ -129,5 +129,20 @@ body.dark-mode #theme-toggle {
     .landing-content p {
         font-size: 1.1em;
     }
+    #theme-toggle {
+        top: 8px;
+        right: 8px;
+        padding: 8px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #theme-toggle {
+        top: 5px;
+        right: 5px;
+        padding: 6px;
+        font-size: 14px;
+    }
 }
 
