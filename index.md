@@ -4,6 +4,10 @@ title: Nidin Shah Ryidhzuan
 show_downloads: false
 ---
 
+
+## Technical Skills
+Python, SQL, AWS, Snowflake, MATLAB
+
 ## Professional Summary
 A highly adaptable and results-driven Technical Support Specialist with experience in fintech, IT administration, and
 customer support. Proven expertise in backend integrations, cloud infrastructure, and troubleshooting payment
@@ -11,8 +15,6 @@ systems. Strong analytical, communication, and problem-solving skills with a tra
 technical operations and client satisfaction. Seeking a technical support role where I can apply my expertise in backend
 integrations, cloud computing, and fintech operations to enhance customer support and optimize system performance
 
-## Technical Skills
-Python, SQL, AWS, Snowflake, MATLAB
 
 ## Working Experience 
 *Technical Support Specialist, Razer Merchant Services (Fintech) — January 2024 - November 2024*
