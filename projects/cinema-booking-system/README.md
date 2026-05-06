@@ -13,7 +13,9 @@ Features:
 - Booking confirmation
 - Black & yellow cinema UI
 
-Future AWS Integration:
+AWS Integration:
 - AWS Amplify
 - AWS Lambda
 - API Gateway
+- DynamoDB
+- IAM ROLE Permission
