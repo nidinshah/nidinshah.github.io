@@ -12,14 +12,38 @@ seats.forEach(seat => {
     const seatNumber = seat.innerText;
 
     if(selectedSeats.includes(seatNumber)){
+
       selectedSeats = selectedSeats.filter(s => s !== seatNumber);
+
     } else {
+
       selectedSeats.push(seatNumber);
+
     }
 
   });
 
 });
+
+function selectMovie(title, description, genre, duration, rating, image){
+
+  selectedMovie = title;
+
+  document.getElementById('detailTitle').innerText = title;
+
+  document.getElementById('detailDescription').innerText = description;
+
+  document.getElementById('detailGenre').innerText = genre;
+
+  document.getElementById('detailDuration').innerText = duration;
+
+  document.getElementById('detailRating').innerText = rating;
+
+  document.getElementById('detailImage').src = image;
+
+  window.location.href = '#details';
+
+}
 
 function confirmBooking(){
 
