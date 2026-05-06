@@ -21,20 +21,6 @@ seats.forEach(seat => {
 
 });
 
-function selectMovie(title, description, genre, duration, rating, image){
-
-  selectedMovie = title;
-
-  document.getElementById('detailTitle').innerText = title;
-  document.getElementById('detailDescription').innerText = description;
-  document.getElementById('detailGenre').innerText = genre;
-  document.getElementById('detailDuration').innerText = duration;
-  document.getElementById('detailRating').innerText = rating;
-  document.getElementById('detailImage').src = image;
-
-  window.location.href = '#details';
-}
-
 function confirmBooking(){
 
   const name = document.getElementById('name').value;
@@ -49,10 +35,53 @@ function confirmBooking(){
     return;
   }
 
-  document.getElementById('confirmName').innerText = name;
-  document.getElementById('confirmMovie').innerText = selectedMovie;
-  document.getElementById('confirmSeats').innerText = selectedSeats.join(', ');
-  document.getElementById('total').innerText = selectedSeats.length * 18;
+  const bookingData = {
+    name: name,
+    movie: selectedMovie,
+    seats: selectedSeats,
+    total: selectedSeats.length * 18
+  };
 
-  window.location.href = '#confirmation';
+  fetch("https://5kxmtpuyv2.execute-api.ap-southeast-1.amazonaws.com/prod/book", {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify(bookingData)
+
+  })
+
+  .then(response => response.json())
+
+  .then(data => {
+
+    console.log(data);
+
+    alert("Booking saved to AWS Lambda!");
+
+    document.getElementById('confirmName').innerText = name;
+
+    document.getElementById('confirmMovie').innerText = selectedMovie;
+
+    document.getElementById('confirmSeats').innerText =
+      selectedSeats.join(', ');
+
+    document.getElementById('total').innerText =
+      selectedSeats.length * 18;
+
+    window.location.href = '#confirmation';
+
+  })
+
+  .catch(error => {
+
+    console.error(error);
+
+    alert("Error connecting to AWS API");
+
+  });
+
 }
