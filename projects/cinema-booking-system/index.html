@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CineMax Movie Ticket System</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">CineMax</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#movies">Movies</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#booking">Booking</a></li>
+      <li><a href="#confirmation">Confirmation</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+    <h1>BOOK YOUR MOVIE NIGHT 🎬</h1>
+
+    <p>
+      Experience blockbuster movies with a modern cinema booking system.
+    </p>
+
+    <a href="#movies" class="btn">Explore Movies</a>
+  </section>
+
+  <section id="movies">
+
+    <h2 class="title">Now Showing</h2>
+
+    <div class="movie-grid">
+
+      <div class="movie-card"
+      onclick="selectMovie(
+      'Interstellar',
+      'A science fiction journey through space and time.',
+      'Sci‑Fi Adventure',
+      '2 Hours 49 Minutes',
+      '8.8/10',
+      'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop'
+      )">
+
+        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=800&auto=format&fit=crop">
+
+        <div class="movie-content">
+          <h3>Interstellar</h3>
+          <p>Sci‑Fi • Adventure</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="movie-card"
+      onclick="selectMovie(
+      'John Wick',
+      'An ex-hitman returns for revenge.',
+      'Action Thriller',
+      '2 Hours 10 Minutes',
+      '8.5/10',
+      'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=800&auto=format&fit=crop'
+      )">
+
+        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=800&auto=format&fit=crop">
+
+        <div class="movie-content">
+          <h3>John Wick</h3>
+          <p>Action • Thriller</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+
+      <div class="movie-card"
+      onclick="selectMovie(
+      'Avengers',
+      'Earth’s mightiest heroes unite to save the world.',
+      'Marvel Action',
+      '2 Hours 30 Minutes',
+      '8.7/10',
+      'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=800&auto=format&fit=crop'
+      )">
+
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=800&auto=format&fit=crop">
+
+        <div class="movie-content">
+          <h3>Avengers</h3>
+          <p>Marvel • Action</p>
+          <button class="btn">View Details</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="details">
+
+    <h2 class="title">Movie Details</h2>
+
+    <div class="details-container">
+
+      <img id="detailImage"
+      src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=800&auto=format&fit=crop">
+
+      <div class="details-text">
+
+        <h2 id="detailTitle">John Wick</h2>
+
+        <p id="detailDescription">
+          An ex-hitman returns for revenge against the criminal underworld.
+        </p>
+
+        <p><strong>Genre:</strong>
+        <span id="detailGenre">Action Thriller</span></p>
+
+        <p><strong>Duration:</strong>
+        <span id="detailDuration">2 Hours 10 Minutes</span></p>
+
+        <p><strong>Rating:</strong>
+        ⭐ <span id="detailRating">8.5/10</span></p>
+
+        <a href="#booking" class="btn">Book Ticket</a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="booking">
+
+    <h2 class="title">Seat Booking</h2>
+
+    <div class="booking-container">
+
+      <div class="screen">SCREEN</div>
+
+      <div class="seats">
+        <div class="seat">A1</div>
+        <div class="seat">A2</div>
+        <div class="seat">A3</div>
+        <div class="seat">A4</div>
+        <div class="seat">A5</div>
+        <div class="seat">A6</div>
+
+        <div class="seat">B1</div>
+        <div class="seat">B2</div>
+        <div class="seat">B3</div>
+        <div class="seat">B4</div>
+        <div class="seat">B5</div>
+        <div class="seat">B6</div>
+      </div>
+
+      <input type="text" id="name" placeholder="Enter Your Name">
+
+      <button class="btn" onclick="confirmBooking()">
+        Confirm Booking
+      </button>
+
+    </div>
+  </section>
+
+  <section id="confirmation">
+
+    <h2 class="title">Booking Confirmation</h2>
+
+    <div class="confirmation-box">
+
+      <h2>✅ Booking Successful</h2>
+
+      <p><strong>Name:</strong>
+      <span id="confirmName">-</span></p>
+
+      <p><strong>Movie:</strong>
+      <span id="confirmMovie">-</span></p>
+
+      <p><strong>Seats:</strong>
+      <span id="confirmSeats">-</span></p>
+
+      <p><strong>Total:</strong>
+      RM <span id="total">0</span></p>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 CineMax Cinema Booking System
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

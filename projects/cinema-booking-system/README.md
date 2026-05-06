@@ -1,13 +1,19 @@
 # Cinema Booking System
 
-A movie seat booking web app built with HTML, CSS, and JavaScript.
+Simple movie booking website built using:
 
-## Features
-- Movie listing
-- Seat selection
-- Booking confirmation
-
-## Tech Stack
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
+
+Features:
+- Movie listing
+- Dynamic movie details
+- Seat booking
+- Booking confirmation
+- Black & yellow cinema UI
+
+Future AWS Integration:
+- AWS Amplify
+- AWS Lambda
+- API Gateway
