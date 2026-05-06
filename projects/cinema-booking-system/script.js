@@ -84,7 +84,7 @@ function confirmBooking(){
 
     console.log(data);
 
-    alert("Booking saved to AWS Lambda!");
+    alert("Booking saved to AWS DynamoDB!");
 
     document.getElementById('confirmName').innerText = name;
 
