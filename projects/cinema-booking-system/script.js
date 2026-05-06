@@ -66,7 +66,7 @@ function confirmBooking(){
     total: selectedSeats.length * 18
   };
 
-  fetch("https://5kxmtpuyv2.execute-api.ap-southeast-1.amazonaws.com/prod/book", {
+  fetch("https://5kxmtpuvy2.execute-api.ap-southeast-1.amazonaws.com/prod/book", {
 
     method: "POST",
 
