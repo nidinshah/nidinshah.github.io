@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Nidin Shah Ryidhzuan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold-dim:#8B6E2E;--gold-pale:rgba(201,168,76,0.12);
+  --bg:#0C0C0B;--bg2:#111110;--surface:#1E1E1B;
+  --border:rgba(255,255,255,0.07);--border-gold:rgba(201,168,76,0.25);
+  --text:#F0EDE6;--text-muted:#8A8880;--text-dim:#555450;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.75;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(12,12,11,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-display);font-size:1.15rem;font-weight:500;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--text);transition:all 0.3s ease;transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(12,12,11,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.mobile-menu.active{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--text);text-decoration:none;transition:color 0.2s}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* PAGE HEADER */
+.page-hero{padding:10rem 3rem 5rem;max-width:1100px;margin:0 auto}
+.page-hero-label{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem}
+.page-hero-label::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+.page-hero-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,5rem);font-weight:300;line-height:1.05;margin-bottom:1.25rem}
+.page-hero-title em{font-style:italic;color:var(--gold)}
+.page-hero-desc{font-size:1rem;color:var(--text-muted);max-width:560px;line-height:1.85}
+
+/* TABS */
+.tabs-bar{border-bottom:1px solid var(--border);padding:0 3rem;max-width:1100px;margin:0 auto;display:flex;gap:0}
+.tab-btn{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);background:none;border:none;border-bottom:2px solid transparent;padding:1rem 1.5rem 1rem 0;margin-bottom:-1px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.5rem}
+.tab-btn:hover{color:var(--text-muted)}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* CONTENT */
+.page-content{max-width:1100px;margin:0 auto;padding:4rem 3rem 6rem}
+
+/* TAB PANELS */
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+
+/* SECTION LABEL */
+.cat-header{display:flex;align-items:center;gap:1.25rem;margin-bottom:2.5rem}
+.cat-icon{font-size:1.5rem}
+.cat-title{font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--text)}
+.cat-title em{color:var(--gold);font-style:italic}
+.cat-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
+.cat-desc{font-size:0.9rem;color:var(--text-muted);line-height:1.8;max-width:640px;margin-bottom:2.5rem}
+
+/* PROJECT CARDS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-bottom:4rem}
+.project-card{background:var(--surface);border:1px solid var(--border);padding:2rem;border-radius:2px;position:relative;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;gap:1rem}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);opacity:0;transition:opacity 0.3s}
+.project-card:hover{border-color:var(--border-gold);transform:translateY(-3px)}
+.project-card:hover::before{opacity:1}
+.project-type{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase}
+.project-title{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--text);line-height:1.3}
+.project-desc{font-size:0.85rem;color:var(--text-muted);font-weight:300;line-height:1.7;flex:1}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.project-tag{font-family:var(--font-mono);font-size:0.62rem;padding:0.2rem 0.6rem;background:rgba(255,255,255,0.04);color:var(--text-dim);border:1px solid var(--border);border-radius:2px;letter-spacing:0.04em}
+.project-footer{display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid var(--border);margin-top:auto}
+.project-link{font-size:0.75rem;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:0.4rem;font-weight:400;letter-spacing:0.04em;transition:gap 0.2s}
+.project-link:hover{gap:0.65rem}
+.project-notion-btn{font-size:0.72rem;padding:0.35rem 0.85rem;background:var(--gold-pale);color:var(--gold);border:1px solid var(--border-gold);border-radius:2px;cursor:pointer;font-family:var(--font-mono);letter-spacing:0.05em;transition:all 0.2s;text-decoration:none}
+.project-notion-btn:hover{background:var(--gold);color:#0C0C0B}
+
+/* NOTION EMBED */
+.notion-embed-wrapper{margin-top:1.5rem;border:1px solid var(--border-gold);border-radius:2px;overflow:hidden;background:var(--surface);display:none}
+.notion-embed-wrapper.open{display:block}
+.notion-embed-header{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border);background:rgba(201,168,76,0.05)}
+.notion-embed-title{font-family:var(--font-mono);font-size:0.68rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase}
+.notion-embed-close{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;padding:0;line-height:1;transition:color 0.2s}
+.notion-embed-close:hover{color:var(--text)}
+.notion-embed-iframe{width:100%;height:600px;border:none;display:block;background:#fff}
+.notion-embed-placeholder{padding:3rem;text-align:center}
+.notion-embed-placeholder p{font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem}
+.notion-embed-placeholder a{color:var(--gold);text-decoration:none;font-size:0.85rem}
+
+/* ADD PROJECT CARD */
+.add-project-card{background:transparent;border:1px dashed var(--border);padding:2rem;border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;text-align:center;cursor:default;min-height:200px}
+.add-project-icon{font-size:2rem;opacity:0.3}
+.add-project-text{font-size:0.8rem;color:var(--text-dim);font-family:var(--font-mono);letter-spacing:0.05em}
+
+/* COMING SOON */
+.coming-soon{padding:4rem 2rem;text-align:center;border:1px solid var(--border);border-radius:2px;background:var(--surface)}
+.coming-soon-emoji{font-size:2.5rem;margin-bottom:1rem}
+.coming-soon-title{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--text);margin-bottom:0.5rem}
+.coming-soon-desc{font-size:0.85rem;color:var(--text-muted)}
+
+footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--font-display);font-size:1rem;color:var(--text-muted)}
+.footer-logo span{color:var(--gold)}
+.footer-copy{font-size:0.75rem;color:var(--text-dim);font-family:var(--font-mono)}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-back span{display:none}
+  .hamburger{display:flex}
+  .page-hero{padding:8rem 1.5rem 3rem}
+  .tabs-bar{padding:0 1.5rem;overflow-x:auto}
+  .tab-btn{padding:1rem 1rem 1rem 0;white-space:nowrap}
+  .page-content{padding:3rem 1.5rem 5rem}
+  .projects-grid{grid-template-columns:1fr}
+  .notion-embed-iframe{height:450px}
+  footer{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">Nidin <span>Shah</span></a>
+  <a class="nav-back" href="../index.html">← <span>Back to Portfolio</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html#skills">Skills</a>
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#experience">Experience</a>
+  <a href="../index.html#contact">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-label">My Work</div>
+  <h1 class="page-hero-title">Project <em>Portfolio</em></h1>
+  <p class="page-hero-desc">Hands-on projects across API integration, AWS cloud infrastructure, and data analytics — each with full documentation on Notion.</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs-bar">
+  <button class="tab-btn active" data-tab="api">🔌 API Projects</button>
+  <button class="tab-btn" data-tab="aws">☁️ AWS S3</button>
+  <button class="tab-btn" data-tab="research">📄 Research</button>
+</div>
+
+<div class="page-content">
+
+  <!-- ── API PROJECTS ── -->
+  <div class="tab-panel active" id="tab-api">
+    <div class="cat-header reveal">
+      <span class="cat-icon">🔌</span>
+      <h2 class="cat-title">API <em>Projects</em></h2>
+      <div class="cat-line"></div>
+    </div>
+    <p class="cat-desc reveal">Backend integration work spanning payment gateway APIs, webhook systems, and REST API troubleshooting from my time at Razer Merchant Services and personal builds.</p>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT CARD 1 — Edit the Notion link below -->
+      <div class="project-card reveal">
+        <div class="project-type">API Integration</div>
+        <h3 class="project-title">Payment Gateway API Integration</h3>
+        <p class="project-desc">End-to-end integration of a payment gateway API for SME merchants — covering authentication, webhook handling, error management, and transaction reconciliation.</p>
+        <div class="project-tags">
+          <span class="project-tag">REST API</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Webhooks</span>
+          <span class="project-tag">JSON</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-notion-btn" href="#" onclick="toggleNotion(event, 'notion-api-1', 'YOUR_NOTION_LINK_HERE')">📝 Open in Notion ↗</a>
+        </div>
+        <div class="notion-embed-wrapper" id="notion-api-1">
+          <div class="notion-embed-header">
+            <span class="notion-embed-title">Notion — Project Notes</span>
+            <button class="notion-embed-close" onclick="closeNotion('notion-api-1')">✕</button>
+          </div>
+          <div class="notion-embed-placeholder">
+            <p>Replace <code>YOUR_NOTION_LINK_HERE</code> in the HTML with your public Notion page URL to embed it here.</p>
+            <a href="#" target="_blank">Open in Notion ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT CARD 2 — Edit the Notion link below -->
+      <div class="project-card reveal">
+        <div class="project-type">API Troubleshooting</div>
+        <h3 class="project-title">Transaction Monitoring System</h3>
+        <p class="project-desc">Optimized API-driven transaction monitoring pipeline — reducing false positives in fraud detection and improving SLA response times across 100+ merchant accounts.</p>
+        <div class="project-tags">
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">AWS</span>
+          <span class="project-tag">Freshdesk API</span>
+          <span class="project-tag">Jira</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-notion-btn" href="#" onclick="toggleNotion(event, 'notion-api-2', 'YOUR_NOTION_LINK_HERE')">📝 Open in Notion ↗</a>
+        </div>
+        <div class="notion-embed-wrapper" id="notion-api-2">
+          <div class="notion-embed-header">
+            <span class="notion-embed-title">Notion — Project Notes</span>
+            <button class="notion-embed-close" onclick="closeNotion('notion-api-2')">✕</button>
+          </div>
+          <div class="notion-embed-placeholder">
+            <p>Replace <code>YOUR_NOTION_LINK_HERE</code> with your public Notion page URL.</p>
+            <a href="#" target="_blank">Open in Notion ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD MORE placeholder -->
+      <div class="add-project-card">
+        <div class="add-project-icon">＋</div>
+        <div class="add-project-text">More projects coming soon</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── AWS S3 PROJECTS ── -->
+  <div class="tab-panel" id="tab-aws">
+    <div class="cat-header reveal">
+      <span class="cat-icon">☁️</span>
+      <h2 class="cat-title">AWS <em>S3 Projects</em></h2>
+      <div class="cat-line"></div>
+    </div>
+    <p class="cat-desc reveal">Cloud storage, static hosting, and data pipeline projects built on AWS S3 — from bucket architecture to lifecycle policies and access control.</p>
+
+    <div class="projects-grid">
+
+      <!-- AWS PROJECT 1 -->
+      <div class="project-card reveal">
+        <div class="project-type">AWS S3 · Static Hosting</div>
+        <h3 class="project-title">Static Website Hosting on S3</h3>
+        <p class="project-desc">Configured and deployed a static website using AWS S3 with CloudFront CDN, custom domain via Route 53, HTTPS via ACM, and automated deployment pipeline.</p>
+        <div class="project-tags">
+          <span class="project-tag">AWS S3</span>
+          <span class="project-tag">CloudFront</span>
+          <span class="project-tag">Route 53</span>
+          <span class="project-tag">ACM</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-notion-btn" href="#" onclick="toggleNotion(event, 'notion-aws-1', 'YOUR_NOTION_LINK_HERE')">📝 Open in Notion ↗</a>
+        </div>
+        <div class="notion-embed-wrapper" id="notion-aws-1">
+          <div class="notion-embed-header">
+            <span class="notion-embed-title">Notion — Project Notes</span>
+            <button class="notion-embed-close" onclick="closeNotion('notion-aws-1')">✕</button>
+          </div>
+          <div class="notion-embed-placeholder">
+            <p>Replace <code>YOUR_NOTION_LINK_HERE</code> with your public Notion page URL.</p>
+            <a href="#" target="_blank">Open in Notion ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AWS PROJECT 2 -->
+      <div class="project-card reveal">
+        <div class="project-type">AWS S3 · Data Storage</div>
+        <h3 class="project-title">S3 Data Lake Architecture</h3>
+        <p class="project-desc">Designed an S3-based data lake with structured folder hierarchy, lifecycle policies for cold storage, IAM roles for fine-grained access, and versioning for audit compliance.</p>
+        <div class="project-tags">
+          <span class="project-tag">AWS S3</span>
+          <span class="project-tag">IAM</span>
+          <span class="project-tag">Lifecycle Policies</span>
+          <span class="project-tag">Glacier</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-notion-btn" href="#" onclick="toggleNotion(event, 'notion-aws-2', 'YOUR_NOTION_LINK_HERE')">📝 Open in Notion ↗</a>
+        </div>
+        <div class="notion-embed-wrapper" id="notion-aws-2">
+          <div class="notion-embed-header">
+            <span class="notion-embed-title">Notion — Project Notes</span>
+            <button class="notion-embed-close" onclick="closeNotion('notion-aws-2')">✕</button>
+          </div>
+          <div class="notion-embed-placeholder">
+            <p>Replace <code>YOUR_NOTION_LINK_HERE</code> with your public Notion page URL.</p>
+            <a href="#" target="_blank">Open in Notion ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-project-card">
+        <div class="add-project-icon">＋</div>
+        <div class="add-project-text">More projects coming soon</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── RESEARCH ── -->
+  <div class="tab-panel" id="tab-research">
+    <div class="cat-header reveal">
+      <span class="cat-icon">📄</span>
+      <h2 class="cat-title">Published <em>Research</em></h2>
+      <div class="cat-line"></div>
+    </div>
+    <p class="cat-desc reveal">Peer-reviewed research published on MDPI Sensors journal.</p>
+
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-type">Research · MDPI Sensors</div>
+        <h3 class="project-title">Data-Driven EEG Band Discovery with Decision Trees</h3>
+        <p class="project-desc">Applying decision tree models to EEG band analysis — exploring data-driven approaches to biometric signal classification and neuroscience.</p>
+        <div class="project-tags"><span class="project-tag">EEG</span><span class="project-tag">Decision Trees</span><span class="project-tag">MATLAB</span><span class="project-tag">Signal Processing</span></div>
+        <div class="project-footer">
+          <a class="project-link" href="https://www.mdpi.com/1424-8220/22/8/3048" target="_blank">Read Paper →</a>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-type">Research · MDPI Sensors</div>
+        <h3 class="project-title">Cognitive Impacts of Particulate Matter Concentrations</h3>
+        <p class="project-desc">Decoding physical and cognitive effects of PM concentrations using sensor data and statistical modelling for environmental health insights.</p>
+        <div class="project-tags"><span class="project-tag">Sensors</span><span class="project-tag">Data Analysis</span><span class="project-tag">Statistics</span><span class="project-tag">MATLAB</span></div>
+        <div class="project-footer">
+          <a class="project-link" href="https://www.mdpi.com/1424-8220/22/11/4240" target="_blank">Read Paper →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end page-content -->
+
+<footer>
+  <div class="footer-logo">Nidin <span>Shah</span> Ryidhzuan</div>
+  <div class="footer-copy">© 2025 · Kuala Lumpur</div>
+</footer>
+
+<script>
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Notion embed toggle
+function toggleNotion(e, id, notionUrl) {
+  e.preventDefault();
+  const wrapper = document.getElementById(id);
+  const isOpen = wrapper.classList.toggle('open');
+  if (isOpen && notionUrl && notionUrl !== 'YOUR_NOTION_LINK_HERE') {
+    const placeholder = wrapper.querySelector('.notion-embed-placeholder');
+    if (placeholder) {
+      placeholder.outerHTML = '<iframe class="notion-embed-iframe" src="' + notionUrl + '" allowfullscreen></iframe>';
+    }
+    wrapper.querySelector('a') && (wrapper.querySelector('a').href = notionUrl);
+  }
+  if (!isOpen) wrapper.classList.remove('open');
+}
+
+function closeNotion(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  const isOpen = hamburger.classList.toggle('open');
+  if (isOpen) { mobileMenu.style.display = 'flex'; setTimeout(() => mobileMenu.classList.add('active'), 10); }
+  else { mobileMenu.classList.remove('active'); setTimeout(() => mobileMenu.style.display = 'none', 300); }
+});
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('active');
+    setTimeout(() => mobileMenu.style.display = 'none', 300);
+  });
+});
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
