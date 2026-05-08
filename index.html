@@ -99,6 +99,20 @@ section{padding:6rem 3rem}
 .stat-number{font-family:var(--font-display);font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.35rem}
 .stat-label{font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em}
 
+/* PROJECT CARDS */
+.proj-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:2rem;text-decoration:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;overflow:hidden;transition:all 0.3s ease}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:0;transition:opacity 0.3s}
+.proj-card:hover{border-color:var(--border-gold);transform:translateY(-4px)}
+.proj-card:hover::before{opacity:1}
+.proj-card-icon{font-size:2rem}
+.proj-card-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase}
+.proj-card-title{font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--text);line-height:1.2}
+.proj-card-desc{font-size:0.85rem;color:var(--text-muted);line-height:1.7;flex:1}
+.proj-card-link{font-size:0.75rem;color:var(--gold);display:flex;align-items:center;gap:0.4rem;margin-top:0.5rem;transition:gap 0.2s}
+.proj-card:hover .proj-card-link{gap:0.75rem}
+@media(max-width:768px){.proj-cards{grid-template-columns:1fr}}
+
 /* EXPERIENCE */
 #experience{background:var(--bg2)}
 .timeline{position:relative;padding-left:2rem}
@@ -293,16 +307,28 @@ ticketing systems.</li>
 <section id="projects">
   <div class="container">
     <div class="section-header reveal"><span class="section-number">04</span><h2 class="section-title">Featured <em>Projects</em></h2><div class="section-line"></div></div>
-    <div class="projects-cta reveal">
-      <span class="projects-cta-label">Portfolio</span>
-      <h3 class="projects-cta-title">Explore My <em>Work</em></h3>
-      <p class="projects-cta-desc">Detailed case studies on my API integrations, AWS S3 infrastructure projects, and more — organized by category.</p>
-      <div class="projects-cats">
-        <span class="projects-cat-tag">🔌 API Projects</span>
-        <span class="projects-cat-tag">☁️ AWS S3</span>
-        <span class="projects-cat-tag">📊 Data Analytics</span>
-      </div>
-      <a class="btn btn-primary" href="projects/index.html">View All Projects ↗</a>
+    <div class="proj-cards">
+      <a class="proj-card reveal" href="projects/index.html">
+        <div class="proj-card-icon">☁️</div>
+        <div class="proj-card-label">Category 01</div>
+        <h3 class="proj-card-title">Cloud Projects</h3>
+        <p class="proj-card-desc">AWS S3 architecture, static hosting, IAM, CloudFront, and cloud infrastructure work.</p>
+        <span class="proj-card-link">View Projects →</span>
+      </a>
+      <a class="proj-card reveal reveal-delay-2" href="projects/index.html">
+        <div class="proj-card-icon">🔌</div>
+        <div class="proj-card-label">Category 02</div>
+        <h3 class="proj-card-title">API Projects</h3>
+        <p class="proj-card-desc">REST API integrations, payment gateways, webhook systems, and backend troubleshooting.</p>
+        <span class="proj-card-link">View Projects →</span>
+      </a>
+      <a class="proj-card reveal reveal-delay-3" href="projects/index.html">
+        <div class="proj-card-icon">🗂️</div>
+        <div class="proj-card-label">Category 03</div>
+        <h3 class="proj-card-title">Other</h3>
+        <p class="proj-card-desc">Research publications, data analytics work, and miscellaneous technical projects.</p>
+        <span class="proj-card-link">View Projects →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -315,7 +341,7 @@ ticketing systems.</li>
       <div>
         <h3 class="edu-degree">Information Technology</h3>
         <p class="edu-school">Taylor's University, Malaysia</p>
-        <span class="edu-detail">BSc. Science · Graduated August 2018</span>
+        <span class="edu-detail">Graduated March 2021</span>
       </div>
     </div>
   </div>
