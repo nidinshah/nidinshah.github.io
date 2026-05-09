@@ -44,6 +44,6 @@ Portfolio website deployed using AWS cloud services and static hosting.
 - LinkedIn: https://www.linkedin.com/in/nidin-shah/
 - Portfolio: https://nidinshah.github.io/
 
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
-![REST API](https://img.shields.io/badge/REST_API-0A0A0A?style=for-the-badge&logo=fastapi&logoColor=white)
-![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazonaws&logoColor=white)
+![API](https://img.shields.io/badge/API-000000?style=flat&logo=fastapi&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white)
