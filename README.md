@@ -40,6 +40,12 @@ Portfolio website deployed using AWS cloud services and static hosting.
 - Cloud Security Basics
 
 ## 📫 Connect With Me
+
+<p>
+  <a href="https://www.linkedin.com/in/nidin-shah/">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
+  </a>
+  
 - LinkedIn: https://www.linkedin.com/in/nidin-shah/
 - Portfolio: https://nidinshah.github.io/
 
