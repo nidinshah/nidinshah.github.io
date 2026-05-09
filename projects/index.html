@@ -1,128 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0050)index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | Nidin Shah Ryidhzuan</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Nidin Shah Ryidhzuan | API, Cloud &amp; Data Analytics</title>
+<meta name="description" content="API, Cloud, and Data Analytics enthusiast.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="file:///C:/Users/PC/nidinshah.github.io/Nidin%20Shah%20Ryidhzuan%20_%20API,%20Cloud%20&amp;%20Data%20Analytics_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#C9A84C;--gold-dim:#8B6E2E;--gold-pale:rgba(201,168,76,0.12);
-  --bg:#0C0C0B;--bg2:#111110;--surface:#1E1E1B;
+  --bg:#0C0C0B;--bg2:#111110;--bg3:#181816;--surface:#1E1E1B;
   --border:rgba(255,255,255,0.07);--border-gold:rgba(201,168,76,0.25);
   --text:#F0EDE6;--text-muted:#8A8880;--text-dim:#555450;
   --font-display:'Cormorant Garamond',Georgia,serif;
   --font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.75;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.75;font-size:16px;overflow-x:hidden}
+::selection{background:var(--gold-pale);color:var(--gold)}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(12,12,11,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:var(--font-display);font-size:1.15rem;font-weight:500;color:var(--text);text-decoration:none}
 .nav-logo span{color:var(--gold)}
-.nav-back{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
-.nav-back:hover{color:var(--gold)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
 .hamburger span{display:block;width:24px;height:1.5px;background:var(--text);transition:all 0.3s ease;transform-origin:center}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(12,12,11,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(12,12,11,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity 0.3s ease}
 .mobile-menu.active{opacity:1;pointer-events:all}
-.mobile-menu a{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--text);text-decoration:none;transition:color 0.2s}
+.mobile-menu a{font-family:var(--font-display);font-size:2.5rem;font-weight:300;color:var(--text);text-decoration:none;transition:color 0.2s}
 .mobile-menu a:hover{color:var(--gold)}
 
-/* PAGE HEADER */
-.page-hero{padding:10rem 3rem 5rem;max-width:1100px;margin:0 auto}
-.page-hero-label{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem}
-.page-hero-label::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
-.page-hero-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,5rem);font-weight:300;line-height:1.05;margin-bottom:1.25rem}
-.page-hero-title em{font-style:italic;color:var(--gold)}
-.page-hero-desc{font-size:1rem;color:var(--text-muted);max-width:560px;line-height:1.85}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 50%,rgba(201,168,76,0.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(201,168,76,0.03) 0%,transparent 50%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:4rem;align-items:center;max-width:1100px;width:100%;margin:0 auto}
+.hero-label{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.hero-label::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+.hero-name{font-family:var(--font-display);font-size:clamp(3.5rem,7vw,6rem);font-weight:300;line-height:1.05;margin-bottom:1.5rem}
+.hero-name em{font-style:italic;color:var(--gold);font-weight:300}
+.hero-tagline{font-size:1rem;color:var(--text-muted);font-weight:300;max-width:480px;margin-bottom:3rem;line-height:1.8}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;font-family:var(--font-body);font-size:0.8rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.25s ease;cursor:pointer;border:none}
+.btn-primary{background:var(--gold);color:#0C0C0B;border:1px solid var(--gold)}
+.btn-primary:hover{background:#D4B05E;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+.hero-photo{position:relative;display:flex;justify-content:center}
+.hero-photo-frame{width:260px;height:260px;position:relative;border-radius:50%}
+.hero-photo-frame::before{content:'';position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;border:1px solid var(--border-gold);border-radius:2px;z-index:0}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%;position:relative;z-index:1;filter:grayscale(20%) contrast(1.05)}
+.hero-photo-placeholder{width:100%;height:100%;background:var(--surface);border-radius:2px;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.hero-photo-placeholder span{font-family:var(--font-display);font-size:4rem;color:var(--gold);font-weight:300}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);letter-spacing:0.15em;text-transform:uppercase}
+.hero-scroll::after{content:'';width:1px;height:40px;background:linear-gradient(to bottom,var(--text-dim),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
 
-/* TABS */
-.tabs-bar{border-bottom:1px solid var(--border);padding:0 3rem;max-width:1100px;margin:0 auto;display:flex;gap:0}
-.tab-btn{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);background:none;border:none;border-bottom:2px solid transparent;padding:1rem 1.5rem 1rem 0;margin-bottom:-1px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:0.5rem}
-.tab-btn:hover{color:var(--text-muted)}
-.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+/* SECTIONS */
+section{padding:6rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.section-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:4rem}
+.section-number{font-family:var(--font-mono);font-size:0.7rem;color:var(--gold);letter-spacing:0.1em}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:300}
+.section-title em{color:var(--gold);font-style:italic}
+.section-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
 
-/* CONTENT */
-.page-content{max-width:1100px;margin:0 auto;padding:4rem 3rem 6rem}
+/* SKILLS */
+#skills{background:var(--bg2)}
+.skills-intro{font-size:1.05rem;color:var(--text-muted);font-weight:300;max-width:600px;margin-bottom:3rem;line-height:1.9}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.skill-card{background:var(--bg2);padding:2rem 1.5rem;position:relative;overflow:hidden;transition:background 0.25s}
+.skill-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.3s ease}
+.skill-card:hover{background:var(--surface)}
+.skill-card:hover::before{width:100%}
+.skill-icon{font-size:1.5rem;margin-bottom:0.75rem;display:block}
+.skill-name{font-size:0.9rem;font-weight:500;color:var(--text);margin-bottom:0.25rem}
+.skill-type{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase}
 
-/* TAB PANELS */
-.tab-panel{display:none}
-.tab-panel.active{display:block}
-
-/* SECTION LABEL */
-.cat-header{display:flex;align-items:center;gap:1.25rem;margin-bottom:2.5rem}
-.cat-icon{font-size:1.5rem}
-.cat-title{font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--text)}
-.cat-title em{color:var(--gold);font-style:italic}
-.cat-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent)}
-.cat-desc{font-size:0.9rem;color:var(--text-muted);line-height:1.8;max-width:640px;margin-bottom:2.5rem}
+/* ABOUT */
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.about-text p{font-size:1rem;color:var(--text-muted);font-weight:300;line-height:1.9;margin-bottom:1.25rem}
+.about-text p strong{color:var(--text);font-weight:500}
+.about-stats{display:flex;flex-direction:column;gap:2rem;padding-top:0.5rem}
+.stat-item{padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.stat-item:last-child{border-bottom:none;padding-bottom:0}
+.stat-number{font-family:var(--font-display);font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.35rem}
+.stat-label{font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em}
 
 /* PROJECT CARDS */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-bottom:4rem}
-.project-card{background:var(--surface);border:1px solid var(--border);padding:2rem;border-radius:2px;position:relative;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;gap:1rem}
-.project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);opacity:0;transition:opacity 0.3s}
-.project-card:hover{border-color:var(--border-gold);transform:translateY(-3px)}
-.project-card:hover::before{opacity:1}
-.project-type{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase}
-.project-title{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--text);line-height:1.3}
-.project-desc{font-size:0.85rem;color:var(--text-muted);font-weight:300;line-height:1.7;flex:1}
-.project-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
-.project-tag{font-family:var(--font-mono);font-size:0.62rem;padding:0.2rem 0.6rem;background:rgba(255,255,255,0.04);color:var(--text-dim);border:1px solid var(--border);border-radius:2px;letter-spacing:0.04em}
-.project-footer{display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid var(--border);margin-top:auto}
-.project-link{font-size:0.75rem;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:0.4rem;font-weight:400;letter-spacing:0.04em;transition:gap 0.2s}
-.project-link:hover{gap:0.65rem}
-.project-notion-btn{font-size:0.72rem;padding:0.35rem 0.85rem;background:var(--gold-pale);color:var(--gold);border:1px solid var(--border-gold);border-radius:2px;cursor:pointer;font-family:var(--font-mono);letter-spacing:0.05em;transition:all 0.2s;text-decoration:none}
-.project-notion-btn:hover{background:var(--gold);color:#0C0C0B}
+.proj-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:2rem;text-decoration:none;display:flex;flex-direction:column;gap:0.75rem;position:relative;overflow:hidden;transition:all 0.3s ease}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);opacity:0;transition:opacity 0.3s}
+.proj-card:hover{border-color:var(--border-gold);transform:translateY(-4px)}
+.proj-card:hover::before{opacity:1}
+.proj-card-icon{font-size:2rem}
+.proj-card-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase}
+.proj-card-title{font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--text);line-height:1.2}
+.proj-card-desc{font-size:0.85rem;color:var(--text-muted);line-height:1.7;flex:1}
+.proj-card-link{font-size:0.75rem;color:var(--gold);display:flex;align-items:center;gap:0.4rem;margin-top:0.5rem;transition:gap 0.2s}
+.proj-card:hover .proj-card-link{gap:0.75rem}
+@media(max-width:768px){.proj-cards{grid-template-columns:1fr}}
 
-/* NOTION EMBED */
-.notion-embed-wrapper{margin-top:1.5rem;border:1px solid var(--border-gold);border-radius:2px;overflow:hidden;background:var(--surface);display:none}
-.notion-embed-wrapper.open{display:block}
-.notion-embed-header{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid var(--border);background:rgba(201,168,76,0.05)}
-.notion-embed-title{font-family:var(--font-mono);font-size:0.68rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase}
-.notion-embed-close{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;padding:0;line-height:1;transition:color 0.2s}
-.notion-embed-close:hover{color:var(--text)}
-.notion-embed-iframe{width:100%;height:600px;border:none;display:block;background:#fff}
-.notion-embed-placeholder{padding:3rem;text-align:center}
-.notion-embed-placeholder p{font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem}
-.notion-embed-placeholder a{color:var(--gold);text-decoration:none;font-size:0.85rem}
+/* EXPERIENCE */
+#experience{background:var(--bg2)}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold-dim),transparent)}
+.timeline-item{position:relative;padding-bottom:4rem;padding-left:2.5rem}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-dot{position:absolute;left:-2rem;top:8px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg2);transform:translateX(calc(-50% + 1px))}
+.timeline-meta{display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;flex-wrap:wrap}
+.timeline-date{font-family:var(--font-mono);font-size:0.7rem;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase}
+.timeline-badge{font-size:0.68rem;padding:0.2rem 0.75rem;background:var(--gold-pale);color:var(--gold);border:1px solid var(--border-gold);border-radius:20px;font-family:var(--font-mono)}
+.timeline-role{font-family:var(--font-display);font-size:1.6rem;font-weight:400;color:var(--text);line-height:1.2;margin-bottom:0.25rem}
+.timeline-company{font-size:0.85rem;color:var(--text-muted);font-weight:300;margin-bottom:1.5rem}
+.timeline-bullets{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.timeline-bullets li{display:flex;gap:0.75rem;font-size:0.9rem;color:var(--text-muted);font-weight:300;line-height:1.7}
+.timeline-bullets li::before{content:'—';color:var(--gold-dim);flex-shrink:0;font-size:0.8rem;margin-top:0.1rem}
+.tools-list{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem}
+.tool-tag{font-family:var(--font-mono);font-size:0.65rem;padding:0.25rem 0.65rem;background:var(--surface);color:var(--text-dim);border:1px solid var(--border);border-radius:2px;letter-spacing:0.05em;transition:all 0.2s}
+.tool-tag:hover{border-color:var(--border-gold);color:var(--gold)}
 
-/* ADD PROJECT CARD */
-.add-project-card{background:transparent;border:1px dashed var(--border);padding:2rem;border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem;text-align:center;cursor:default;min-height:200px}
-.add-project-icon{font-size:2rem;opacity:0.3}
-.add-project-text{font-size:0.8rem;color:var(--text-dim);font-family:var(--font-mono);letter-spacing:0.05em}
+/* PROJECTS CTA */
+.projects-cta{display:flex;flex-direction:column;align-items:center;text-align:center;padding:5rem 2rem;background:var(--surface);border:1px solid var(--border);border-radius:2px;gap:1.5rem;position:relative;overflow:hidden}
+.projects-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.projects-cta-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase}
+.projects-cta-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--text)}
+.projects-cta-title em{color:var(--gold);font-style:italic}
+.projects-cta-desc{font-size:0.95rem;color:var(--text-muted);max-width:480px;line-height:1.8}
+.projects-cats{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.projects-cat-tag{font-family:var(--font-mono);font-size:0.7rem;padding:0.4rem 1rem;border:1px solid var(--border-gold);color:var(--gold);border-radius:20px;letter-spacing:0.05em}
 
-/* COMING SOON */
-.coming-soon{padding:4rem 2rem;text-align:center;border:1px solid var(--border);border-radius:2px;background:var(--surface)}
-.coming-soon-emoji{font-size:2.5rem;margin-bottom:1rem}
-.coming-soon-title{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--text);margin-bottom:0.5rem}
-.coming-soon-desc{font-size:0.85rem;color:var(--text-muted)}
+/* EDUCATION */
+#education{background:var(--bg2)}
+.education-card{display:flex;gap:3rem;align-items:start;padding:2.5rem;background:var(--surface);border:1px solid var(--border);border-radius:2px;max-width:700px}
+.edu-year{font-family:var(--font-display);font-size:3.5rem;font-weight:300;color:var(--gold);line-height:1;flex-shrink:0;opacity:0.7}
+.edu-degree{font-family:var(--font-display);font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:0.25rem}
+.edu-school{font-size:0.85rem;color:var(--text-muted);font-weight:300;margin-bottom:0.75rem}
+.edu-detail{font-family:var(--font-mono);font-size:0.65rem;color:var(--gold-dim);letter-spacing:0.1em;text-transform:uppercase}
+
+/* CONTACT */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-heading{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.1;margin-bottom:1.25rem}
+.contact-heading em{color:var(--gold);font-style:italic}
+.contact-text{font-size:0.95rem;color:var(--text-muted);font-weight:300;line-height:1.85}
+.contact-links{display:flex;flex-direction:column;gap:1.25rem}
+.contact-link{display:flex;align-items:center;gap:1.25rem;text-decoration:none;padding:1.25rem 1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:2px;transition:all 0.25s}
+.contact-link:hover{border-color:var(--border-gold);transform:translateX(4px)}
+.contact-link-icon{width:40px;height:40px;background:var(--gold-pale);border:1px solid var(--border-gold);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.contact-link-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem}
+.contact-link-value{font-size:0.9rem;color:var(--text);font-weight:400}
 
 footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-logo{font-family:var(--font-display);font-size:1rem;color:var(--text-muted)}
 .footer-logo span{color:var(--gold)}
 .footer-copy{font-size:0.75rem;color:var(--text-dim);font-family:var(--font-mono)}
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
 
+/* MOBILE */
 @media(max-width:768px){
   nav{padding:1rem 1.5rem}
-  .nav-back span{display:none}
+  .nav-links{display:none}
   .hamburger{display:flex}
-  .page-hero{padding:8rem 1.5rem 3rem}
-  .tabs-bar{padding:0 1.5rem;overflow-x:auto}
-  .tab-btn{padding:1rem 1rem 1rem 0;white-space:nowrap}
-  .page-content{padding:3rem 1.5rem 5rem}
-  .projects-grid{grid-template-columns:1fr}
-  .notion-embed-iframe{height:450px}
+  section{padding:5rem 1.5rem}
+  .hero{padding:7rem 1.5rem 5rem}
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-photo{order:-1}
+  .hero-photo-frame{width:180px;height:180px;margin:0 auto}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%;justify-content:center}
+  .about-layout,.contact-layout{grid-template-columns:1fr;gap:3rem}
+  .education-card{flex-direction:column;gap:1rem;padding:1.75rem}.hero-scroll{display:none}.hero-actions{flex-wrap:wrap;gap:0.6rem}.hero-actions .btn{flex:1;min-width:120px;font-size:0.65rem;padding:0.7rem 0.75rem;text-align:center;justify-content:center}
+  .edu-year{font-size:2.5rem}
   footer{padding:2rem 1.5rem}
 }
 </style>
@@ -130,252 +194,196 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 <body>
 
 <nav>
-  <a class="nav-logo" href="../index.html">Nidin <span>Shah</span></a>
-  <a class="nav-back" href="../index.html">← <span>Back to Portfolio</span></a>
-  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <a class="nav-logo" href="index.html#">Nidin <span>Shah</span></a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="../index.html#skills">Skills</a>
-  <a href="../index.html#about">About</a>
-  <a href="../index.html#experience">Experience</a>
-  <a href="../index.html#contact">Contact</a>
+  <a href="#skills">Skills</a>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
 </div>
-
-<div class="page-hero">
-  <div class="page-hero-label">My Work</div>
-  <h1 class="page-hero-title">Project <em>Portfolio</em></h1>
-  <p class="page-hero-desc">Hands-on projects across API integration, AWS cloud infrastructure, and data analytics.</p>
-</div>
-
-<!-- TABS -->
-<div class="tabs-bar">
-  <button class="tab-btn" data-tab="aws">☁️ Cloud Project</button>
-  <button class="tab-btn" data-tab="api">🔌 API Projects</button>
-</div>
-
-<div class="page-content">
-
-  <!-- ── API PROJECTS ── -->
-  <div class="tab-panel" id="tab-api">
-    <div class="cat-header reveal">
-      <span class="cat-icon">🔌</span>
-      <h2 class="cat-title">API <em>Projects</em></h2>
-      <div class="cat-line"></div>
+<section class="hero" id="home">
+  <div class="hero-grid container">
+    <div>
+      <div class="hero-label">Portfolio · KL, Malaysia</div>
+      <h1 class="hero-name">Nidin Shah<br><em>Ryidhzuan</em></h1>
+      <p class="hero-tagline">API, Cloud &amp; Data Analytics enthusiast.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:nidinshah@outlook.com">Get in Touch</a>
+        <a class="btn btn-ghost" href="assets/resume.pdf" target="_blank">Download CV</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/nidin-shah" target="_blank">LinkedIn ↗</a>
+      </div>
     </div>
-    <p class="cat-desc reveal">Backend integration work spanning payment gateway APIs, webhook systems, and REST API troubleshooting from my time at Razer Merchant Services and personal builds.</p>
-
-    <div class="projects-grid">
-
-      <!-- PROJECT CARD 1 — Edit the Notion link below -->
-      <div class="project-card reveal">
-        <div class="project-type">API Integration</div>
-        <h3 class="project-title">Payment Gateway API Integration</h3>
-        <p class="project-desc">End-to-end integration of a payment gateway API for SME merchants — covering authentication, webhook handling, error management, and transaction reconciliation.</p>
-        <div class="project-tags">
-          <span class="project-tag">REST API</span>
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Webhooks</span>
-          <span class="project-tag">JSON</span>
-        </div>
-        <div class="project-footer">
-          <a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74" target="_blank" rel="noopener">📝 Open in Notion ↗</a>
-        </div>
-        <div class="notion-embed-wrapper" id="notion-api-1">
-          <div class="notion-embed-header">
-            <span class="notion-embed-title">Notion — Project Notes</span>
-            <button class="notion-embed-close" onclick="closeNotion('notion-api-1')">✕</button>
-          </div>
-          <div class="notion-embed-placeholder">
-            <p>Replace <code>https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74</code> in the HTML with your public Notion page URL to embed it here.</p>
-            <a href="#" target="_blank">Open in Notion ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PROJECT CARD 2 — Edit the Notion link below -->
-      <div class="project-card reveal">
-        <div class="project-type">API Troubleshooting</div>
-        <h3 class="project-title">Transaction Monitoring System</h3>
-        <p class="project-desc">Optimized API-driven transaction monitoring pipeline — reducing false positives in fraud detection and improving SLA response times across 100+ merchant accounts.</p>
-        <div class="project-tags">
-          <span class="project-tag">SQL</span>
-          <span class="project-tag">AWS</span>
-          <span class="project-tag">Freshdesk API</span>
-          <span class="project-tag">Jira</span>
-        </div>
-        <div class="project-footer">
-          <a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74" target="_blank" rel="noopener">📝 Open in Notion ↗</a>
-        </div>
-        <div class="notion-embed-wrapper" id="notion-api-2">
-          <div class="notion-embed-header">
-            <span class="notion-embed-title">Notion — Project Notes</span>
-            <button class="notion-embed-close" onclick="closeNotion('notion-api-2')">✕</button>
-          </div>
-          <div class="notion-embed-placeholder">
-            <p>Replace <code>https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74</code> with your public Notion page URL.</p>
-            <a href="#" target="_blank">Open in Notion ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ADD MORE placeholder -->
-      <div class="add-project-card">
-        <div class="add-project-icon">＋</div>
-        <div class="add-project-text">More projects coming soon</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ── AWS PROJECTS ── -->
-  <div class="tab-panel" id="tab-aws">
-    <div class="cat-header reveal">
-      <span class="cat-icon">☁️</span>
-      <h2 class="cat-title">AWS <em>AWS Project</em></h2>
-      <div class="cat-line"></div>
-    </div>
-    <p class="cat-desc reveal">AWS cloud portfolio showcasing projects involving VPC, EC2, S3, Lambda, and static web hosting architectures.</p>
-
-    <div class="projects-grid">
-
-      <!-- AWS PROJECT 1 -->
-      <div class="project-card reveal">
-        <div class="project-type">Static Hosting</div>
-        <h3 class="project-title">Static Website Hosting using AMPLIFY</h3>
-        <p class="project-desc">Developed a serverless cinema booking web application using AWS Amplify, API Gateway, Lambda, and DynamoDB with CI/CD deployment via GitHub integration.</p>
-        <div class="project-tags">
-          <span class="project-tag">Amplify</span>
-          <span class="project-tag">API Gateway</span>
-          <span class="project-tag">Lambda Functions</span>
-          <span class="project-tag">IAM</span> 
-          <span class="project-tag">GitHub CI/CD</span>
-        </div>
-        <div class="project-footer">
-          <a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74" target="_blank" rel="noopener">📝 Open in Notion ↗</a>
-        </div>
-        <div class="notion-embed-wrapper" id="notion-aws-1">
-          <div class="notion-embed-header">
-            <span class="notion-embed-title">Notion — Project Notes</span>
-            <button class="notion-embed-close" onclick="closeNotion('notion-aws-1')">✕</button>
-          </div>
-          <div class="notion-embed-placeholder">
-            <p>Replace <code>https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74</code> with your public Notion page URL.</p>
-            <a href="#" target="_blank">Open in Notion ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- AWS PROJECT 2 -->
-      <div class="project-card reveal">
-        <div class="project-type">AWS S3 · Data Storage</div>
-        <h3 class="project-title">S3 Data Lake Architecture</h3>
-        <p class="project-desc">Designed an S3-based data lake with structured folder hierarchy, lifecycle policies for cold storage, IAM roles for fine-grained access, and versioning for audit compliance.</p>
-        <div class="project-tags">
-          <span class="project-tag">AWS S3</span>
-          <span class="project-tag">IAM</span>
-          <span class="project-tag">Lifecycle Policies</span>
-          <span class="project-tag">Glacier</span>
-        </div>
-        <div class="project-footer">
-          <a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74" target="_blank" rel="noopener">📝 Open in Notion ↗</a>
-        </div>
-        <div class="notion-embed-wrapper" id="notion-aws-2">
-          <div class="notion-embed-header">
-            <span class="notion-embed-title">Notion — Project Notes</span>
-            <button class="notion-embed-close" onclick="closeNotion('notion-aws-2')">✕</button>
-          </div>
-          <div class="notion-embed-placeholder">
-            <p>Replace <code>https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74</code> with your public Notion page URL.</p>
-            <a href="#" target="_blank">Open in Notion ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="add-project-card">
-        <div class="add-project-icon">＋</div>
-        <div class="add-project-text">More projects coming soon</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ── RESEARCH ── -->
-  <div class="tab-panel" id="tab-research">
-    <div class="cat-header reveal">
-      <span class="cat-icon">📄</span>
-      <h2 class="cat-title">Published <em>Research</em></h2>
-      <div class="cat-line"></div>
-    </div>
-    <p class="cat-desc reveal">Peer-reviewed research published on MDPI Sensors journal.</p>
-
-    <div class="projects-grid">
-      <div class="project-card reveal">
-        <div class="project-type">Research · MDPI Sensors</div>
-        <h3 class="project-title">Data-Driven EEG Band Discovery with Decision Trees</h3>
-        <p class="project-desc">Applying decision tree models to EEG band analysis — exploring data-driven approaches to biometric signal classification and neuroscience.</p>
-        <div class="project-tags"><span class="project-tag">EEG</span><span class="project-tag">Decision Trees</span><span class="project-tag">MATLAB</span><span class="project-tag">Signal Processing</span></div>
-        <div class="project-footer">
-          <a class="project-link" href="https://www.mdpi.com/1424-8220/22/8/3048" target="_blank">Read Paper →</a>
-        </div>
-      </div>
-      <div class="project-card reveal">
-        <div class="project-type">Research · MDPI Sensors</div>
-        <h3 class="project-title">Cognitive Impacts of Particulate Matter Concentrations</h3>
-        <p class="project-desc">Decoding physical and cognitive effects of PM concentrations using sensor data and statistical modelling for environmental health insights.</p>
-        <div class="project-tags"><span class="project-tag">Sensors</span><span class="project-tag">Data Analysis</span><span class="project-tag">Statistics</span><span class="project-tag">MATLAB</span></div>
-        <div class="project-footer">
-          <a class="project-link" href="https://www.mdpi.com/1424-8220/22/11/4240" target="_blank">Read Paper →</a>
-        </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <img src="assets/img/headshot_circle.png" alt="Nidin Shah" onerror="this.parentElement.innerHTML=&#39;&lt;div class=\&#39;hero-photo-placeholder\&#39;&gt;&lt;span&gt;NS&lt;/span&gt;&lt;/div&gt;&#39;">
       </div>
     </div>
   </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
 
-</div><!-- end page-content -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal visible"><span class="section-number">01</span><h2 class="section-title">Technical <em>Skills</em></h2><div class="section-line"></div></div>
+    <p class="skills-intro reveal reveal-delay-1 visible">Proficient across the full stack of modern data and cloud infrastructure — from scripting and querying to cloud-native deployment and API integration.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal reveal-delay-2 visible"><span class="skill-icon">🗄️</span><div class="skill-name">SQL</div><div class="skill-type">Database</div></div>
+      <div class="skill-card reveal reveal-delay-3 visible"><span class="skill-icon">☁️</span><div class="skill-name">AWS</div><div class="skill-type">Cloud</div></div>
+      <div class="skill-card reveal reveal-delay-4 visible"><span class="skill-icon">❄️</span><div class="skill-name">Snowflake</div><div class="skill-type">Data Warehouse</div></div>
+      <div class="skill-card reveal reveal-delay-1 visible"><span class="skill-icon">📡</span><div class="skill-name">REST APIs</div><div class="skill-type">Integration</div></div>
+      <div class="skill-card reveal reveal-delay-2 visible"><span class="skill-icon">🔬</span><div class="skill-name">Python</div><div class="skill-type">Engineering</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal visible"><span class="section-number">02</span><h2 class="section-title">About <em>Me</em></h2><div class="section-line"></div></div>
+    <div class="about-layout">
+      <div class="about-text">
+        <p class="reveal">A <strong>highly adaptable Technical Support Specialist</strong> with a track record in fintech, IT administration, and cloud infrastructure. I thrive at the intersection of backend systems and client success.</p>
+        <p class="reveal reveal-delay-1">My experience spans <strong>API backend integration</strong>, payment system troubleshooting, cloud database management, and fraud detection — delivering measurable outcomes like 30% downtime reduction and 95% SLA compliance.</p>
+        <p class="reveal reveal-delay-2">I'm seeking a technical role where I can apply my expertise in <strong>cloud computing, API integrations, and fintech operations</strong> to drive client satisfaction and system performance at scale.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item reveal reveal-delay-1"><div class="stat-number">100+</div><div class="stat-label">SMEs supported across Southeast Asia</div></div>
+        <div class="stat-item reveal reveal-delay-2"><div class="stat-number">30%</div><div class="stat-label">Downtime reduction achieved</div></div>
+        <div class="stat-item reveal reveal-delay-3"><div class="stat-number">95%</div><div class="stat-label">SLA compliance rate maintained</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-number">03</span><h2 class="section-title">Work <em>Experience</em></h2><div class="section-line"></div></div>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta"><span class="timeline-date">Apr 2025 – Nov 2025</span><span class="timeline-badge">MarTech</span></div>
+        <h3 class="timeline-role">Solutions Support Specialist — APJ</h3>
+        <p class="timeline-company">Impact.com (MarTech) </p>
+        <ul class="timeline-bullets">
+          <li>Delivered enterprise-level product support to customers and partners across Asia Pacific &amp; Japan via chat and
+ticketing systems.</li>
+          <li>Managed support cases end-to-end in Salesforce, Jira, and Slack — from logging through resolution and follow-up.</li>
+          <li>Led full-cycle integrations for API, FTP, payment systems, contracts, and fraud-check processes, ensuring data accuracy.</li>
+          <li>Authored internal and external knowledge-base documentation to improve self-service adoption and best practices.</li>
+          <li>Identified recurring pain points and collaborated cross-functionally to surface product improvement opportunities..</li>
+        </ul>
+        <div class="tools-list"><span class="tool-tag">Salesforce</span><span class="tool-tag">Jira</span><span class="tool-tag">REST APIs</span><span class="tool-tag">Slack</span><span class="tool-tag">Salesforce</span><span class="tool-tag">impact.com backends</span> </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta"><span class="timeline-date">Jan 2024 – Nov 2024</span><span class="timeline-badge">Fintech</span></div>
+        <h3 class="timeline-role">Technical Support Specialist</h3>
+        <p class="timeline-company">Fiuu (formerly Razer Merchant Services) — Kuala Lumpur, Malaysia</p>
+        <ul class="timeline-bullets">
+          <li>Provided comprehensive technical support to 100+ SMEs across Southeast Asia, resolving backend integration challenges and reducing downtime by 30%</li>
+          <li>Led API backend integration, troubleshooting payment issues, and optimizing transaction monitoring systems.</li>
+          <li>Managed settlement processes and fraud detection tickets, ensuring a 95% SLA compliance rate.</li>
+          <li>Appointed as VIP partner to deliver priority support to high-profile clients including banks and government entities</li>
+           <li>Provided one-on-one phone support for client issues, integration concerns, and remote troubleshooting.</li>
+        </ul>
+        <div class="tools-list"><span class="tool-tag">SaaS</span><span class="tool-tag">Freshdesk</span><span class="tool-tag">REST APIs</span><span class="tool-tag">AWS Monitoring</span><span class="tool-tag">GitLab</span><span class="tool-tag">SQL</span>   </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-number">04</span><h2 class="section-title">Featured <em>Projects</em></h2><div class="section-line"></div></div>
+    <div class="proj-cards">
+      <a class="proj-card reveal" href="projects/index.html">
+        <div class="proj-card-icon">☁️</div>
+        
+        <h3 class="proj-card-title">AWS Cloud</h3>
+        <p class="proj-card-desc">Building and deploying on AWS — S3, Amplify, Lambda, and API Gateway. Still learning, but shipping real projects along the way.</p>
+        <span class="proj-card-link">View Projects →</span>
+      </a>
+      <a class="proj-card reveal reveal-delay-2" href="projects/index.html">
+        <div class="proj-card-icon">🔌</div>
+        
+        <h3 class="proj-card-title">API &amp; Integrations</h3>
+        <p class="proj-card-desc">Day-to-day experience integrating and troubleshooting REST APIs — from payment systems to merchant onboarding across Southeast Asia.</p>
+        <span class="proj-card-link">View Projects →</span>
+      </a>
+      <a class="proj-card reveal reveal-delay-3" href="projects/index.html">
+        <div class="proj-card-icon">🗂️</div>
+        
+        <h3 class="proj-card-title">Support &amp; Research</h3>
+        <p class="proj-card-desc">Side projects and miscellaneous technical work outside of cloud and API.</p>
+        <span class="proj-card-link">View Projects →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-number">05</span><h2 class="section-title"><em>Education</em></h2><div class="section-line"></div></div>
+    <div class="education-card reveal">
+      <div class="edu-year">2021</div>
+      <div>
+        <h3 class="edu-degree">Information Technology</h3>
+        <p class="edu-school">Taylor's University, Malaysia</p>
+        <span class="edu-detail">Graduated March 2021</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-number">06</span><h2 class="section-title">Get in <em>Touch</em></h2><div class="section-line"></div></div>
+    <div class="contact-layout">
+      <div class="reveal">
+        <h3 class="contact-heading">Let's work<br><em>together.</em></h3>
+        <p class="contact-text">Open to new opportunities in technical support, API integration, and cloud operations. If you think I'd be a good fit for your team, I'd love to connect.</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link reveal reveal-delay-1" href="mailto:nidinshah@outlook.com"><div class="contact-link-icon">✉️</div><div><div class="contact-link-label">Email</div><div class="contact-link-value">nidinshah@outlook.com</div></div></a>
+        <a class="contact-link reveal reveal-delay-2" href="https://www.linkedin.com/in/nidin-shah" target="_blank"><div class="contact-link-icon">💼</div><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/nidin-shah</div></div></a>
+        <a class="contact-link reveal reveal-delay-3" href="assets/resume.pdf" target="_blank"><div class="contact-link-icon">📄</div><div><div class="contact-link-label">Resume</div><div class="contact-link-value">Download PDF</div></div></a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="footer-logo">Nidin <span>Shah</span> Ryidhzuan</div>
-  <div class="footer-copy">© 2025 · Kuala Lumpur</div>
+  <div class="footer-copy">© 2025 · Built with ♥ in Kuala Lumpur</div>
 </footer>
 
 <script>
-// Tabs
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-  });
-});
-
-// Notion embed toggle
-function toggleNotion(e, id, notionUrl) {
-  e.preventDefault();
-  const wrapper = document.getElementById(id);
-  const isOpen = wrapper.classList.toggle('open');
-  if (isOpen && notionUrl && notionUrl !== 'https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74') {
-    const placeholder = wrapper.querySelector('.notion-embed-placeholder');
-    if (placeholder) {
-      placeholder.outerHTML = '<iframe class="notion-embed-iframe" src="' + notionUrl + '" allowfullscreen></iframe>';
-    }
-    wrapper.querySelector('a') && (wrapper.querySelector('a').href = notionUrl);
-  }
-  if (!isOpen) wrapper.classList.remove('open');
-}
-
-function closeNotion(id) {
-  document.getElementById(id).classList.remove('open');
-}
-
-// Hamburger
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+
 hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('open');
-  if (isOpen) { mobileMenu.style.display = 'flex'; setTimeout(() => mobileMenu.classList.add('active'), 10); }
-  else { mobileMenu.classList.remove('active'); setTimeout(() => mobileMenu.style.display = 'none', 300); }
+  if (isOpen) {
+    mobileMenu.style.display = 'flex';
+    setTimeout(() => mobileMenu.classList.add('active'), 10);
+  } else {
+    mobileMenu.classList.remove('active');
+    setTimeout(() => mobileMenu.style.display = 'none', 300);
+  }
 });
+
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
@@ -384,11 +392,11 @@ mobileMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Reveal
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-</body>
-</html>
+
+
+</body></html>
