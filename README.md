@@ -1,24 +1,47 @@
-# IT Support, Cloud, and Data Analytics enthusiasts
+# Shah Ryidhz ☁️
 
-© 2025 GitHub, Inc.
+Cloud-focused builder passionate about AWS infrastructure, API integration, and AI-powered solutions.
 
-#### Technical Skills: Python, SQL, AWS, Snowflake, MATLAB
+---
 
+## 🚀 Main Interests
+☁️ AWS & Cloud Engineering  
+🔗 API Development & Integration  
+🤖 AI & Automation
 
-Used **Matlab** to train over 100 machine learning models which estimated particulate matter concentrations based on a suite of over 300 biometric variables. We found biometric variables can be used to accurately estimate particulate matter concentrations at ultra-fine spatial scales with high fidelity (r2 = 0.91) and that smaller particles are better estimated than larger ones. Inferring environmental conditions solely from biometric measurements allows us to disentangle key interactions between the environment and the body.
+---
 
-![Bike Study](/asset/img/bike_study.jpeg)
+## ☁️ AWS Services
+- EC2
+- S3
+- Lambda
+- API Gateway
+- DynamoDB
+- IAM
+- CloudFront
+- Route 53
 
-## Talks & Lectures
-- Causality: The new science of an old question - GSP Seminar, Fall 2021
-- Guest Lecture: Dimensionality Reduction - Big Data and Machine Learning for Scientific Discovery (PHYS 5336), Spring 2021
-- Guest Lecture: Fourier and Wavelet Transforms - Scientific Computing (PHYS 5315), Fall 2020
-- A Brief Introduction to Optimization - GSP Seminar, Fall 2019
-- Weeks of Welcome Poster Competition - UTD, Fall 2019
-- A Brief Introduction to Networks - GSP Seminar, Spring 2019
+---
 
-- [Data Science YouTube](https://www.youtube.com/channel/UCa9gErQ9AE5jT2DZLjXBIdA)
+## 🛠 Featured Projects
+### 🎬 Cinema Booking System
+Cloud-native booking application built using AWS serverless architecture.
 
+### 🌐 AWS Portfolio Website
+Portfolio website deployed using AWS cloud services and static hosting.
 
+---
 
-- [Data Science Blog](https://medium.com/@shawhin)
+## 📚 Currently Learning
+- CI/CD Pipelines
+- Docker
+- Linux Administration
+- Infrastructure as Code
+- Cloud Security Basics
+
+## 📫 Connect With Me
+- LinkedIn: https://www.linkedin.com/in/nidin-shah/
+- Portfolio: https://nidinshah.github.io/
+
+![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
+![HTML](https://img.shields.io/badge/HTML-Frontend-red)
