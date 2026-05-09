@@ -1,4 +1,4 @@
-# Shah Ryidhz ☁️
+# Nidin Ryidhzuan ☁️
 
 Cloud-focused builder passionate about AWS infrastructure, API integration, and AI-powered solutions.
 
@@ -40,14 +40,10 @@ Portfolio website deployed using AWS cloud services and static hosting.
 - Cloud Security Basics
 
 ## 📫 Connect With Me
-
-<p>
-  <a href="https://www.linkedin.com/in/nidin-shah/">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
-  </a>
   
 - LinkedIn: https://www.linkedin.com/in/nidin-shah/
 - Portfolio: https://nidinshah.github.io/
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange)
+![REST API](https://img.shields.io/badge/REST-API-blue?style=for-the-badge&logo=fastapi)
 ![HTML](https://img.shields.io/badge/HTML-Frontend-red)
