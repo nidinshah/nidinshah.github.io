@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects | Nidin Shah Ryidhzuan</title>
@@ -8,20 +9,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#C9A84C;--gold-dim:#8B6E2E;--gold-pale:rgba(201,168,76,0.12);--bg:#0C0C0B;--bg2:#111110;--surface:#1E1E1B;--surface2:#242422;--border:rgba(255,255,255,0.07);--border-gold:rgba(201,168,76,0.25);--text:#F0EDE6;--text-muted:#8A8880;--text-dim:#555450;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;}
+:root{--gold:#C9A84C;--gold-pale:rgba(201,168,76,0.12);--bg:#0C0C0B;--bg2:#111110;--surface:#1E1E1B;--surface2:#242422;--border:rgba(255,255,255,0.07);--border-gold:rgba(201,168,76,0.25);--text:#F0EDE6;--text-muted:#8A8880;--text-dim:#555450;--nav-bg:rgba(12,12,11,0.92);--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;}
+[data-theme="light"]{--gold:#A88638;--gold-pale:rgba(168,134,56,0.1);--bg:#FAF7F0;--bg2:#F2EEE5;--surface:#FFFFFF;--surface2:#F8F5EC;--border:rgba(0,0,0,0.08);--border-gold:rgba(168,134,56,0.3);--text:#1A1A18;--text-muted:#6B6862;--text-dim:#9B9890;--nav-bg:rgba(250,247,240,0.92);}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.75;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(12,12,11,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;line-height:1.75;overflow-x:hidden;transition:background 0.3s,color 0.3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:background 0.3s}
 .nav-logo{font-family:var(--font-display);font-size:1.15rem;font-weight:500;color:var(--text);text-decoration:none}
 .nav-logo span{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1rem}
 .nav-back{display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);text-decoration:none;transition:color 0.2s;border:1px solid var(--border);padding:0.5rem 1rem}
 .nav-back:hover{color:var(--gold);border-color:var(--border-gold)}
+.theme-toggle{width:34px;height:34px;border-radius:50%;background:transparent;border:1px solid var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;flex-shrink:0}
+.theme-toggle:hover{color:var(--gold);border-color:var(--border-gold);transform:rotate(15deg)}
+.theme-toggle svg{width:15px;height:15px}
+.theme-toggle .moon-icon{display:none}
+[data-theme="light"] .theme-toggle .sun-icon{display:none}
+[data-theme="light"] .theme-toggle .moon-icon{display:block}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .hamburger span{display:block;width:24px;height:1.5px;background:var(--text);transition:all 0.3s ease;transform-origin:center}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:rgba(12,12,11,0.98);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--nav-bg);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(20px)}
 .mobile-menu.active{opacity:1;pointer-events:all}
 .mobile-menu a{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--text);text-decoration:none;transition:color 0.2s}
 .mobile-menu a:hover{color:var(--gold)}
@@ -55,10 +64,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .project-title{font-family:var(--font-display);font-size:1.35rem;font-weight:400;color:var(--text);line-height:1.25}
 .project-desc{font-size:0.82rem;color:var(--text-muted);font-weight:300;line-height:1.75;flex:1}
 .project-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.25rem}
-.project-tag{font-family:var(--font-mono);font-size:0.6rem;padding:0.2rem 0.55rem;background:rgba(255,255,255,0.03);color:var(--text-dim);border:1px solid var(--border);letter-spacing:0.04em}
+.project-tag{font-family:var(--font-mono);font-size:0.6rem;padding:0.2rem 0.55rem;background:var(--bg2);color:var(--text-dim);border:1px solid var(--border);letter-spacing:0.04em}
 .project-footer{display:flex;align-items:center;gap:1rem;padding-top:1rem;border-top:1px solid var(--border);margin-top:auto}
 .project-notion-btn{font-size:0.68rem;padding:0.45rem 1rem;background:transparent;color:var(--gold);border:1px solid var(--border-gold);cursor:pointer;font-family:var(--font-mono);letter-spacing:0.06em;text-transform:uppercase;transition:all 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem}
-.project-notion-btn:hover{background:var(--gold);color:#0C0C0B}
+.project-notion-btn:hover{background:var(--gold);color:var(--bg)}
 footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-logo{font-family:var(--font-display);font-size:1rem;color:var(--text-muted);font-weight:300}
 .footer-logo span{color:var(--gold)}
@@ -69,8 +78,14 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 <body>
 <nav>
   <a class="nav-logo" href="../index.html">Nidin <span>Shah</span></a>
-  <a class="nav-back" href="../index.html">&#8592; <span>Portfolio</span></a>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <div class="nav-right">
+    <a class="nav-back" href="../index.html">&#8592; <span>Portfolio</span></a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="../index.html#skills">Skills</a>
@@ -136,26 +151,32 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
   <div class="footer-copy">&copy; 2025 &middot; Kuala Lumpur</div>
 </footer>
 <script>
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+const themeToggle=document.getElementById('themeToggle');
+themeToggle.addEventListener('click',()=>{
+  const isLight=document.documentElement.getAttribute('data-theme')==='light';
+  if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}
+  else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}
+});
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
     btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
   });
 });
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
-hamburger.addEventListener('click', () => {
-  const isOpen = hamburger.classList.toggle('open');
-  if (isOpen) { mobileMenu.style.display = 'flex'; setTimeout(() => mobileMenu.classList.add('active'), 10); }
-  else { mobileMenu.classList.remove('active'); setTimeout(() => mobileMenu.style.display = 'none', 300); }
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  const isOpen=hamburger.classList.toggle('open');
+  if(isOpen){mobileMenu.style.display='flex';setTimeout(()=>mobileMenu.classList.add('active'),10);}
+  else{mobileMenu.classList.remove('active');setTimeout(()=>mobileMenu.style.display='none',300);}
 });
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
+mobileMenu.querySelectorAll('a').forEach(link=>{
+  link.addEventListener('click',()=>{
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('active');
-    setTimeout(() => mobileMenu.style.display = 'none', 300);
+    setTimeout(()=>mobileMenu.style.display='none',300);
   });
 });
 </script>
