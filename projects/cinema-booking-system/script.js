@@ -1,3 +1,13 @@
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
 const seats = document.querySelectorAll('.seat');
 
 let selectedSeats = [];
