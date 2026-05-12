@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F1 2026 Race Calendar by nidin</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red:    #DC0000;
+    --blue:   #0066CC;
+    --green:  #007A4C;
+    --ink:    #111010;
+    --paper:  #F7F4EF;
+    --muted:  #9A9089;
+    --line:   #E2DDD7;
+    --card:   #FFFFFF;
+    --mono:   'DM Mono', monospace;
+    --serif:  'DM Serif Display', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 3rem 2rem 2rem;
+    max-width: 780px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .f1-badge {
+    background: var(--red);
+    color: white;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 4px 9px;
+    border-radius: 2px;
+  }
+
+  .site-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .season-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding-bottom: 4px;
+  }
+
+  /* ── SEASON PROGRESS ── */
+  .progress-section {
+    max-width: 780px;
+    margin: 1.6rem auto 0;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 3px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .progress-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── NEXT RACE BANNER ── */
+  .next-race {
+    max-width: 780px;
+    margin: 1.4rem auto 0;
+    padding: 0 2rem;
+  }
+
+  .next-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.6rem;
+  }
+
+  .next-card {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.6rem 1.8rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .next-name {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+
+  .next-sub {
+    font-size: 0.72rem;
+    color: rgba(247,244,239,0.5);
+    letter-spacing: 0.08em;
+  }
+
+  .countdown {
+    display: flex;
+    gap: 1.2rem;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .cd-unit .n {
+    display: block;
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--paper);
+  }
+
+  .cd-unit .l {
+    display: block;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.4);
+    margin-top: 3px;
+  }
+
+  /* ── FILTER TABS ── */
+  .schedule-wrap {
+    max-width: 780px;
+    margin: 2.5rem auto 4rem;
+    padding: 0 2rem;
+  }
+
+  .schedule-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .tab {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    transition: background 0.15s, color 0.15s;
+    border-right: 1px solid var(--line);
+  }
+
+  .tab:last-child { border-right: none; }
+
+  .tab:hover { background: rgba(0,0,0,0.04); color: var(--ink); }
+
+  .tab.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .race-count {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── TABLE ── */
+  .table-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 160px 90px;
+    gap: 0;
+    padding: 0 0 0.6rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .th {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .th:last-child { text-align: right; }
+  .th:nth-child(3) { padding-left: 0.5rem; }
+
+  .race-item {
+    display: grid;
+    grid-template-columns: 40px 1fr 160px 90px;
+    align-items: center;
+    gap: 0;
+    padding: 1.05rem 0;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s;
+    border-radius: 3px;
+    animation: fadeUp 0.35s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .race-item:hover {
+    background: rgba(0,0,0,0.03);
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: -6px;
+    margin-right: -6px;
+  }
+
+  .race-item.past { opacity: 0.38; }
+
+  .race-item.next-up {
+    background: rgba(220,0,0,0.05);
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: -6px;
+    margin-right: -6px;
+    border-bottom-color: rgba(220,0,0,0.15);
+  }
+
+  .race-item.hidden { display: none; }
+
+  .rnd {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    align-self: start;
+    padding-top: 2px;
+  }
+
+  .race-name {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  .race-circuit {
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-top: 2px;
+    letter-spacing: 0.03em;
+  }
+
+  .race-country {
+    font-size: 0.72rem;
+    color: var(--ink);
+    padding-left: 0.5rem;
+    letter-spacing: 0.03em;
+    align-self: start;
+    padding-top: 3px;
+  }
+
+  .race-date {
+    font-size: 0.72rem;
+    color: var(--ink);
+    text-align: right;
+    letter-spacing: 0.02em;
+    align-self: start;
+    padding-top: 3px;
+  }
+
+  /* ── CHIPS ── */
+  .chip {
+    display: inline-block;
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-top: 4px;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+
+  .done-chip  { background: var(--line);   color: var(--muted); }
+  .next-chip  { background: var(--red);    color: white; }
+  .sprint-chip { background: rgba(0,102,204,0.12); color: var(--blue); border: 1px solid rgba(0,102,204,0.2); }
+  .new-chip   { background: rgba(0,122,76,0.10);  color: var(--green); border: 1px solid rgba(0,122,76,0.2); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    border-top: 1px solid var(--line);
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ── LOADING SKELETON ── */
+  .skel {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--line) 25%, #ebe7e0 50%, var(--line) 75%);
+    background-size: 300% 100%;
+    animation: skel 1.4s infinite;
+    border-radius: 3px;
+    height: 0.9em;
+    vertical-align: middle;
+  }
+  @keyframes skel {
+    0%   { background-position: 100% 50%; }
+    100% { background-position: 0%   50%; }
+  }
+
+  @media (max-width: 540px) {
+    .table-header { grid-template-columns: 32px 1fr 80px; }
+    .table-header .th:nth-child(3) { display: none; }
+    .race-item { grid-template-columns: 32px 1fr 80px; }
+    .race-country { display: none; }
+    .next-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">
+    <span class="f1-badge">F1</span>
+    <span class="site-title">Race Calendar <span style="font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;font-weight:400;">by nidin</span></span>
+  </div>
+  <span class="season-tag">2026 Season</span>
+</header>
+
+<!-- Season Progress -->
+<section class="progress-section">
+  <span class="progress-label" id="progress-label">Loading…</span>
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+</section>
+
+<!-- Next Race -->
+<section class="next-race">
+  <div class="next-label">Next Race</div>
+  <div class="next-card" id="next-card">
+    <div class="next-info">
+      <div class="next-name"><span class="skel" style="width:220px"></span></div>
+      <div class="next-sub" style="margin-top:0.5rem"><span class="skel" style="width:140px; height:0.7em"></span></div>
+    </div>
+    <div class="countdown">
+      <div class="cd-unit"><span class="n" id="cd-d">--</span><span class="l">Days</span></div>
+      <div class="cd-unit"><span class="n" id="cd-h">--</span><span class="l">Hrs</span></div>
+      <div class="cd-unit"><span class="n" id="cd-m">--</span><span class="l">Min</span></div>
+      <div class="cd-unit"><span class="n" id="cd-s">--</span><span class="l">Sec</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Schedule -->
+<section class="schedule-wrap">
+  <div class="schedule-controls">
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="upcoming">Upcoming</button>
+      <button class="tab" data-filter="past">Past</button>
+    </div>
+    <span class="race-count" id="race-count"></span>
+  </div>
+
+  <div class="table-header">
+    <div class="th">Rnd</div>
+    <div class="th">Grand Prix</div>
+    <div class="th">Country</div>
+    <div class="th" style="text-align:right">Date</div>
+  </div>
+
+  <div id="race-list">
+    <!-- skeleton rows -->
+    <div class="race-item"><div class="rnd"><span class="skel" style="width:18px"></span></div><div class="race-main"><div class="race-name"><span class="skel" style="width:160px"></span></div><div class="race-circuit" style="margin-top:4px"><span class="skel" style="width:90px;height:0.6em"></span></div></div><div class="race-country"><span class="skel" style="width:70px;height:0.6em"></span></div><div class="race-date"><span class="skel" style="width:60px;height:0.6em"></span></div></div>
+    <div class="race-item"><div class="rnd"><span class="skel" style="width:18px"></span></div><div class="race-main"><div class="race-name"><span class="skel" style="width:180px"></span></div><div class="race-circuit" style="margin-top:4px"><span class="skel" style="width:100px;height:0.6em"></span></div></div><div class="race-country"><span class="skel" style="width:70px;height:0.6em"></span></div><div class="race-date"><span class="skel" style="width:60px;height:0.6em"></span></div></div>
+    <div class="race-item"><div class="rnd"><span class="skel" style="width:18px"></span></div><div class="race-main"><div class="race-name"><span class="skel" style="width:145px"></span></div><div class="race-circuit" style="margin-top:4px"><span class="skel" style="width:85px;height:0.6em"></span></div></div><div class="race-country"><span class="skel" style="width:70px;height:0.6em"></span></div><div class="race-date"><span class="skel" style="width:60px;height:0.6em"></span></div></div>
+  </div>
+</section>
+
+<footer>2026 Formula 1 World Championship &nbsp;·&nbsp; 22 rounds across 5 continents</footer>
+
+<script>
+/* ── FLAGS ── */
+const flags = {
+  'Australia':'🇦🇺','Bahrain':'🇧🇭','Saudi Arabia':'🇸🇦','Japan':'🇯🇵',
+  'China':'🇨🇳','United States':'🇺🇸','Italy':'🇮🇹','Monaco':'🇲🇨',
+  'Canada':'🇨🇦','Spain':'🇪🇸','Austria':'🇦🇹','United Kingdom':'🇬🇧',
+  'Hungary':'🇭🇺','Belgium':'🇧🇪','Netherlands':'🇳🇱','Singapore':'🇸🇬',
+  'Azerbaijan':'🇦🇿','Mexico':'🇲🇽','Brazil':'🇧🇷','Qatar':'🇶🇦',
+  'UAE':'🇦🇪','Abu Dhabi':'🇦🇪'
+};
+
+/* ── HARDCODED 2026 CALENDAR (primary source, backend is fallback) ── */
+const RACES_2026 = [
+  { round:'01', raceName:'Australian Grand Prix',    circuitName:'Albert Park Circuit',              country:'Australia',    date:'2026-03-08', time:'05:00:00Z', sprint:false, isNew:false },
+  { round:'02', raceName:'Chinese Grand Prix',       circuitName:'Shanghai International Circuit',   country:'China',        date:'2026-03-15', time:'07:00:00Z', sprint:true,  isNew:false },
+  { round:'03', raceName:'Japanese Grand Prix',      circuitName:'Suzuka International Racing Course',country:'Japan',        date:'2026-03-29', time:'05:00:00Z', sprint:false, isNew:false },
+  { round:'04', raceName:'Miami Grand Prix',         circuitName:'Miami International Autodrome',    country:'United States', date:'2026-05-03', time:'19:00:00Z', sprint:true,  isNew:false },
+  { round:'05', raceName:'Canadian Grand Prix',      circuitName:'Circuit Gilles Villeneuve',        country:'Canada',       date:'2026-05-24', time:'18:00:00Z', sprint:true,  isNew:false },
+  { round:'06', raceName:'Monaco Grand Prix',        circuitName:'Circuit de Monaco',                country:'Monaco',       date:'2026-06-07', time:'13:00:00Z', sprint:false, isNew:false },
+  { round:'07', raceName:'Spanish Grand Prix',       circuitName:'Circuit de Barcelona-Catalunya',   country:'Spain',        date:'2026-06-14', time:'13:00:00Z', sprint:false, isNew:false },
+  { round:'08', raceName:'Austrian Grand Prix',      circuitName:'Red Bull Ring',                    country:'Austria',      date:'2026-06-28', time:'13:00:00Z', sprint:false, isNew:false },
+  { round:'09', raceName:'British Grand Prix',       circuitName:'Silverstone Circuit',              country:'United Kingdom',date:'2026-07-05', time:'14:00:00Z', sprint:true,  isNew:false },
+  { round:'10', raceName:'Belgian Grand Prix',       circuitName:'Circuit de Spa-Francorchamps',     country:'Belgium',      date:'2026-07-19', time:'13:00:00Z', sprint:false, isNew:false },
+  { round:'11', raceName:'Hungarian Grand Prix',     circuitName:'Hungaroring',                      country:'Hungary',      date:'2026-07-26', time:'13:00:00Z', sprint:false, isNew:false },
+  { round:'12', raceName:'Dutch Grand Prix',         circuitName:'Circuit Zandvoort',                country:'Netherlands',  date:'2026-08-23', time:'13:00:00Z', sprint:true,  isNew:false },
+  { round:'13', raceName:'Italian Grand Prix',       circuitName:'Autodromo Nazionale Monza',        country:'Italy',        date:'2026-09-06', time:'13:00:00Z', sprint:false, isNew:false },
+  { round:'14', raceName:'Madrid Grand Prix',        circuitName:'Circuit Ifema Madrid',             country:'Spain',        date:'2026-09-13', time:'13:00:00Z', sprint:false, isNew:true  },
+  { round:'15', raceName:'Azerbaijan Grand Prix',    circuitName:'Baku City Circuit',                country:'Azerbaijan',   date:'2026-09-26', time:'11:00:00Z', sprint:false, isNew:false },
+  { round:'16', raceName:'Singapore Grand Prix',     circuitName:'Marina Bay Street Circuit',        country:'Singapore',    date:'2026-10-11', time:'12:00:00Z', sprint:true,  isNew:false },
+  { round:'17', raceName:'United States Grand Prix', circuitName:'Circuit of the Americas',          country:'United States', date:'2026-10-25', time:'19:00:00Z', sprint:false, isNew:false },
+  { round:'18', raceName:'Mexico City Grand Prix',   circuitName:'Autodromo Hermanos Rodriguez',     country:'Mexico',       date:'2026-11-01', time:'20:00:00Z', sprint:false, isNew:false },
+  { round:'19', raceName:'São Paulo Grand Prix',     circuitName:'Autodromo Jose Carlos Pace',       country:'Brazil',       date:'2026-11-08', time:'17:00:00Z', sprint:false, isNew:false },
+  { round:'20', raceName:'Las Vegas Grand Prix',     circuitName:'Las Vegas Street Circuit',         country:'United States', date:'2026-11-21', time:'06:00:00Z', sprint:false, isNew:false },
+  { round:'21', raceName:'Qatar Grand Prix',         circuitName:'Lusail International Circuit',     country:'Qatar',        date:'2026-11-29', time:'15:00:00Z', sprint:false, isNew:false },
+  { round:'22', raceName:'Abu Dhabi Grand Prix',     circuitName:'Yas Marina Circuit',               country:'UAE',          date:'2026-12-06', time:'13:00:00Z', sprint:false, isNew:false },
+];
+
+/* ── HELPERS ── */
+function fmt(dateStr) {
+  return new Date(dateStr).toLocaleDateString('en-GB', { day:'2-digit', month:'short' });
+}
+
+function isPast(dateStr) {
+  return new Date(dateStr + 'T23:59:59Z') < new Date();
+}
+
+let timer;
+function startCountdown(dateStr, timeStr) {
+  clearInterval(timer);
+  const target = new Date(`${dateStr}T${timeStr || '13:00:00Z'}`);
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) { clearInterval(timer); return; }
+    document.getElementById('cd-d').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+  }
+  tick(); timer = setInterval(tick, 1000);
+}
+
+/* ── RENDER ── */
+function render(races) {
+  const next      = races.find(r => !isPast(r.date));
+  const pastCount = races.filter(r => isPast(r.date)).length;
+  const total     = races.length;
+
+  /* Progress bar */
+  document.getElementById('progress-fill').style.width = `${(pastCount/total)*100}%`;
+  document.getElementById('progress-label').textContent = `${pastCount} of ${total} races complete`;
+
+  /* Next race card */
+  if (next) {
+    const flag = flags[next.country] || '🏁';
+    document.getElementById('next-card').innerHTML = `
+      <div class="next-info">
+        <div class="next-name">${flag} ${next.raceName}</div>
+        <div class="next-sub">${next.circuitName} &nbsp;·&nbsp; Round ${next.round}${next.sprint ? ' &nbsp;·&nbsp; Sprint Weekend' : ''}</div>
+      </div>
+      <div class="countdown">
+        <div class="cd-unit"><span class="n" id="cd-d">--</span><span class="l">Days</span></div>
+        <div class="cd-unit"><span class="n" id="cd-h">--</span><span class="l">Hrs</span></div>
+        <div class="cd-unit"><span class="n" id="cd-m">--</span><span class="l">Min</span></div>
+        <div class="cd-unit"><span class="n" id="cd-s">--</span><span class="l">Sec</span></div>
+      </div>`;
+    startCountdown(next.date, next.time);
+  } else {
+    document.getElementById('next-card').innerHTML =
+      `<div style="font-size:0.85rem;font-family:var(--serif)">Season complete — see you in 2027 🏁</div>`;
+  }
+
+  /* Race list */
+  document.getElementById('race-list').innerHTML = races.map((r, i) => {
+    const past    = isPast(r.date);
+    const isNext  = next && r.round === next.round;
+    const flag    = flags[r.country] || '🏁';
+
+    const sprintChip  = r.sprint  ? `<span class="chip sprint-chip">Sprint</span>` : '';
+    const newChip     = r.isNew   ? `<span class="chip new-chip">New</span>` : '';
+    const statusChip  = past  ? `<br><span class="chip done-chip">Done</span>` :
+                        isNext ? `<br><span class="chip next-chip">Next</span>` : '';
+
+    return `
+      <div class="race-item ${past ? 'past' : ''} ${isNext ? 'next-up' : ''}"
+           data-past="${past}"
+           style="animation-delay:${i*0.035}s">
+        <div class="rnd">${r.round}</div>
+        <div class="race-main">
+          <div class="race-name">${r.raceName} ${newChip}</div>
+          <div class="race-circuit">${r.circuitName} ${sprintChip}</div>
+        </div>
+        <div class="race-country">${flag} ${r.country}</div>
+        <div class="race-date">${fmt(r.date)}${statusChip}</div>
+      </div>`;
+  }).join('');
+
+  updateCount();
+}
+
+/* ── FILTER TABS ── */
+let activeFilter = 'all';
+
+function updateCount() {
+  const items = document.querySelectorAll('.race-item[data-past]');
+  let visible = 0;
+  items.forEach(el => { if (!el.classList.contains('hidden')) visible++; });
+  document.getElementById('race-count').textContent = `${visible} races`;
+}
+
+document.getElementById('filter-tabs').addEventListener('click', e => {
+  if (!e.target.classList.contains('tab')) return;
+  activeFilter = e.target.dataset.filter;
+
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  e.target.classList.add('active');
+
+  document.querySelectorAll('.race-item[data-past]').forEach(el => {
+    const past = el.dataset.past === 'true';
+    if (activeFilter === 'all')      el.classList.remove('hidden');
+    else if (activeFilter === 'upcoming') el.classList.toggle('hidden', past);
+    else if (activeFilter === 'past')     el.classList.toggle('hidden', !past);
+  });
+
+  updateCount();
+});
+
+/* ── LOAD — try backend first, fall back to hardcoded ── */
+async function load() {
+  try {
+    const res  = await fetch('http://47.128.232.92:3000/schedule/2026');
+    if (!res.ok) throw new Error('non-200');
+    const data = await res.json();
+    const apiRaces = data?.MRData?.RaceTable?.Races;
+    if (apiRaces && apiRaces.length > 0) {
+      /* Merge API data with local sprint/isNew metadata */
+      const merged = apiRaces.map((r, i) => ({
+        round:       String(r.round).padStart(2,'0'),
+        raceName:    r.raceName,
+        circuitName: r.Circuit?.circuitName || '',
+        country:     r.Circuit?.Location?.country || '',
+        date:        r.date,
+        time:        r.time || '13:00:00Z',
+        sprint:      RACES_2026[i]?.sprint  || false,
+        isNew:       RACES_2026[i]?.isNew   || false,
+      }));
+      render(merged);
+      return;
+    }
+  } catch (_) { /* fall through to hardcoded */ }
+
+  render(RACES_2026);
+}
+
+load();
+</script>
+</body>
+</html>
