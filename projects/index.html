@@ -100,7 +100,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 </div>
 <div class="tabs-wrapper">
   <div class="tabs-bar">
-    <button class="tab-btn active" data-tab="cloud">&#9729;&#65039; Cloud Projects <span class="tab-count">3</span></button>
+    <button class="tab-btn active" data-tab="cloud">&#9729;&#65039; Cloud Projects <span class="tab-count">4</span></button>
     <button class="tab-btn" data-tab="api">&#128268; API Projects <span class="tab-count">1</span></button>
   </div>
 </div>
@@ -123,7 +123,22 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
         <div class="project-tags"><span class="project-tag">Cost Explorer</span><span class="project-tag">AWS Budgets</span><span class="project-tag">Cost Anomaly Detection</span><span class="project-tag">Billing &amp; Cost Management</span><span class="project-tag">EC2</span></div>
         <div class="project-footer"><a class="project-notion-btn" href="https://www.notion.so/AWS-Billing-Cost-Management-Learning-Report-35c65abd067080c7b74acc446178ca6b?source=copy_link" target="_blank" rel="noopener">&#128196; Open in Notion &#8599;</a></div>
       </div>
+      
       <div class="project-card">
+        <div class="project-type">AWS &middot; Cloud Dashboard</div>
+        <h3 class="project-title">F1 Race Calendar Dashboard</h3>
+        <p class="project-desc">Built a live F1 race calendar dashboard hosted on AWS. The frontend is served via S3 and CloudFront, while a Node.js backend runs on EC2. AWS Lambda checks the race schedule daily via EventBridge and sends email notifications through SNS.</p>
+        <div class="project-tags">
+          <span class="project-tag">EC2</span>
+          <span class="project-tag">S3</span>
+          <span class="project-tag">CloudFront</span>
+          <span class="project-tag">Lambda</span>
+          <span class="project-tag">EventBridge</span>
+          <span class="project-tag">SNS</span>
+          <span class="project-tag">Node.js</span>
+        </div>
+        <div class="project-footer"><a class="project-notion-btn" href="https://www.notion.so/F1-Race-Calendar-Dashboard-AWS-Cloud-Project-35e65abd0670803ea2a6ed7003b5763b?source=copy_link" target="_blank" rel="noopener">&#128196; Open in Notion &#8599;</a></div>
+      </div><div class="project-card">
         <div class="project-type">AWS S3 &middot; Data Storage</div>
         <h3 class="project-title">S3 Data Lake Architecture</h3>
         <p class="project-desc">Designed an S3-based data lake with structured folder hierarchy, lifecycle policies for cold storage, IAM roles for fine-grained access, and versioning for audit compliance.</p>
@@ -183,3 +198,4 @@ mobileMenu.querySelectorAll('a').forEach(link=>{
 <script data-goatcounter="https://nidinshah.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
+
