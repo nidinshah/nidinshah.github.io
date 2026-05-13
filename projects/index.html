@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- saved from url=(0041)https://nidinshah.com/projects/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script>if(localStorage.getItem('theme')!=='dark')document.documentElement.setAttribute('data-theme','light');</script>
@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .project-card:hover{background:var(--surface2)}
 .project-card:hover::after{opacity:1}
 .project-type{font-family:var(--font-mono);font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase}
-.project-title{font-family:var(--font-body);font-size:1.2rem;font-weight:500;color:var(--text);line-height:1.3;letter-spacing:-0.01em}
+.project-title{font-family:'Manrope',sans-serif;font-size:1.1rem;font-weight:600;color:var(--text);line-height:1.3}
 .project-desc{font-size:0.82rem;color:var(--text-muted);font-weight:300;line-height:1.75;flex:1}
 .project-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.25rem}
 .project-tag{font-family:var(--font-mono);font-size:0.6rem;padding:0.2rem 0.55rem;background:var(--bg2);color:var(--text-dim);border:1px solid var(--border);letter-spacing:0.04em}
@@ -81,7 +81,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 <nav>
   <a class="nav-logo" href="https://nidinshah.com/index.html">Nidin <span>Shah</span></a>
   <div class="nav-right">
-    <a class="nav-back" href="https://nidinshah.com/index.html">← <span>Portfolio</span></a>
+    <a class="nav-back" href="https://nidinshah.com/index.html">â† <span>Portfolio</span></a>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
       <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -109,59 +109,59 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 </div>
 <div class="page-content">
   <div class="tab-panel active" id="tab-cloud">
-    <div class="cat-header"><span class="cat-icon">☁</span><h2 class="cat-title">Cloud <em>Projects</em></h2><div class="cat-line"></div></div>
-    <p class="cat-desc">AWS deployments · serverless architecture · CI/CD pipelines</p>
+    <div class="cat-header"><span class="cat-icon">â˜</span><h2 class="cat-title">Cloud <em>Projects</em></h2><div class="cat-line"></div></div>
+    <p class="cat-desc">AWS deployments Â· serverless architecture Â· CI/CD pipelines</p>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-type">AWS · Cloud Dashboard</div>
+        <div class="project-type">AWS Â· Cloud Dashboard</div>
         <h3 class="project-title">F1 Race Calendar Dashboard</h3>
         <p class="project-desc">A live Formula 1 race calendar dashboard deployed on AWS. Node.js backend hosted on EC2 via SSH, static frontend served through S3 and CloudFront, with automated race notifications via Lambda, EventBridge, and SNS. Uses the Jolpica F1 API as the data source.</p>
         <div class="project-tags"><span class="project-tag">Jolpica F1 API</span><span class="project-tag">EC2</span><span class="project-tag">SSH</span><span class="project-tag">S3</span><span class="project-tag">CloudFront</span><span class="project-tag">Lambda</span><span class="project-tag">EventBridge</span><span class="project-tag">SNS</span><span class="project-tag">Node.js</span></div>
         <div class="project-footer">
-          <a class="project-live-btn" href="https://d9xvuvgbmczm7.cloudfront.net/" target="_blank" rel="noopener">Live Demo ↗</a>
-          <a class="project-notion-btn" href="https://www.notion.so/F1-Race-Calendar-Dashboard-AWS-Cloud-Project-35e65abd0670803ea2a6ed7003b5763b?source=copy_link" target="_blank" rel="noopener">Open in Notion ↗</a>
+          <a class="project-live-btn" href="https://d9xvuvgbmczm7.cloudfront.net/" target="_blank" rel="noopener">Live Demo â†—</a>
+          <a class="project-notion-btn" href="https://www.notion.so/F1-Race-Calendar-Dashboard-AWS-Cloud-Project-35e65abd0670803ea2a6ed7003b5763b?source=copy_link" target="_blank" rel="noopener">Open in Notion â†—</a>
         </div>
       </div>
       <div class="project-card">
-        <div class="project-type">AWS Amplify · Serverless</div>
+        <div class="project-type">AWS Amplify Â· Serverless</div>
         <h3 class="project-title">Static Website Hosting using Amplify</h3>
         <p class="project-desc">Developed a serverless cinema booking web application using AWS Amplify, API Gateway, Lambda, and DynamoDB with CI/CD deployment via GitHub integration.</p>
         <div class="project-tags"><span class="project-tag">Amplify</span><span class="project-tag">API Gateway</span><span class="project-tag">Lambda</span><span class="project-tag">DynamoDB</span><span class="project-tag">IAM</span><span class="project-tag">GitHub CI/CD</span></div>
-        <div class="project-footer"><a class="project-live-btn" href="https://main.d3c8pofnzo170p.amplifyapp.com/" target="_blank" rel="noopener">Live Demo ↗</a><a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74" target="_blank" rel="noopener">Open in Notion ↗</a></div>
+        <div class="project-footer"><a class="project-live-btn" href="https://main.d3c8pofnzo170p.amplifyapp.com/" target="_blank" rel="noopener">Live Demo â†—</a><a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Cinema-Booking-System-Project-Report-35665abd067080a2894cf9875e8e0065?pvs=74" target="_blank" rel="noopener">Open in Notion â†—</a></div>
       </div>
       <div class="project-card">
-        <div class="project-type">AWS · Cost Management</div>
+        <div class="project-type">AWS Â· Cost Management</div>
         <h3 class="project-title">AWS Billing &amp; Cost Management Learning Report</h3>
         <p class="project-desc">While running personal lab projects on EC2, Load Balancers, and networking, I accidentally incurred unexpected charges from resources left running after testing. This led to hands-on exploration of AWS Cost Explorer, Budgets, and Cost Anomaly Detection and a valuable lesson in resource cleanup.</p>
         <div class="project-tags"><span class="project-tag">Cost Explorer</span><span class="project-tag">AWS Budgets</span><span class="project-tag">Cost Anomaly Detection</span><span class="project-tag">Billing &amp; Cost Management</span><span class="project-tag">EC2</span></div>
-        <div class="project-footer"><a class="project-notion-btn" href="https://www.notion.so/AWS-Billing-Cost-Management-Learning-Report-35c65abd067080c7b74acc446178ca6b?source=copy_link" target="_blank" rel="noopener">Open in Notion ↗</a></div>
+        <div class="project-footer"><a class="project-notion-btn" href="https://www.notion.so/AWS-Billing-Cost-Management-Learning-Report-35c65abd067080c7b74acc446178ca6b?source=copy_link" target="_blank" rel="noopener">Open in Notion â†—</a></div>
       </div>
       
     </div>
   </div>
   <div class="tab-panel" id="tab-api">
-    <div class="cat-header"><span class="cat-icon">🔌</span><h2 class="cat-title">API <em>Projects</em></h2><div class="cat-line"></div></div>
-    <p class="cat-desc">REST APIs · webhook systems · third-party integrations</p>
+    <div class="cat-header"><span class="cat-icon">ðŸ”Œ</span><h2 class="cat-title">API <em>Projects</em></h2><div class="cat-line"></div></div>
+    <p class="cat-desc">REST APIs Â· webhook systems Â· third-party integrations</p>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-type">API Integration · Analytics</div>
+        <div class="project-type">API Integration Â· Analytics</div>
         <h3 class="project-title">Site Traffic Monitor</h3>
         <p class="project-desc">Monitors the number of visitors to my static website through a simple API integration using GoatCounter, an open-source, cookie-free web analytics platform.</p>
         <div class="project-tags"><span class="project-tag">GoatCounter</span><span class="project-tag">JavaScript</span><span class="project-tag">REST API</span><span class="project-tag">GitHub Pages</span></div>
-        <div class="project-footer"><a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Site-Traffic-Monitor-35b65abd067080889ea6c867f45a710b?source=copy_link" target="_blank" rel="noopener">Open in Notion ↗</a></div>
+        <div class="project-footer"><a class="project-notion-btn" href="https://polar-hubcap-369.notion.site/Site-Traffic-Monitor-35b65abd067080889ea6c867f45a710b?source=copy_link" target="_blank" rel="noopener">Open in Notion â†—</a></div>
       </div>
     </div>
   </div>
   <div class="tab-panel" id="tab-other">
-    <div class="cat-header"><span class="cat-icon">📁</span><h2 class="cat-title">Other <em>Projects</em></h2><div class="cat-line"></div></div>
-    <p class="cat-desc">Technical side projects outside of cloud and API · integrations · configurations · tooling</p>
+    <div class="cat-header"><span class="cat-icon">ðŸ“</span><h2 class="cat-title">Other <em>Projects</em></h2><div class="cat-line"></div></div>
+    <p class="cat-desc">Technical side projects outside of cloud and API Â· integrations Â· configurations Â· tooling</p>
     <div class="projects-grid">
       <div class="project-card">
-        <div class="project-type">DNS · Domain Configuration</div>
+        <div class="project-type">DNS Â· Domain Configuration</div>
         <h3 class="project-title">Replacing GitHub Free Domain with a Custom Domain</h3>
         <p class="project-desc">Configured a custom domain to replace the default GitHub Pages URL. Set up DNS A records and CNAME entries on Hostinger, enabled HTTPS via GitHub Pages settings, and verified propagation. A clean and practical exercise in domain management and web infrastructure basics.</p>
         <div class="project-tags"><span class="project-tag">GitHub Pages</span><span class="project-tag">DNS</span><span class="project-tag">Hostinger</span><span class="project-tag">CNAME</span><span class="project-tag">HTTPS</span><span class="project-tag">A Records</span></div>
-        <div class="project-footer"><a class="project-notion-btn" href="https://www.notion.so/Replacing-GitHub-Free-Domain-with-a-Custom-Domain-35f65abd0670809a9580d7ef8ff8cd2f?source=copy_link" target="_blank" rel="noopener">Open in Notion ↗</a></div>
+        <div class="project-footer"><a class="project-notion-btn" href="https://www.notion.so/Replacing-GitHub-Free-Domain-with-a-Custom-Domain-35f65abd0670809a9580d7ef8ff8cd2f?source=copy_link" target="_blank" rel="noopener">Open in Notion â†—</a></div>
       </div>
     </div>
   </div>
@@ -169,7 +169,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 </div>
 <footer>
   <div class="footer-logo">Nidin <span>Shah</span> Ryidhzuan</div>
-  <div class="footer-copy">© 2025 · All rights reserved</div>
+  <div class="footer-copy">Â© 2025 Â· All rights reserved</div>
 </footer>
 <script>
 const themeToggle=document.getElementById('themeToggle');
