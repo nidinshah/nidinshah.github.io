@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en"><head><script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-photo{position:relative;display:flex;justify-content:center;align-items:center}
 .hero-photo-wrap{position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center}
 .hero-photo-arc{position:absolute;top:0;left:0;width:280px;height:280px;animation:slowSpin 60s linear infinite}
-@keyframes slowSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes slowSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes arcSpin1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .hero-photo-frame{width:240px;height:240px;border-radius:50%;overflow:hidden;background:var(--surface);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
 .hero-photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:grayscale(15%) contrast(1.05)}
 .hero-photo-placeholder{font-family:var(--font-display);font-size:4rem;color:var(--gold);font-weight:300}
@@ -176,7 +176,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 <section class="hero" id="home">
   <div class="hero-grid container">
     <div>
-      <div class="hero-label">Portfolio · KL, Malaysia</div>
+      <div class="hero-label">Portfolio Â· KL, Malaysia</div>
       <h1 class="hero-name">Nidin Shah<br><em>Ryidhzuan</em></h1>
       <p class="hero-tagline">API, Cloud &amp; Data Analytics enthusiast.</p>
       <div class="hero-actions">
@@ -186,8 +186,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
       </div>
     </div>
     <div class="hero-photo">
-      <div class="hero-photo-wrap">
-      <canvas id="photoArc" style="position:absolute;top:0;left:0;z-index:0;width:100%;height:100%"></canvas>
+      <div class="hero-photo-wrap" style="position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center"><svg style="position:absolute;top:0;left:0;width:280px;height:280px;animation:arcSpin1 22s linear infinite" viewBox="0 0 280 280"><circle cx="140" cy="140" r="132" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="200 196" opacity="0.85"/></svg><svg style="position:absolute;top:0;left:0;width:236px;height:236px;top:22px;left:22px;animation:arcSpin1 22s linear infinite;animation-delay:-11s" viewBox="0 0 236 236"><circle cx="118" cy="118" r="112" fill="none" stroke="#C9A84C" stroke-width="0.75" stroke-dasharray="160 192" opacity="0.35"/></svg>
+      
       <div class="hero-photo-frame" style="position:relative;z-index:1">
         <img src="assets/img/headshot_circle.png" alt="Nidin Shah">
       </div>
@@ -233,8 +233,8 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
     <div class="timeline">
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
-        <div class="timeline-meta"><span class="timeline-date">Apr 2025 – Nov 2025</span><span class="timeline-badge">MarTech</span></div>
-        <h3 class="timeline-role">Solutions Support Specialist â€” APJ</h3>
+        <div class="timeline-meta"><span class="timeline-date">Apr 2025 â€“ Nov 2025</span><span class="timeline-badge">MarTech</span></div>
+        <h3 class="timeline-role">Solutions Support Specialist Ã¢â‚¬â€ APJ</h3>
         <p class="timeline-company">Impact.com (MarTech)</p>
         <ul class="timeline-bullets">
           <li>Delivered enterprise-level technical support to customers and partners across Asia Pacific &amp; Japan via chat and ticketing systems, resolving 70+ tickets daily within SLA targets.</li>
@@ -249,7 +249,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
       </div>
       <div class="timeline-item reveal reveal-delay-2">
         <div class="timeline-dot"></div>
-        <div class="timeline-meta"><span class="timeline-date">Jan 2024 â€“ Nov 2024</span></div>
+        <div class="timeline-meta"><span class="timeline-date">Jan 2024 Ã¢â‚¬â€œ Nov 2024</span></div>
         <h3 class="timeline-role">Technical Support Specialist</h3>
         <p class="timeline-company">Fiuu (formerly Razer Merchant Services)</p>
         <ul class="timeline-bullets">
@@ -323,7 +323,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 </section>
 <footer>
   <div class="footer-logo">Nidin <span>Shah</span> Ryidhzuan</div>
-  <div class="footer-copy">© 2025 · All rights reserved</div>
+  <div class="footer-copy">Â© 2025 Â· All rights reserved</div>
 </footer>
 <script>
 const themeToggle=document.getElementById('themeToggle');
@@ -383,91 +383,8 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
 
 
-<script>
-(function(){
-  function initArc(){
-    var canvas=document.getElementById('photoArc');
-    if(!canvas)return;
-    var wrap=canvas.parentElement;
-    var size=wrap.offsetWidth||280;
-    canvas.width=size;
-    canvas.height=size;
-    var ctx=canvas.getContext('2d');
-    var cx=size/2,cy=size/2,r=size/2-8,t=0;
-    function draw(){
-      ctx.clearRect(0,0,size,size);
-      ctx.strokeStyle='rgba(201,168,76,0.06)';
-      ctx.lineWidth=0.5;
-      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
-      var head=t*0.5;
-      var trailLen=Math.PI*2.4;
-      var steps=250;
-      for(var i=0;i<steps;i++){
-        var p=i/steps;
-        var a=head-p*trailLen;
-        var a2=head-(p+1/steps)*trailLen;
-        var alpha=Math.pow(1-p,1.3)*0.88;
-        ctx.strokeStyle='rgba(201,168,76,'+alpha+')';
-        ctx.lineWidth=(1-p)*2+0.3;
-        ctx.beginPath();
-        ctx.arc(cx,cy,r,Math.min(a,a2),Math.max(a,a2));
-        ctx.stroke();
-      }
-      t+=0.007;
-      requestAnimationFrame(draw);
-    }
-    draw();
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',initArc);
-  } else {
-    initArc();
-  }
-})();
-</script>
-<script>
-(function(){
-  function initArc(){
-    var canvas=document.getElementById('photoArc');
-    if(!canvas)return;
-    var wrap=canvas.parentElement;
-    var dpr=window.devicePixelRatio||1;
-    var size=wrap.offsetWidth||280;
-    canvas.width=size*dpr;
-    canvas.height=size*dpr;
-    var ctx=canvas.getContext('2d');
-    ctx.scale(dpr,dpr);
-    var cx=size/2,cy=size/2,r=size/2-6,t=0;
-    var raf;
-    function draw(){
-      ctx.clearRect(0,0,size,size);
-      ctx.strokeStyle='rgba(201,168,76,0.06)';
-      ctx.lineWidth=0.5;
-      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
-      var head=t*0.5;
-      var trailLen=Math.PI*2.4;
-      var steps=250;
-      for(var i=0;i<steps;i++){
-        var p=i/steps;
-        var a=head-p*trailLen;
-        var a2=head-(p+1/steps)*trailLen;
-        var alpha=Math.pow(1-p,1.3)*0.88;
-        ctx.strokeStyle='rgba(201,168,76,'+alpha+')';
-        ctx.lineWidth=(1-p)*2+0.3;
-        ctx.beginPath();
-        ctx.arc(cx,cy,r,Math.min(a,a2),Math.max(a,a2));
-        ctx.stroke();
-      }
-      t+=0.007;
-      raf=requestAnimationFrame(draw);
-    }
-    draw();
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',initArc);
-  }else{
-    initArc();
-  }
-})();
-</script>
+
+
 </body></html>
+
+
