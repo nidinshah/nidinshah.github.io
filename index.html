@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en"><head><script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -176,7 +176,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 <section class="hero" id="home">
   <div class="hero-grid container">
     <div>
-      <div class="hero-label">Portfolio &middot; KL, Malaysia</div>
+      <div class="hero-label">Portfolio · KL, Malaysia</div>
       <h1 class="hero-name">Nidin Shah<br><em>Ryidhzuan</em></h1>
       <p class="hero-tagline">API, Cloud &amp; Data Analytics enthusiast.</p>
       <div class="hero-actions">
@@ -186,16 +186,14 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
       </div>
     </div>
     <div class="hero-photo">
-      <div class="hero-photo-wrap">
-        <svg class="hero-photo-arc" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="140" cy="140" r="135" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="500 360" stroke-dashoffset="200" opacity="0.85"></circle>
-          <circle cx="140" cy="140" r="135" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="80 770" stroke-dashoffset="-50" opacity="0.45"></circle>
-        </svg>
-        <div class="hero-photo-frame">
-          <img src="assets/img/headshot_circle.png" alt="Nidin Shah">
-        </div>
+      <div class="hero-photo-wrap" style="position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center">
+      <canvas id="photoArc" width="280" height="280" style="position:absolute;top:0;left:0;z-index:0"></canvas>
+      <div class="hero-photo-frame" style="position:relative;z-index:1">
+        <img src="assets/img/headshot_circle.png" alt="Nidin Shah">
       </div>
     </div>
+  </div>
+</div>
   </div>
   <div class="hero-scroll">Scroll</div>
 </section>
@@ -235,7 +233,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
     <div class="timeline">
       <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
-        <div class="timeline-meta"><span class="timeline-date">Apr 2025 &ndash; Nov 2025</span><span class="timeline-badge">MarTech</span></div>
+        <div class="timeline-meta"><span class="timeline-date">Apr 2025 – Nov 2025</span><span class="timeline-badge">MarTech</span></div>
         <h3 class="timeline-role">Solutions Support Specialist â€” APJ</h3>
         <p class="timeline-company">Impact.com (MarTech)</p>
         <ul class="timeline-bullets">
@@ -325,7 +323,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 </section>
 <footer>
   <div class="footer-logo">Nidin <span>Shah</span> Ryidhzuan</div>
-  <div class="footer-copy">&copy; 2025 &middot; All rights reserved</div>
+  <div class="footer-copy">© 2025 · All rights reserved</div>
 </footer>
 <script>
 const themeToggle=document.getElementById('themeToggle');
@@ -382,4 +380,37 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
 
 
+
+
+<script>
+(function(){
+  var canvas=document.getElementById('photoArc');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var cx=140,cy=140,r=132,t=0;
+  function draw(){
+    ctx.clearRect(0,0,280,280);
+    ctx.strokeStyle='rgba(201,168,76,0.06)';
+    ctx.lineWidth=0.5;
+    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
+    var head=t*0.5;
+    var trailLen=Math.PI*2.4;
+    var steps=250;
+    for(var i=0;i<steps;i++){
+      var p=i/steps;
+      var a=head-p*trailLen;
+      var a2=head-(p+1/steps)*trailLen;
+      var alpha=Math.pow(1-p,1.3)*0.88;
+      ctx.strokeStyle='rgba(201,168,76,'+alpha+')';
+      ctx.lineWidth=(1-p)*2+0.3;
+      ctx.beginPath();
+      ctx.arc(cx,cy,r,Math.min(a,a2),Math.max(a,a2));
+      ctx.stroke();
+    }
+    t+=0.007;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 </body></html>
