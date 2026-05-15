@@ -186,15 +186,15 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
       </div>
     </div>
     <div class="hero-photo">
-      <div class="hero-photo-wrap" style="position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center">
-      <canvas id="photoArc" width="280" height="280" style="position:absolute;top:0;left:0;z-index:0"></canvas>
+      <div class="hero-photo-wrap">
+      <canvas id="photoArc" width="280" height="280" style="position:absolute;top:0;left:0;z-index:0;width:100%;height:100%"></canvas>
       <div class="hero-photo-frame" style="position:relative;z-index:1">
         <img src="assets/img/headshot_circle.png" alt="Nidin Shah">
       </div>
     </div>
   </div>
 </div>
-  </div>
+  
   <div class="hero-scroll">Scroll</div>
 </section>
 <section id="skills">
@@ -382,35 +382,47 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
 
 
+
 <script>
 (function(){
-  var canvas=document.getElementById('photoArc');
-  if(!canvas)return;
-  var ctx=canvas.getContext('2d');
-  var cx=140,cy=140,r=132,t=0;
-  function draw(){
-    ctx.clearRect(0,0,280,280);
-    ctx.strokeStyle='rgba(201,168,76,0.06)';
-    ctx.lineWidth=0.5;
-    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
-    var head=t*0.5;
-    var trailLen=Math.PI*2.4;
-    var steps=250;
-    for(var i=0;i<steps;i++){
-      var p=i/steps;
-      var a=head-p*trailLen;
-      var a2=head-(p+1/steps)*trailLen;
-      var alpha=Math.pow(1-p,1.3)*0.88;
-      ctx.strokeStyle='rgba(201,168,76,'+alpha+')';
-      ctx.lineWidth=(1-p)*2+0.3;
-      ctx.beginPath();
-      ctx.arc(cx,cy,r,Math.min(a,a2),Math.max(a,a2));
-      ctx.stroke();
+  function initArc(){
+    var canvas=document.getElementById('photoArc');
+    if(!canvas)return;
+    var wrap=canvas.parentElement;
+    var size=wrap.offsetWidth||280;
+    canvas.width=size;
+    canvas.height=size;
+    var ctx=canvas.getContext('2d');
+    var cx=size/2,cy=size/2,r=size/2-8,t=0;
+    function draw(){
+      ctx.clearRect(0,0,size,size);
+      ctx.strokeStyle='rgba(201,168,76,0.06)';
+      ctx.lineWidth=0.5;
+      ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
+      var head=t*0.5;
+      var trailLen=Math.PI*2.4;
+      var steps=250;
+      for(var i=0;i<steps;i++){
+        var p=i/steps;
+        var a=head-p*trailLen;
+        var a2=head-(p+1/steps)*trailLen;
+        var alpha=Math.pow(1-p,1.3)*0.88;
+        ctx.strokeStyle='rgba(201,168,76,'+alpha+')';
+        ctx.lineWidth=(1-p)*2+0.3;
+        ctx.beginPath();
+        ctx.arc(cx,cy,r,Math.min(a,a2),Math.max(a,a2));
+        ctx.stroke();
+      }
+      t+=0.007;
+      requestAnimationFrame(draw);
     }
-    t+=0.007;
-    requestAnimationFrame(draw);
+    draw();
   }
-  draw();
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',initArc);
+  } else {
+    initArc();
+  }
 })();
 </script>
 </body></html>
