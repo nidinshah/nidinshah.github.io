@@ -54,10 +54,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
 .hero-photo{position:relative;display:flex;justify-content:center;align-items:center}
-.hero-photo-wrap{position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center}@keyframes arcE6a{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.arc-e6{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}.arc-e6-a{animation:arcE6a 22s linear infinite}.arc-e6-b{animation:arcE6a 22s linear infinite;animation-delay:-11s}
-.hero-photo-arc{position:absolute;top:0;left:0;width:280px;height:280px;animation:slowSpin 60s linear infinite}
+.hero-photo-wrap{position:relative;width:310px;height:310px;display:flex;align-items:center;justify-content:center}@keyframes arcE6a{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.arc-e6{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}.arc-e6-a{animation:arcE6a 22s linear infinite}.arc-e6-b{animation:arcE6a 22s linear infinite;animation-delay:-11s}
+.arc-ring-outer{position:absolute;top:0;left:0;width:310px;height:310px;animation:arcSpin1 22s linear infinite;pointer-events:none}
+.arc-ring-inner{position:absolute;top:24px;left:24px;width:262px;height:262px;animation:arcSpin1 22s linear infinite;animation-delay:-11s;pointer-events:none}
+.hero-photo-arc{position:absolute;top:0;left:0;width:310px;height:310px;animation:slowSpin 60s linear infinite}
 @keyframes slowSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes arcSpin1{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.hero-photo-frame{width:240px;height:240px;border-radius:50%;overflow:hidden;background:var(--surface);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.hero-photo-frame{width:220px;height:220px;border-radius:50%;overflow:hidden;background:var(--surface);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
 .hero-photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:grayscale(15%) contrast(1.05)}
 .hero-photo-placeholder{font-family:var(--font-display);font-size:4rem;color:var(--gold);font-weight:300}
 .hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);letter-spacing:0.15em;text-transform:uppercase}
@@ -140,7 +142,7 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
 .reveal-delay-1{transition-delay:0.1s}
 .reveal-delay-2{transition-delay:0.2s}
 .reveal-delay-3{transition-delay:0.3s}
-@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}section{padding:5rem 1.5rem}.hero{padding:7rem 1.5rem 5rem}.hero-grid{grid-template-columns:1fr;gap:3rem}.hero-photo{order:-1}.hero-photo-wrap{width:220px;height:220px}.hero-photo-arc{width:220px;height:220px}.hero-photo-frame{width:190px;height:190px}.about-layout,.contact-layout{grid-template-columns:1fr;gap:3rem}.education-card{flex-direction:column;gap:1rem;padding:1.75rem}.hero-scroll{display:none}.hero-actions{flex-wrap:wrap;gap:0.6rem}.hero-actions .btn{flex:1;min-width:120px;font-size:0.65rem;padding:0.7rem 0.75rem;text-align:center;justify-content:center}.proj-cards{grid-template-columns:1fr}.edu-year{font-size:2.5rem}footer{padding:2rem 1.5rem}}
+@media(max-width:768px){nav{padding:1rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}section{padding:5rem 1.5rem}.hero{padding:7rem 1.5rem 5rem}.hero-grid{grid-template-columns:1fr;gap:3rem}.hero-photo{order:-1}.hero-photo-wrap{width:220px;height:220px}.hero-photo-arc{width:220px;height:220px}.hero-photo-frame{width:190px;height:190px}.arc-ring-outer{width:280px;height:280px;top:0;left:0}.arc-ring-inner{width:236px;height:236px;top:22px;left:22px}.about-layout,.contact-layout{grid-template-columns:1fr;gap:3rem}.education-card{flex-direction:column;gap:1rem;padding:1.75rem}.hero-scroll{display:none}.hero-actions{flex-wrap:wrap;gap:0.6rem}.hero-actions .btn{flex:1;min-width:120px;font-size:0.65rem;padding:0.7rem 0.75rem;text-align:center;justify-content:center}.proj-cards{grid-template-columns:1fr}.edu-year{font-size:2.5rem}footer{padding:2rem 1.5rem}}
 </style>
 </head>
 <body>
@@ -186,9 +188,9 @@ footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;justi
       </div>
     </div>
     <div class="hero-photo">
-      <div class="hero-photo-wrap" style="position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center"><svg style="position:absolute;top:0;left:0;width:280px;height:280px;animation:arcSpin1 22s linear infinite" viewBox="0 0 280 280"><circle cx="140" cy="140" r="132" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="200 196" opacity="0.85"></circle></svg><svg style="position:absolute;top:0;left:0;width:236px;height:236px;top:22px;left:22px;animation:arcSpin1 22s linear infinite;animation-delay:-11s" viewBox="0 0 236 236"><circle cx="118" cy="118" r="112" fill="none" stroke="#C9A84C" stroke-width="0.75" stroke-dasharray="160 192" opacity="0.35"></circle></svg>
+      <div class="hero-photo-wrap"><svg class="arc-ring-outer" viewBox="0 0 310 310"><circle cx="155" cy="155" r="146" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="200 196" opacity="0.85"></circle></svg><svg class="arc-ring-inner" viewBox="0 0 262 262"><circle cx="131" cy="131" r="124" fill="none" stroke="#C9A84C" stroke-width="0.75" stroke-dasharray="160 192" opacity="0.35"></circle></svg>
       
-      <div class="hero-photo-frame" style="position:relative;z-index:1">
+      <div class="hero-photo-frame">
         <img src="assets/img/headshot_circle.png" alt="Nidin Shah">
       </div>
     </div>
