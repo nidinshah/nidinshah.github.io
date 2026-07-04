@@ -219,43 +219,42 @@ section>.wrap{position:relative;z-index:1}
 [data-theme="light"] .filter:hover{border-color:rgba(20,20,15,.26);background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.55))}
 [data-theme="light"] .filter.active{background:linear-gradient(180deg,rgba(245,255,230,.96),rgba(236,248,216,.75));border-color:rgba(108,122,69,.5);color:#20220F}
 [data-theme="light"] .filter.active sup{color:#20220F}
-.projects{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:1.5rem;perspective:1200px}
-.proj{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.5rem 1.6rem;display:flex;flex-direction:column;gap:.75rem;position:relative;transition:border-color .3s,background .3s;transform:rotate(var(--rot,0deg))}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;perspective:1200px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.9rem 2rem;display:flex;flex-direction:column;gap:.9rem;position:relative;transition:border-color .3s,background .3s;transform:rotate(var(--rot,0deg))}
 .proj:hover{border-color:var(--line2);background:var(--card2)}
 .proj.hide{display:none}
 .proj-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
 .proj-cat{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:var(--lime-dim);color:var(--lime);border:1px solid var(--lime);border-radius:8px;padding:.25rem .7rem;transform:rotate(-2.5deg);display:inline-block}
 [data-theme="light"] .proj-cat{color:#6c7a45;border-color:#6c7a45}
-.proj-no{font-family:var(--f-head);font-weight:800;font-size:1.6rem;color:transparent;-webkit-text-stroke:1.2px var(--line2);line-height:1}
-.proj h3{font-family:var(--f-head);font-weight:700;font-size:1.24rem;letter-spacing:-.01em;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.proj p{font-size:.86rem;color:var(--muted);line-height:1.65;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.proj-no{font-family:var(--f-head);font-weight:800;font-size:1.9rem;color:transparent;-webkit-text-stroke:1.2px var(--line2);line-height:1}
+.proj h3{font-family:var(--f-head);font-weight:700;font-size:1.42rem;letter-spacing:-.01em;line-height:1.25}
+.proj p{font-size:.88rem;color:var(--muted);line-height:1.72;flex:1}
 .proj-tags{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.03em;color:var(--dim);line-height:1.9}
 .proj-links{display:flex;gap:1.4rem;padding-top:.9rem;border-top:1px dashed var(--line)}
 
 /* featured project — Global View globe (blue, exclusive) */
-.proj-feature{display:flex;flex-direction:column;padding:0;overflow:hidden;border-radius:20px;background:radial-gradient(420px 300px at 78% 12%,rgba(74,116,214,.28),transparent 62%),linear-gradient(160deg,#0e1c38 0%,#0b1730 55%,#081120 100%);border:1px solid rgba(96,140,230,.32);box-shadow:0 24px 56px -20px rgba(34,66,150,.55),inset 0 1px 0 rgba(150,190,255,.15);transition:border-color .3s,box-shadow .3s,transform .35s cubic-bezier(.22,1,.36,1)}
+.proj-feature{background:radial-gradient(420px 300px at 82% 0%,rgba(74,116,214,.28),transparent 62%),linear-gradient(160deg,#0e1c38 0%,#0b1730 55%,#081120 100%);border:1px solid rgba(96,140,230,.32);box-shadow:0 24px 56px -20px rgba(34,66,150,.55),inset 0 1px 0 rgba(150,190,255,.15);transition:border-color .3s,box-shadow .3s,transform .35s cubic-bezier(.22,1,.36,1)}
 .proj-feature:hover{border-color:rgba(126,168,255,.5);transform:translateY(-4px);box-shadow:0 32px 64px -20px rgba(34,66,150,.65),inset 0 1px 0 rgba(150,190,255,.2)}
-.feature-media{position:relative;height:160px;flex-shrink:0;background:#0a1120;overflow:hidden}
-.feature-media::after{content:'';position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(180deg,transparent,rgba(11,23,48,.92));pointer-events:none}
-.card-globe{width:100%;height:100%;object-fit:cover;display:block;background:#0a1120}
-.feature-head{position:absolute;top:1rem;left:1.15rem;right:1.15rem;z-index:2}
-.feature-head .proj-cat{background:rgba(9,18,38,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.feature-body{padding:1.25rem 1.6rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;flex:1}
-.feature-body .proj-links{margin-top:auto}
-[data-theme="light"] .proj-feature{background:radial-gradient(420px 300px at 78% 12%,rgba(126,160,235,.3),transparent 62%),linear-gradient(160deg,#e3ebfb 0%,#d3dff6 55%,#c6d4ef 100%);border-color:rgba(96,130,205,.4);box-shadow:0 20px 44px -18px rgba(70,100,180,.35),inset 0 1px 0 rgba(255,255,255,.8)}
-[data-theme="light"] .proj-feature:hover{border-color:rgba(80,116,200,.55);box-shadow:0 26px 52px -18px rgba(70,100,180,.45),inset 0 1px 0 rgba(255,255,255,.85)}
-[data-theme="light"] .feature-media::after{background:linear-gradient(180deg,transparent,rgba(222,232,250,.95))}
-[data-theme="light"] .feature-body h3{color:#16233f}
-[data-theme="light"] .feature-body p{color:#3e5077}
-[data-theme="light"] .feature-body .proj-tags{color:#5a6d97}
-[data-theme="light"] .btn-proj.demo{color:#0d1830;background:linear-gradient(180deg,#b9cefa,#8fb1f2);border-color:rgba(80,115,200,.55);box-shadow:0 6px 16px rgba(80,115,200,.3)}
-[data-theme="light"] .btn-proj.study{color:#2e4470;background:rgba(96,132,220,.14);border-color:rgba(80,115,200,.42)}
+.feature-row{display:flex;gap:1.5rem;align-items:center;flex:1;min-height:0}
+.feature-text{display:flex;flex-direction:column;gap:.9rem;flex:1;min-width:0;align-self:stretch}
+.feature-globe{width:148px;height:148px;border-radius:50%;overflow:hidden;flex-shrink:0;border:1px solid rgba(120,160,240,.38);box-shadow:0 0 36px rgba(80,130,240,.32),0 12px 30px rgba(6,14,36,.55)}
+.card-globe{width:100%;height:100%;object-fit:cover;object-position:50% 44%;transform:scale(1.42);display:block;background:#0a1120}
 .proj-feature .proj-cat{color:#a8c4ff;border-color:rgba(120,160,240,.5)}
 .proj-feature .proj-no{-webkit-text-stroke-color:rgba(150,185,245,.55)}
-.feature-body h3{color:#f2f6ff}
-.feature-body p{color:#b6c6e6}
-.feature-body .proj-tags{color:#83a0c9}
-.feature-body .proj-links{border-top:none;padding-top:.5rem;gap:.75rem;flex-wrap:wrap}
+.proj-feature h3{color:#f2f6ff}
+.proj-feature p{color:#b6c6e6}
+.proj-feature .proj-tags{color:#83a0c9}
+.proj-feature .proj-links{border-top:none;padding-top:.4rem;gap:.75rem;flex-wrap:wrap;margin-top:auto}
+[data-theme="light"] .proj-feature{background:radial-gradient(420px 300px at 82% 0%,rgba(126,160,235,.3),transparent 62%),linear-gradient(160deg,#e3ebfb 0%,#d3dff6 55%,#c6d4ef 100%);border-color:rgba(96,130,205,.4);box-shadow:0 20px 44px -18px rgba(70,100,180,.35),inset 0 1px 0 rgba(255,255,255,.8)}
+[data-theme="light"] .proj-feature:hover{border-color:rgba(80,116,200,.55);box-shadow:0 26px 52px -18px rgba(70,100,180,.45),inset 0 1px 0 rgba(255,255,255,.85)}
+[data-theme="light"] .proj-feature h3{color:#16233f}
+[data-theme="light"] .proj-feature p{color:#3e5077}
+[data-theme="light"] .proj-feature .proj-tags{color:#5a6d97}
+[data-theme="light"] .proj-feature .proj-cat{color:#3d5590;border-color:rgba(80,115,200,.55)}
+[data-theme="light"] .proj-feature .proj-no{-webkit-text-stroke-color:rgba(80,115,200,.45)}
+[data-theme="light"] .feature-globe{border-color:rgba(96,130,205,.5);box-shadow:0 0 30px rgba(110,150,235,.4),0 10px 26px rgba(70,100,180,.3)}
+[data-theme="light"] .btn-proj.demo{color:#0d1830;background:linear-gradient(180deg,#b9cefa,#8fb1f2);border-color:rgba(80,115,200,.55);box-shadow:0 6px 16px rgba(80,115,200,.3)}
+[data-theme="light"] .btn-proj.study{color:#2e4470;background:rgba(96,132,220,.14);border-color:rgba(80,115,200,.42)}
 .btn-proj{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;text-decoration:none;padding:.58rem 1.1rem;border-radius:99px;display:inline-flex;align-items:center;gap:.35rem;border:1px solid transparent;transition:transform .22s cubic-bezier(.34,1.56,.64,1),background .22s,border-color .22s,box-shadow .22s}
 .btn-proj.demo{color:#08122a;background:linear-gradient(180deg,#c4d7ff,#93b6f6);border-color:rgba(165,198,255,.6);box-shadow:0 6px 18px rgba(70,110,210,.32)}
 .btn-proj.demo:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 9px 24px rgba(70,110,210,.42)}
@@ -313,8 +312,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
   .stats{flex-direction:row;flex-wrap:wrap;gap:2rem;border-left:none;padding-left:0;border-top:2px solid var(--line);padding-top:1.75rem}
   .job{grid-template-columns:1fr;gap:1rem}
   .projects{grid-template-columns:1fr;grid-auto-rows:auto}
-  .feature-media{height:160px}
-  .feature-body{padding:1.2rem 1.5rem 1.5rem}
+  .feature-globe{width:132px;height:132px}
   .ghost-no{font-size:6rem;top:1.5rem}
 }
 @media(max-width:600px){
@@ -334,6 +332,9 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
   .skill-grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
   .skill{padding:1rem .95rem;border-radius:15px}
   .skill b{font-size:.95rem}
+  .feature-row{flex-direction:column-reverse;align-items:center;gap:1.1rem}
+  .feature-globe{width:150px;height:150px}
+  .feature-text{align-self:stretch}
 }
 </style>
 </head>
@@ -530,17 +531,19 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
     <div class="projects">
 
       <article class="proj proj-feature r3d" data-cat="api">
-        <div class="feature-media">
-          <video class="card-globe" src="assets/globe/globe-card@2x.mp4" poster="assets/globe/globe-card-poster.jpg" autoplay loop muted playsinline width="466" height="320" preload="metadata" aria-hidden="true"></video>
-          <div class="proj-head feature-head"><span class="proj-cat">api · live map</span><span class="proj-no">01</span></div>
-        </div>
-        <div class="feature-body">
-          <h3>Global View — Flight Track Live</h3>
-          <p>Real-time flight tracking on an interactive 3D globe — live aircraft positions and routes streamed from a public aviation API.</p>
-          <div class="proj-tags">Aviation API · REST API · JavaScript · WebGL Globe · Real-time Data</div>
-          <div class="proj-links">
-            <a class="btn-proj demo" href="#" target="_blank" rel="noopener">live demo ↗</a>
-            <a class="btn-proj study" href="#" target="_blank" rel="noopener">case study ↗</a>
+        <div class="proj-head"><span class="proj-cat">api · live map</span><span class="proj-no">01</span></div>
+        <div class="feature-row">
+          <div class="feature-text">
+            <h3>Global View — Flight Track Live</h3>
+            <p>Real-time flight tracking on an interactive 3D globe — live aircraft positions and routes streamed from a public aviation API.</p>
+            <div class="proj-tags">Aviation API · REST API · JavaScript · WebGL Globe · Real-time Data</div>
+            <div class="proj-links">
+              <a class="btn-proj demo" href="#" target="_blank" rel="noopener">live demo ↗</a>
+              <a class="btn-proj study" href="#" target="_blank" rel="noopener">case study ↗</a>
+            </div>
+          </div>
+          <div class="feature-globe">
+            <video class="card-globe" src="assets/globe/globe-card@2x.mp4" poster="assets/globe/globe-card-poster.jpg" autoplay loop muted playsinline width="466" height="320" preload="metadata" aria-hidden="true"></video>
           </div>
         </div>
       </article>
