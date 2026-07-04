@@ -233,14 +233,17 @@ section>.wrap{position:relative;z-index:1}
 .proj-links{display:flex;gap:1.4rem;padding-top:.9rem;border-top:1px dashed var(--line)}
 
 /* featured project — Global View globe (blue, exclusive) */
-.proj-feature{display:flex;flex-direction:column;padding:0;overflow:hidden;border-radius:20px;background:radial-gradient(420px 300px at 78% 12%,rgba(74,116,214,.28),transparent 62%),linear-gradient(160deg,#0e1c38 0%,#0b1730 55%,#081120 100%);border:1px solid rgba(96,140,230,.32);box-shadow:0 24px 56px -20px rgba(34,66,150,.55),inset 0 1px 0 rgba(150,190,255,.15)}
-.proj-feature:hover{border-color:rgba(126,168,255,.5);background:radial-gradient(420px 300px at 78% 12%,rgba(92,134,230,.34),transparent 62%),linear-gradient(160deg,#102142 0%,#0c1a36 55%,#091324 100%)}
-.feature-media{position:relative;height:185px;flex-shrink:0;background:#0a1120;overflow:hidden}
-.feature-media::after{content:'';position:absolute;left:0;right:0;bottom:0;height:64px;background:linear-gradient(180deg,transparent,rgba(11,23,48,.9));pointer-events:none}
+.proj-feature{display:flex;flex-direction:column;padding:0;overflow:hidden;border-radius:20px;background:radial-gradient(420px 300px at 78% 12%,rgba(74,116,214,.28),transparent 62%),linear-gradient(160deg,#0e1c38 0%,#0b1730 55%,#081120 100%);border:1px solid rgba(96,140,230,.32);box-shadow:0 24px 56px -20px rgba(34,66,150,.55),inset 0 1px 0 rgba(150,190,255,.15);transition:border-color .3s,box-shadow .3s,transform .35s cubic-bezier(.22,1,.36,1)}
+.proj-feature:hover{border-color:rgba(126,168,255,.5);transform:translateY(-4px);box-shadow:0 32px 64px -20px rgba(34,66,150,.65),inset 0 1px 0 rgba(150,190,255,.2)}
+.feature-media{position:relative;height:180px;flex-shrink:0;background:#0a1120;overflow:hidden}
+.feature-media::after{content:'';position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(180deg,transparent,rgba(11,23,48,.92));pointer-events:none}
 .card-globe{width:100%;height:100%;object-fit:cover;display:block;background:#0a1120}
-.feature-body{padding:1.35rem 2rem 1.9rem;display:flex;flex-direction:column;gap:.85rem;flex:1}
-.feature-body .proj-cat{color:#a8c4ff;border-color:rgba(120,160,240,.5);background:rgba(90,130,220,.15)}
-.feature-body .proj-no{-webkit-text-stroke-color:rgba(130,170,240,.42)}
+.feature-head{position:absolute;top:1rem;left:1.15rem;right:1.15rem;z-index:2}
+.feature-head .proj-cat{background:rgba(9,18,38,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.feature-body{padding:1.3rem 1.9rem 1.75rem;display:flex;flex-direction:column;gap:.8rem;flex:1}
+.feature-body .proj-links{margin-top:auto}
+.proj-feature .proj-cat{color:#a8c4ff;border-color:rgba(120,160,240,.5)}
+.proj-feature .proj-no{-webkit-text-stroke-color:rgba(150,185,245,.55)}
 .feature-body h3{color:#f2f6ff}
 .feature-body p{color:#b6c6e6}
 .feature-body .proj-tags{color:#83a0c9}
@@ -521,11 +524,11 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
       <article class="proj proj-feature r3d" data-cat="api">
         <div class="feature-media">
           <video class="card-globe" src="assets/globe/globe-card@2x.mp4" poster="assets/globe/globe-card-poster.jpg" autoplay loop muted playsinline width="466" height="320" preload="metadata" aria-hidden="true"></video>
+          <div class="proj-head feature-head"><span class="proj-cat">api · live map</span><span class="proj-no">01</span></div>
         </div>
         <div class="feature-body">
-          <div class="proj-head"><span class="proj-cat">api · live map</span><span class="proj-no">01</span></div>
           <h3>Global View — Flight Track Live</h3>
-          <p>A real-time global flight-tracking dashboard that plots live aircraft positions on an interactive 3D globe — streaming data from a public aviation API and animating routes as they move.</p>
+          <p>Real-time flight tracking on an interactive 3D globe — live aircraft positions and routes streamed from a public aviation API.</p>
           <div class="proj-tags">Aviation API · REST API · JavaScript · WebGL Globe · Real-time Data</div>
           <div class="proj-links">
             <a class="btn-proj demo" href="#" target="_blank" rel="noopener">live demo ↗</a>
