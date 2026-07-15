@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<script>try{if(localStorage.getItem('theme')!=='dark')document.documentElement.setAttribute('data-theme','light');}catch(e){document.documentElement.setAttribute('data-theme','light');}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nidin Shah Ryidhzuan | API, Cloud &amp; Data Analytics</title>
@@ -40,7 +40,7 @@ html.lenis,html.lenis body{height:auto}
 body{background-color:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;overflow-x:hidden;overflow-x:clip;transition:background-color .3s,color .3s;-webkit-font-smoothing:antialiased}
 body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1000px 640px at 72% -8%,var(--bg-lift),transparent 62%)}
 ::selection{background:var(--lime);color:var(--on-lime)}
-a{-webkit-tap-highlight-color:transparent}
+a,button{-webkit-tap-highlight-color:transparent}
 .wrap{max-width:1140px;margin:0 auto;padding:0 2rem}
 .serif{font-family:var(--f-serif);font-style:italic;font-weight:400}
 
@@ -116,8 +116,8 @@ nav .lk:hover,nav .lk.active{color:var(--ink);background:var(--lime-dim)}
 @media(max-width:760px){nav .lk,.lk-cta{display:none}.nav-burger{display:flex}}
 
 /* hero */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:7rem 0 4rem;overflow:hidden}
-.hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--f-head);font-weight:800;font-size:clamp(5rem,19vw,17rem);letter-spacing:.02em;color:transparent;-webkit-text-stroke:1px var(--ghost);white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;position:relative;padding:7rem 0 4rem;overflow:hidden}
+.hero-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--f-head);font-weight:800;font-size:clamp(5rem,19vw,17rem);letter-spacing:.02em;color:transparent;-webkit-text-stroke:1px var(--ghost);white-space:nowrap;pointer-events:none;-webkit-user-select:none;user-select:none;z-index:0}
 .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center;width:100%;position:relative;z-index:1}
 .eyebrow{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;color:var(--muted);margin-bottom:1.4rem;opacity:0;animation:up .7s ease .1s forwards}
 .eyebrow b{color:var(--lime);font-weight:400}
@@ -188,7 +188,7 @@ section{padding:6.5rem 0;position:relative}
 h2{font-family:var(--f-head);font-weight:700;font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:2.75rem}
 h2 .serif{font-size:1.08em;color:var(--lime)}
 [data-theme="light"] h2 .serif{color:#6c7a45}
-.ghost-no{position:absolute;top:2.5rem;right:0;font-family:var(--f-head);font-weight:800;font-size:clamp(6rem,14vw,11rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--ghost);pointer-events:none;user-select:none;z-index:0}
+.ghost-no{position:absolute;top:2.5rem;right:0;font-family:var(--f-head);font-weight:800;font-size:clamp(6rem,14vw,11rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--ghost);pointer-events:none;-webkit-user-select:none;user-select:none;z-index:0}
 section>.wrap{position:relative;z-index:1}
 
 /* about */
@@ -687,16 +687,9 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
     <div class="sec-eyebrow r3d">05 — education</div>
     <h2 class="r3d">Where I <span class="serif">studied.</span></h2>
     <div class="edu r3d">
-      <div class="edu-year">2026</div>
-      <div>
-        <h3>Bachelor of Computer Science (Honours)</h3>
-        <div class="edu-school">INTI International University, Malaysia</div>
-      </div>
-    </div>
-    <div class="edu r3d">
       <div class="edu-year">2021</div>
       <div>
-        <h3>Diploma in Information Technology</h3>
+        <h3>Information Technology</h3>
         <div class="edu-school">Taylor's University, Malaysia</div>
       </div>
       <div class="edu-note">graduated march 2021</div>
@@ -733,8 +726,8 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
 // theme
 document.getElementById('themeBtn').addEventListener('click',()=>{
   const isLight=document.documentElement.getAttribute('data-theme')==='light';
-  if(isLight){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');}
-  else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');}
+  if(isLight){document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('theme','dark');}catch(e){}}
+  else{document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}}
 });
 
 // liquid glass — SVG refraction is Chromium-only (Safari/Firefox drop backdrop-filter:url()) and desktop-only (too heavy for mobile GPUs)
@@ -772,7 +765,8 @@ function measurePlx(){const y=scrollY;for(const o of plxEls){const r=o.el.getBou
 function applyParallax(sy){const vh=innerHeight;for(const o of plxEls){const off=(o.top-sy+o.h/2-vh/2)*o.speed;o.el.style.transform=`translate3d(0,${(-off).toFixed(2)}px,0)`;}}
 let plxTick=false;
 addEventListener('scroll',()=>{if(window.__lenis)return;if(!plxTick){plxTick=true;requestAnimationFrame(()=>{applyParallax(scrollY);plxTick=false;});}},{passive:true});
-addEventListener('resize',()=>{measurePlx();applyParallax(scrollY);},{passive:true});
+let rszTick=false;
+addEventListener('resize',()=>{if(rszTick)return;rszTick=true;requestAnimationFrame(()=>{rszTick=false;measurePlx();applyParallax(scrollY);});},{passive:true});
 addEventListener('load',()=>{measurePlx();applyParallax(scrollY);});
 measurePlx();applyParallax(scrollY);
 
