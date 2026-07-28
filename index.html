@@ -140,8 +140,6 @@ h1 .serif{font-size:1.06em}
 .a-link{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.04em;color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--line2);padding-bottom:2px;transition:all .2s}
 .a-link:hover{border-color:var(--lime);color:var(--lime)}
 [data-theme="light"] .a-link:hover{color:#6c7a45;border-color:#6c7a45}
-.sticker{position:relative;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;background:var(--card);border:1px solid var(--line);padding:.45rem 1rem;border-radius:10px;transform:rotate(2deg);margin-top:2.2rem;color:var(--muted);opacity:0;animation:up .7s ease .58s forwards}
-.sticker i{width:8px;height:8px;border-radius:50%;background:var(--lime);flex-shrink:0;animation:blink 1.8s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
 /* orbit scene */
@@ -342,7 +340,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
 
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-  .r3d,.eyebrow,h1,.hero-sub,.hero-cta,.sticker,.scene{opacity:1;transform:none}
+  .r3d,.eyebrow,h1,.hero-sub,.hero-cta,.scene{opacity:1;transform:none}
 }
 
 /* responsive */
@@ -422,7 +420,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
         <a class="a-link" href="https://www.linkedin.com/in/nidin-shah" target="_blank" rel="noopener">linkedin ↗</a>
         <a class="a-link" href="https://github.com/nidinshah" target="_blank" rel="noopener">github ↗</a>
       </div>
-      <div class="sticker"><i></i>open to opportunities · based in kuala lumpur, malaysia</div>
     </div>
     <div class="scene plx" data-speed="-0.06">
       <div class="orbit o1"><span class="sat">☁️ AWS</span></div>
