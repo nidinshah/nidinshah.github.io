@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <script>try{if(localStorage.getItem('theme')!=='dark')document.documentElement.setAttribute('data-theme','light');}catch(e){document.documentElement.setAttribute('data-theme','light');}</script>
+<script>try{if(sessionStorage.getItem('unlocked')==='1')document.documentElement.classList.add('unlocked');}catch(e){}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nidin Shah Ryidhzuan | API, Cloud &amp; Data Analytics</title>
@@ -343,6 +344,20 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
   .r3d,.eyebrow,h1,.hero-sub,.hero-cta,.scene{opacity:1;transform:none}
 }
 
+/* password gate */
+html:not(.unlocked){overflow:hidden}
+html:not(.unlocked) body>*:not(#gate){visibility:hidden}
+#gate{display:none}
+html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;padding:1.5rem;background:var(--bg)}
+.gate-box{width:min(380px,100%);text-align:center}
+.gate-box h1{font-family:var(--f-head);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.4rem}
+.gate-box p{font-size:.92rem;color:var(--muted);margin-bottom:1.6rem}
+.gate-row{display:flex;gap:.6rem}
+.gate-row input{flex:1;min-width:0;font:inherit;font-family:var(--f-mono);font-size:.9rem;color:var(--ink);background:var(--card);border:1px solid var(--line2);border-radius:99px;padding:.7rem 1.2rem;outline:none}
+.gate-row input:focus{border-color:var(--lime)}
+.gate-row button{font-family:var(--f-head);font-weight:600;font-size:.9rem;color:var(--on-lime);background:var(--lime);border:0;border-radius:99px;padding:.7rem 1.4rem;cursor:pointer}
+.gate-err{min-height:1.4rem;margin-top:.9rem;font-family:var(--f-mono);font-size:.72rem;color:#d9534f}
+
 /* responsive */
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:3.5rem;text-align:left}
@@ -378,6 +393,31 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
 </style>
 </head>
 <body>
+<div id="gate">
+  <form class="gate-box" id="gateForm" autocomplete="off">
+    <h1>Private site</h1>
+    <p>Enter the password to continue.</p>
+    <div class="gate-row">
+      <input type="password" id="gatePw" placeholder="password" aria-label="Password" autofocus>
+      <button type="submit">Enter</button>
+    </div>
+    <div class="gate-err" id="gateErr" role="alert"></div>
+  </form>
+</div>
+<script>
+document.getElementById('gateForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const err=document.getElementById('gateErr'),pw=document.getElementById('gatePw');
+  if(!(window.crypto&&crypto.subtle)){err.textContent='This browser cannot verify the password.';return;}
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw.value));
+  const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(hex==='a1005c3d8b9f43262344fa54f4a91a900796e79cf12d899c15fa6b53f18443d6'){
+    try{sessionStorage.setItem('unlocked','1');}catch(x){}
+    document.documentElement.classList.add('unlocked');
+    scrollTo(0,0);
+  }else{err.textContent='Wrong password.';pw.value='';pw.focus();}
+});
+</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="lqgGlass" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.004 0.011" numOctaves="2" seed="7" result="n"/><feGaussianBlur in="n" stdDeviation="1.6" result="nb"/><feDisplacementMap in="SourceGraphic" in2="nb" scale="14" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <div class="stars" aria-hidden="true"></div>
 <div class="stars2" aria-hidden="true"></div>
@@ -483,6 +523,24 @@ footer{border-top:1px solid var(--line);padding:2rem 0 6rem}
   <div class="wrap">
     <div class="sec-eyebrow r3d">03 — experience</div>
     <h2 class="r3d">Where I've <span class="serif">been.</span></h2>
+    <div class="job r3d">
+      <div class="job-when">Sep 2026 — Present<br><span class="job-chip">trading tech</span></div>
+      <div>
+        <h3>Application Support Engineer</h3>
+        <div class="job-co">Rithmic LLC</div>
+        <ul>
+          <li><span>Consult clients building personal and commercial trading software on which Rithmic API fits their use case (<span class="nowrap">R | API+</span>, <span class="nowrap">R | Protocol API</span> or <span class="nowrap">R | Diamond API</span>), then support the integration from connection and authentication through order routing and market data.</span></li>
+          <li>Run application reviews on client integrations, checking how each platform connects to Rithmic and handles orders, sessions and data before it goes live.</li>
+          <li><span>Run demo sessions with clients over Microsoft Teams, walking them through <span class="nowrap">R | Trader Pro</span> and <span class="nowrap">R | Manager</span> in the live environment.</span></li>
+          <li>Troubleshoot order rejections on the Order Plant, market data issues on the Ticker Plant, login failures and platform access problems.</li>
+          <li>Help traders reconcile realized vs. unrealized P&amp;L during market hours, and dig into each case to pin down whether the cause sits with their platform or on the Rithmic side.</li>
+          <li>Work with the Operations team to pull and review sensitive client trading logs during investigations.</li>
+          <li>Liaise with partner platforms built on Rithmic infrastructure on maintenance windows, outages, and client trade or integration issues.</li>
+          <li>Work with the Sales team on clients subscribing to a Rithmic account for trading or API access, and guide them through account creation and maintenance.</li>
+        </ul>
+        <div class="job-stack">stack — <b><span class="nowrap">R | API+</span> · <span class="nowrap">R | Protocol API</span> · <span class="nowrap">R | Trader Pro</span> · <span class="nowrap">R | Manager</span> · Order &amp; Ticker Plants · MS Teams</b></div>
+      </div>
+    </div>
     <div class="job r3d">
       <div class="job-when">Apr 2025 — Nov 2025<br><span class="job-chip">martech</span></div>
       <div>
