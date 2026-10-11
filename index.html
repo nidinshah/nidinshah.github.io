@@ -152,7 +152,7 @@ h1 .serif{font-size:1.06em}
 [data-theme="light"] .a-link:hover{color:#1B365D;border-color:#1B365D}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-/* hero photo — rotating text ring around the headshot (JS pauses the spin while any of it is off-screen or under the frosted nav) */
+/* hero photo — rotating text ring around the headshot (JS pauses the spin off-screen; on phones also while it sits under the frosted nav) */
 .scene{position:relative;width:100%;max-width:460px;margin:0 auto;perspective:900px;opacity:0;animation:pop 1s cubic-bezier(.22,1,.36,1) .4s forwards}
 .scene::before{content:'';display:block;padding-top:100%}
 @keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
@@ -346,12 +346,13 @@ html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align
 .gate-box h1{font-family:var(--f-head);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.4rem}
 .gate-box p{font-size:.92rem;color:var(--muted);margin-bottom:1.6rem}
 .gate-row{display:flex;gap:.6rem}
-.gate-row input{flex:1;min-width:0;font:inherit;font-family:var(--f-mono);font-size:.9rem;color:var(--ink);background:var(--card);border:1px solid var(--line2);border-radius:99px;padding:.7rem 1.2rem;outline:none}
+/* input text must be ≥16px: anything smaller makes iPhone Safari zoom in on focus, which shoves the fixed gate off-centre and misplaces the caret */
+.gate-row input{flex:1;min-width:0;-webkit-appearance:none;appearance:none;font:inherit;font-family:var(--f-mono);font-size:1rem;line-height:1.25;color:var(--ink);background:var(--card);border:1px solid var(--line2);border-radius:99px;height:48px;padding:0 1.2rem;outline:none}
 .gate-row input:focus{border-color:var(--lime)}
 [data-theme="light"] .gate-row input:focus{border-color:#1B365D}
 [data-theme="light"] .gate-row button{background:#1B365D;color:#fff}
-.gate-row button{font-family:var(--f-head);font-weight:600;font-size:.9rem;color:var(--on-lime);background:var(--lime);border:0;border-radius:99px;padding:.7rem 1.4rem;cursor:pointer}
-.gate-err{min-height:1.4rem;margin-top:.9rem;font-family:var(--f-mono);font-size:.72rem;color:#d9534f}
+.gate-row button{flex-shrink:0;font-family:var(--f-head);font-weight:600;font-size:.9rem;color:var(--on-lime);background:var(--lime);border:0;border-radius:99px;height:48px;padding:0 1.4rem;cursor:pointer}
+.gate-err{min-height:1.4rem;margin-top:.9rem;font-family:var(--f-mono);font-size:.78rem;color:#d9534f}
 
 /* responsive */
 @media(max-width:900px){
@@ -375,6 +376,7 @@ html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align
   .edu{gap:.5rem 2.5rem;padding:2rem 0}
   nav{width:calc(100vw - 1.4rem);top:.7rem;padding:.7rem 1rem .7rem .95rem;border-radius:22px}
   .ghost-no{right:1.3rem}
+  html:not(.unlocked) #gate{align-items:flex-start;padding-top:clamp(4rem,22vh,11rem)}
   .stats{grid-template-columns:1fr;gap:1.5rem}
   .sk-list{margin:0 -.9rem}
   .foot{grid-template-columns:1fr;gap:.75rem}
@@ -398,7 +400,7 @@ html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align
     <h1>Private site</h1>
     <p>Enter the password to continue.</p>
     <div class="gate-row">
-      <input type="password" id="gatePw" placeholder="password" aria-label="Password" autofocus>
+      <input type="password" id="gatePw" placeholder="password" aria-label="Password" enterkeyhint="go" autofocus>
       <button type="submit">Enter</button>
     </div>
     <div class="gate-err" id="gateErr" role="alert"></div>
@@ -858,7 +860,8 @@ const skRows=[...document.querySelectorAll('.sk-row')];
 const skPick=r=>skRows.forEach(x=>x.classList.toggle('on',x===r));
 skRows.forEach(r=>['mouseenter','click','focus'].forEach(ev=>r.addEventListener(ev,()=>skPick(r))));
 
-// hero text ring — spin only while the whole ring is on-screen below the frosted nav
+// hero text ring — desktop: keeps spinning while you scroll, as long as any of it is on screen.
+// phones: spins while the whole photo sits below the frosted nav, pauses once it slides under (cheaper for mobile Safari)
 const heroRing=document.querySelector('.ring');
 if(heroRing){
   // fit the sentence to the circle once the web font is in: track it out so the last ✦ meets the first word with a small gap,
@@ -868,7 +871,22 @@ if(heroRing){
     if(n>ringRoom)ringText.style.fontSize=(4.6*ringRoom/n).toFixed(2)+'px';
     else ringText.style.letterSpacing=((ringRoom-n)/ringText.textContent.length).toFixed(3)+'px';};
   fitRing();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitRing);
-  if('IntersectionObserver' in window)new IntersectionObserver(([e])=>heroRing.classList.toggle('paused',e.intersectionRatio<.97),{rootMargin:'-96px 0px 0px 0px',threshold:[0,.97,1]}).observe(heroRing);
+  // watch the non-rotating .scene, not the SVG: the spinning SVG's bounding box swells by up to 41% mid-turn,
+  // which used to trip the pause a few degrees in and freeze the ring for good on phones
+  if('IntersectionObserver' in window){
+    const ringScene=heroRing.closest('.scene'),navBar=document.querySelector('nav');
+    const deskMQ=matchMedia('(hover:hover) and (pointer:fine) and (min-width:761px)');
+    let ringIO=null;
+    const watchRing=()=>{
+      if(ringIO)ringIO.disconnect();
+      const desk=deskMQ.matches,navB=Math.ceil(navBar.getBoundingClientRect().bottom)+4;
+      ringIO=new IntersectionObserver(([e])=>heroRing.classList.toggle('paused',desk?!e.isIntersecting:e.intersectionRatio<.99),
+        desk?{threshold:0}:{rootMargin:`-${navB}px 0px 0px 0px`,threshold:[0,.99,1]});
+      ringIO.observe(ringScene);
+    };
+    watchRing();
+    if(deskMQ.addEventListener)deskMQ.addEventListener('change',watchRing);else if(deskMQ.addListener)deskMQ.addListener(watchRing);
+  }
 }
 
 // count-up
