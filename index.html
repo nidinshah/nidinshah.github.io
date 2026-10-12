@@ -350,22 +350,47 @@ footer{border-top:1px solid var(--line);padding:2rem 0 calc(3.5rem + env(safe-ar
   .r3d,.eyebrow,h1,.hero-sub,.hero-cta,.scene{opacity:1;transform:none}
 }
 
-/* password gate */
+/* password gate — the hero's rotating text ring around a lock; the site opens by itself the moment the typed password matches */
 html:not(.unlocked){overflow:hidden}
 html:not(.unlocked) body>*:not(#gate){visibility:hidden}
-#gate{display:none}
-html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;padding:1.5rem;background:var(--bg)}
-.gate-box{width:min(380px,100%);text-align:center}
-.gate-box h1{font-family:var(--f-head);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.4rem}
-.gate-box p{font-size:.92rem;color:var(--muted);margin-bottom:1.6rem}
-.gate-row{display:flex;gap:.6rem}
+#gate{display:none;position:fixed;inset:0;z-index:1000;flex-direction:column;align-items:center;justify-content:center;padding:4.5rem 1.5rem 2.5rem;background:radial-gradient(900px 560px at 50% -12%,var(--bg-lift),transparent 62%),var(--bg);transition:opacity .45s ease}
+html:not(.unlocked) #gate,#gate.leaving{display:flex}
+#gate.leaving{opacity:0;pointer-events:none}
+.gate-brand{position:absolute;top:1.7rem;left:50%;transform:translateX(-50%);font-family:var(--f-head);font-weight:700;font-size:1.08rem;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
+.gate-brand b{color:var(--lime)}
+[data-theme="light"] .gate-brand b{color:#1B365D}
+.gate-box{width:min(360px,100%);display:flex;flex-direction:column;align-items:center;text-align:center}
+.gate-box>*{opacity:0;animation:up .7s ease forwards}
+.gate-seal{position:relative;width:200px;aspect-ratio:1;margin-bottom:1.6rem;animation-delay:.05s}
+.gate-ring{position:absolute;inset:0;width:100%;height:100%;overflow:visible;animation:spin 40s linear infinite}
+.gate-ring text{font-family:var(--f-head);font-weight:600;font-size:6.4px;fill:var(--muted)}
+.gate-lock{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:var(--on-lime);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 10px 28px -8px rgba(0,0,0,.5)}
+[data-theme="light"] .gate-lock{background:#1B365D;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 10px 26px -8px rgba(15,27,45,.4)}
+.gate-lock svg{grid-area:1/1;width:26px;height:26px;transition:opacity .25s ease,transform .25s ease}
+.gate-lock .lk-open,#gate.ok .gate-lock .lk-shut{opacity:0;transform:scale(.8)}
+#gate.ok .gate-lock .lk-open{opacity:1;transform:none}
+.gate-box h1{font-size:2.1rem;line-height:1.1;letter-spacing:-.02em;margin-bottom:.6rem;animation-delay:.15s}
+.gate-box h1 .serif{color:var(--lime)}
+[data-theme="light"] .gate-box h1 .serif{color:#1B365D}
+.gate-box p{font-size:.95rem;line-height:1.6;color:var(--muted);max-width:30ch;margin-bottom:1.6rem;text-wrap:balance;animation-delay:.25s}
+.gate-field{position:relative;width:100%;animation-delay:.35s}
 /* input text must be ≥16px: anything smaller makes iPhone Safari zoom in on focus, which shoves the fixed gate off-centre and misplaces the caret */
-.gate-row input{flex:1;min-width:0;-webkit-appearance:none;appearance:none;font:inherit;font-family:var(--f-mono);font-size:1rem;line-height:1.25;color:var(--ink);background:var(--card);border:1px solid var(--line2);border-radius:99px;height:48px;padding:0 1.2rem;outline:none}
-.gate-row input:focus{border-color:var(--lime)}
-[data-theme="light"] .gate-row input:focus{border-color:#1B365D}
-[data-theme="light"] .gate-row button{background:#1B365D;color:#fff}
-.gate-row button{flex-shrink:0;font-family:var(--f-head);font-weight:600;font-size:.9rem;color:var(--on-lime);background:var(--lime);border:0;border-radius:99px;height:48px;padding:0 1.4rem;cursor:pointer}
-.gate-err{min-height:1.4rem;margin-top:.9rem;font-family:var(--f-mono);font-size:.78rem;color:#d9534f}
+.gate-field input{display:block;width:100%;-webkit-appearance:none;appearance:none;font:inherit;font-family:var(--f-mono);font-size:1rem;line-height:1.25;color:var(--ink);background:var(--card);border:1px solid var(--line2);border-radius:99px;height:52px;padding:0 3.6rem 0 1.3rem;outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+.gate-field input::placeholder{color:var(--dim)}
+.gate-field input:focus{border-color:var(--lime);box-shadow:0 0 0 4px var(--lime-dim)}
+[data-theme="light"] .gate-field input:focus{border-color:#1B365D}
+#gate.ok .gate-field input{border-color:var(--lime)}
+[data-theme="light"] #gate.ok .gate-field input{border-color:#1B365D}
+#gate.bad .gate-field input{border-color:#d9534f;box-shadow:0 0 0 4px rgba(217,83,79,.14)}
+.gate-field button{position:absolute;top:6px;right:6px;width:40px;height:40px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;background:var(--lime);color:var(--on-lime);transition:background-color .2s ease,transform .2s ease}
+.gate-field button svg{width:18px;height:18px}
+.gate-field button:hover{background:#fff}
+.gate-field button:active{transform:scale(.96)}
+.gate-field button:focus-visible{outline:2px solid rgba(245,255,230,.6);outline-offset:3px}
+[data-theme="light"] .gate-field button{background:#1B365D;color:#fff}
+[data-theme="light"] .gate-field button:hover{background:#142B4D}
+[data-theme="light"] .gate-field button:focus-visible{outline-color:rgba(27,54,93,.5)}
+.gate-err{min-height:1.4rem;margin-top:.9rem;font-family:var(--f-mono);font-size:.78rem;color:#d9534f;animation-delay:.45s}
 
 /* responsive */
 @media(max-width:900px){
@@ -389,7 +414,12 @@ html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align
   .edu{gap:.5rem 2.5rem;padding:2rem 0}
   nav{width:calc(100vw - 1.4rem);top:.7rem;padding:.7rem 1rem .7rem .95rem;border-radius:22px}
   .ghost-no{right:1.3rem}
-  html:not(.unlocked) #gate{align-items:flex-start;padding-top:clamp(4rem,22vh,11rem)}
+  #gate{justify-content:flex-start;padding-top:clamp(4.25rem,10vh,6rem)}
+  .gate-brand{top:1.25rem}
+  .gate-seal{width:clamp(112px,18vh,150px);margin-bottom:1.25rem}
+  .gate-lock{width:52px;height:52px;margin:-26px 0 0 -26px}
+  .gate-lock svg{width:22px;height:22px}
+  .gate-box h1{font-size:1.85rem}
   .stats{grid-template-columns:1fr;gap:1.5rem}
   .sk-list{margin:0 -.9rem}
   .foot{grid-template-columns:1fr;gap:.75rem}
@@ -409,27 +439,45 @@ html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align
 </head>
 <body>
 <div id="gate">
+  <div class="gate-brand">nidin<b>✦</b>shah</div>
   <form class="gate-box" id="gateForm" autocomplete="off">
-    <h1>Private site</h1>
-    <p>Enter the password to continue.</p>
-    <div class="gate-row">
-      <input type="password" id="gatePw" placeholder="password" aria-label="Password" enterkeyhint="go" autofocus>
-      <button type="submit">Enter</button>
+    <div class="gate-seal" aria-hidden="true">
+      <svg class="gate-ring" viewBox="0 0 100 100"><defs><path id="gateRingPath" d="M50,50 m-41.5,0 a41.5,41.5 0 1,1 83,0 a41.5,41.5 0 1,1 -83,0"/></defs><text><textPath href="#gateRingPath">nidinshah.com ✦ private for now ✦ kuala lumpur ✦ password please ✦</textPath></text></svg>
+      <span class="gate-lock">
+        <svg class="lk-shut" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z"/><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"/><path d="M8 11v-4a4 4 0 1 1 8 0v4"/></svg>
+        <svg class="lk-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z"/><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"/><path d="M8 11v-5a4 4 0 0 1 8 0"/></svg>
+      </span>
+    </div>
+    <h1>Knock, <span class="serif">knock.</span></h1>
+    <p>This site is private for now. Type the password and it opens on its own.</p>
+    <div class="gate-field">
+      <input type="password" id="gatePw" placeholder="password" aria-label="Password" aria-describedby="gateErr" enterkeyhint="go" autocapitalize="off" spellcheck="false" autofocus>
+      <button type="submit" aria-label="Unlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 18l6 -6"/><path d="M13 6l6 6"/></svg></button>
     </div>
     <div class="gate-err" id="gateErr" role="alert"></div>
   </form>
 </div>
 <script>
-// password gate — an unlock lasts 8 minutes (or until the tab closes), then the gate comes back
+// password gate — opens by itself the moment the typed password matches (no Enter needed);
+// an unlock lasts 8 minutes (or until the tab closes), then the gate comes back
 (function(){
-  const UNLOCK_MS=8*60*1000,root=document.documentElement;
-  const form=document.getElementById('gateForm'),pw=document.getElementById('gatePw'),err=document.getElementById('gateErr');
-  let timer=null,entered=root.classList.contains('unlocked');
+  const UNLOCK_MS=8*60*1000,HASH='a1005c3d8b9f43262344fa54f4a91a900796e79cf12d899c15fa6b53f18443d6',root=document.documentElement;
+  const gate=document.getElementById('gate'),form=document.getElementById('gateForm'),pw=document.getElementById('gatePw'),err=document.getElementById('gateErr');
+  const canHash=!!(window.crypto&&crypto.subtle),reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let timer=null,entered=root.classList.contains('unlocked'),seq=0,opening=false;
   const until=()=>{try{return +sessionStorage.getItem('unlockedUntil')||0;}catch(e){return 0;}};
+  const sha=async v=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+  // fit the ring sentence to the circle (same trick as the hero ring); only measurable while the gate is showing
+  const ringText=gate.querySelector('.gate-ring text'),RING_ROOM=2*Math.PI*41.5-2.4,RING_BASE=6.4;
+  const fitRing=()=>{ringText.style.letterSpacing='0';ringText.style.fontSize='';const n=ringText.getComputedTextLength();if(!n)return;
+    if(n>RING_ROOM)ringText.style.fontSize=(RING_BASE*RING_ROOM/n).toFixed(2)+'px';
+    else ringText.style.letterSpacing=((RING_ROOM-n)/ringText.textContent.length).toFixed(3)+'px';};
+  fitRing();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitRing);
   function lock(){
-    clearTimeout(timer);
+    clearTimeout(timer);opening=false;
+    gate.classList.remove('ok','bad','leaving');
     root.classList.remove('unlocked');
-    pw.value='';err.textContent='';pw.focus();
+    pw.value='';err.textContent='';fitRing();pw.focus();
   }
   function schedule(){
     clearTimeout(timer);
@@ -437,17 +485,34 @@ html:not(.unlocked) #gate{display:flex;position:fixed;inset:0;z-index:1000;align
     if(left<=0)lock();else timer=setTimeout(schedule,left);
   }
   const check=()=>{if(root.classList.contains('unlocked'))schedule();};
-  form.addEventListener('submit',async e=>{
-    e.preventDefault();
-    if(!(window.crypto&&crypto.subtle)){err.textContent='This browser cannot verify the password.';return;}
-    const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw.value));
-    const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-    if(hex==='a1005c3d8b9f43262344fa54f4a91a900796e79cf12d899c15fa6b53f18443d6'){
-      try{sessionStorage.setItem('unlockedUntil',String(Date.now()+UNLOCK_MS));}catch(x){}
-      root.classList.add('unlocked');
+  function unlock(){
+    if(opening)return;opening=true;
+    try{sessionStorage.setItem('unlockedUntil',String(Date.now()+UNLOCK_MS));}catch(x){}
+    gate.classList.remove('bad');gate.classList.add('ok');err.textContent='';pw.blur();
+    // a short beat on the open lock, then the gate fades away over the page
+    setTimeout(()=>{
+      gate.classList.add('leaving');root.classList.add('unlocked');
       if(!entered){entered=true;scrollTo(0,0);}
       schedule();
-    }else{err.textContent='Wrong password.';pw.value='';pw.focus();}
+      setTimeout(()=>{gate.classList.remove('leaving','ok');pw.value='';opening=false;},reduce?0:480);
+    },reduce?0:420);
+  }
+  // checked on every keystroke (and on autofill): the moment it matches, the site opens
+  pw.addEventListener('input',async()=>{
+    gate.classList.remove('bad');err.textContent='';
+    const v=pw.value,id=++seq;
+    if(!canHash||!v)return;
+    if(await sha(v)===HASH&&id===seq)unlock();
+  });
+  // Enter and the arrow still work, and they're the only way to see "Wrong password."
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(!canHash){err.textContent='This browser cannot verify the password.';return;}
+    if(!pw.value){pw.focus();return;}
+    const id=++seq;
+    if(await sha(pw.value)===HASH){unlock();return;}
+    if(id!==seq)return;
+    gate.classList.add('bad');err.textContent='Wrong password.';pw.value='';pw.focus();
   });
   // background tabs delay timers, so re-check whenever the visitor comes back
   document.addEventListener('visibilitychange',check);
